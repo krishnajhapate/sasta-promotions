@@ -378,8 +378,9 @@
                 </div>
             </div>
 
-            {% include 'components/try_panel.html' %} {% include
-            'components/place_order.html' %}
+            {% include 'components/try_panel.html' %}
+            <div></div>
+            {% include 'components/place_order.html' %}
 
             <div id="block_12">
                 <div class="reviews-block">
@@ -395,7 +396,19 @@
                                         style-review-card-title
                                     "
                                 >
-                                    <h2>Our customers' success stories</h2>
+                                    <h2
+                                        style="
+                                            font-size: 40px !important;
+                                            line-height: 56px;
+                                            letter-spacing: 0px;
+                                            font-weight: 700;
+                                            font-style: normal;
+                                            color: #052a36;
+                                            font-family: Barlow;
+                                        "
+                                    >
+                                        Our customers' success stories
+                                    </h2>
                                 </div>
                                 <div
                                     class="
@@ -624,6 +637,27 @@
                     </div>
                 </div>
             </div>
+
+            <style>
+                .card {
+                    padding-top: 24px;
+                    padding-left: 24px;
+                    padding-right: 24px;
+                    padding-bottom: 24px;
+                    border-color: #000000;
+                    background: #ffffff;
+                    border-top-left-radius: 16px;
+                    border-top-right-radius: 16px;
+                    border-bottom-left-radius: 16px;
+                    border-bottom-right-radius: 16px;
+                    border-left-width: 0px;
+                    border-right-width: 0px;
+                    border-top-width: 0px;
+                    border-bottom-width: 0px;
+                    border-style: none;
+                    box-shadow: 0 16px 24px 0 rgb(0 0 0 / 8%);
+                }
+            </style>
 
             <div id="block_33">
                 <div class="header-with-text">
@@ -1315,4 +1349,5 @@
         {% include 'components/footer.html' %}
     </div>
 </div>
+
 {% endblock content %}
