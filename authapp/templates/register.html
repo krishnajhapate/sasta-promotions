@@ -1,3 +1,268 @@
 {% extends 'base.html' %} {% block title %}Register {% endblock title %}
 <p></p>
-{% block content %} Register {% endblock content %}
+{% block content %}
+<div class="wrapper wrapper-navbar">
+    {% include 'components/header.html' %}
+    <div class="wrapper-content">
+        <div class="wrapper-content__header"></div>
+        <div class="wrapper-content__body">
+            <!-- Main variables *content* -->
+            <div id="block_30">
+                <div class="sign-in">
+                    <div class="bg"></div>
+                    <div class="divider-top"></div>
+                    <div class="divider-bottom"></div>
+                    <div class="container">
+                        <div class="row sign-up-center-alignment">
+                            <div class="col-lg-6">
+                                <div class="component_card">
+                                    <div class="card">
+                                        <form
+                                            action=""
+                                            method="post"
+                                            class="
+                                                component_form_group
+                                                component_checkbox
+                                            "
+                                        >
+                                            <div class="">
+                                                <div class="form-group">
+                                                    <label
+                                                        for="username"
+                                                        class="control-label"
+                                                        >Username</label
+                                                    >
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="username"
+                                                        value=""
+                                                        name="RegistrationForm[login]"
+                                                    />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="firstname"
+                                                        class="control-label"
+                                                        >First name</label
+                                                    >
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="firstname"
+                                                        value=""
+                                                        name="RegistrationForm[first_name]"
+                                                    />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="lastname"
+                                                        class="control-label"
+                                                        >Last name</label
+                                                    >
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="lastname"
+                                                        value=""
+                                                        name="RegistrationForm[last_name]"
+                                                    />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="email"
+                                                        class="control-label"
+                                                        >Email</label
+                                                    >
+                                                    <input
+                                                        type="email"
+                                                        class="form-control"
+                                                        id="email"
+                                                        value=""
+                                                        name="RegistrationForm[email]"
+                                                    />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="skype"
+                                                        class="control-label"
+                                                        >WhatsApp Number
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="skype"
+                                                        value=""
+                                                        name="RegistrationForm[skype]"
+                                                    />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="password"
+                                                        class="control-label"
+                                                        >Password</label
+                                                    >
+                                                    <input
+                                                        type="password"
+                                                        class="form-control"
+                                                        id="password"
+                                                        name="RegistrationForm[password]"
+                                                    />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="confirm"
+                                                        class="control-label"
+                                                        >Confirm password</label
+                                                    >
+                                                    <input
+                                                        type="password"
+                                                        class="form-control"
+                                                        id="confirm"
+                                                        name="RegistrationForm[password_again]"
+                                                    />
+                                                </div>
+                                                <!-- <div
+                                                    class="
+                                                        g-recaptcha
+                                                        form-group
+                                                    "
+                                                    data-sitekey="6LeI5rUaAAAAAOt-b5yNJJhBqyqTM6EFjX-iSzUK"
+                                                >
+                                                    <div
+                                                        style="
+                                                            width: 304px;
+                                                            height: 78px;
+                                                        "
+                                                    >
+                                                        <div>
+                                                            <iframe
+                                                                title="reCAPTCHA"
+                                                                src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LeI5rUaAAAAAOt-b5yNJJhBqyqTM6EFjX-iSzUK&amp;co=aHR0cHM6Ly9zYXN0YXByb3ZpZGVyLmNvbTo0NDM.&amp;hl=en&amp;v=VZKEDW9wslPbEc9RmzMqaOAP&amp;size=normal&amp;cb=f282bfrv684e"
+                                                                width="304"
+                                                                height="78"
+                                                                role="presentation"
+                                                                name="a-4uqj9xywhuyb"
+                                                                frameborder="0"
+                                                                scrolling="no"
+                                                                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"
+                                                            ></iframe>
+                                                        </div>
+                                                        <textarea
+                                                            id="g-recaptcha-response"
+                                                            name="g-recaptcha-response"
+                                                            class="
+                                                                g-recaptcha-response
+                                                            "
+                                                            style="
+                                                                width: 250px;
+                                                                height: 40px;
+                                                                border: 1px
+                                                                    solid
+                                                                    rgb(
+                                                                        193,
+                                                                        193,
+                                                                        193
+                                                                    );
+                                                                margin: 10px
+                                                                    25px;
+                                                                padding: 0px;
+                                                                resize: none;
+                                                                display: none;
+                                                            "
+                                                        ></textarea>
+                                                    </div>
+                                                    <iframe
+                                                        style="display: none"
+                                                    ></iframe>
+                                                </div> -->
+                                                <div class="form-group">
+                                                    <div
+                                                        class="
+                                                            form-group__checkbox
+                                                        "
+                                                    >
+                                                        <label
+                                                            class="
+                                                                form-group__checkbox-label
+                                                            "
+                                                        >
+                                                            <input
+                                                                type="checkbox"
+                                                                name="RegistrationForm[termsofservice]"
+                                                                value="1"
+                                                                id="terms"
+                                                            />
+                                                            <span
+                                                                class="
+                                                                    checkmark
+                                                                "
+                                                            ></span>
+                                                        </label>
+                                                        <p
+                                                            class="
+                                                                form-group__label-title
+                                                            "
+                                                            for="terms"
+                                                        >
+                                                            I have read and
+                                                            agreed with<a
+                                                                href="/terms"
+                                                                target="_blank"
+                                                                class="
+                                                                    sign-up-center-terms-link
+                                                                "
+                                                                >Terms of
+                                                                Service</a
+                                                            >
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% csrf_token %}
+                                            <div
+                                                class="component_button_submit"
+                                            >
+                                                <div class="form-group">
+                                                    <div class="">
+                                                        <button
+                                                            type="submit"
+                                                            class="
+                                                                btn
+                                                                btn-block
+                                                                btn-primary
+                                                            "
+                                                        >
+                                                            Sign up
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="
+                                                    text-center
+                                                    signin-content
+                                                "
+                                            >
+                                                Already have an account?<a
+                                                    href="/"
+                                                    class="
+                                                        sign-up-center-signin-link
+                                                    "
+                                                    >Sign in</a
+                                                >
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'components/footer.html' %}
+    </div>
+</div>
+{% endblock content %}
