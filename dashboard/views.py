@@ -9,3 +9,7 @@ def home_page(request):
 
 def about_page(request):
     return render(request,"about.html")
+
+
+def terms_and_condition_page(request):
+    return render(request,"terms.html")
