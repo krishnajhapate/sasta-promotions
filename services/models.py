@@ -7,6 +7,11 @@ class CategoryModel(models.Model):
     name = models.CharField(max_length=400)
     active = models.BooleanField(default=False)
 
+    def __str__(self) -> str:
+        return self.name
+    class Meta:
+        verbose_name="Categorie"
+
 
 class ServicesModel(models.Model):
     category = models.ForeignKey(CategoryModel, on_delete=models.CASCADE)
@@ -19,3 +24,9 @@ class ServicesModel(models.Model):
     description = models.TextField(max_length=4000, blank=True, null=True)
     service_id = models.IntegerField()
     active = models.BooleanField(default=False)
+
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+        verbose_name="Service"
