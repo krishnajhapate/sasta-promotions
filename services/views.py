@@ -6,12 +6,16 @@ from services.models import CategoryModel, ServicesModel
 
 
 def services(request):
+    search = request.GET.get('search')
+    cat = request.GET.get('cat')
     categories = CategoryModel.objects.filter(active=True)
+
+    print(categories)
     services = []
     for category in categories:
         service = ServicesModel.objects.filter(active=True, category=category)
         if service.count() > 0:
             category.services = service
             services.append(category)
-    # print(categories)
+
     return render(request, 'services.html', {"categories": services})

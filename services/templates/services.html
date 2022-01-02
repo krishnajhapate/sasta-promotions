@@ -78,16 +78,18 @@
                                                                 data-filter-category-id="All"
                                                                 >All</a
                                                             >
+                                            {% for category in categories %}
+
                                                             <a
                                                                 class="
                                                                     dropdown-item
                                                                 "
-                                                                href="#"
-                                                                data-filter-category-id="84"
-                                                                data-filter-category-name="🔥SASTAPROVIDER SPECIAL🔥REELS,VIEWS,LIKES,FOLLOWERS"
-                                                                >🔥SASTAPROVIDER
-                                                                SPECIAL🔥REELS,VIEWS,LIKES,FOLLOWERS</a
+                                                                href="{% url 'services'  %}?cat={{category.id}}"
+                                                                data-filter-category-id="{{category.id}}"
+                                                                data-filter-category-name="{{category.name}}"
+                                                                >{{category.name}}</a
                                                             >
+                                            {% endfor %}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -218,7 +220,7 @@
                                                     <tbody>
                                                         {% for service in  category.services %}
                                                         <tr
-                                                            data-filter-table-category-id="{{service.id}}"
+                                                            data-filter-table-category-id="{{category.id}}"
                                                         >
                                                             <td
                                                                 data-label="ID"
