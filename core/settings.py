@@ -85,6 +85,9 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 AUTH_USER_MODEL = 'authapp.User'
 
+TIME_ZONE = 'Asia/Kolkata'
+
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
