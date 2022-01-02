@@ -37,10 +37,18 @@
                                                         class="form-control"
                                                         id="username"
                                                         required
-                                                        value=""
+                                                        value="{{username}}"
                                                         name="username"
                                                     />
                                                 </div>
+                                                {% if username_error %}
+
+                                                <div
+                                                    class="text-sm text-danger"
+                                                >
+                                                    Username already in use
+                                                </div>
+                                                {% endif %}
                                                 <div class="form-group">
                                                     <label
                                                         for="firstname"
@@ -52,7 +60,7 @@
                                                         class="form-control"
                                                         id="firstname"
                                                         required
-                                                        value=""
+                                                        value="{{first_name}}"
                                                         name="first_name"
                                                     />
                                                 </div>
@@ -66,7 +74,7 @@
                                                         type="text"
                                                         class="form-control"
                                                         id="lastname"
-                                                        value=""
+                                                        value="{{last_name}}"
                                                         required
                                                         name="last_name"
                                                     />
@@ -81,11 +89,20 @@
                                                         type="email"
                                                         class="form-control"
                                                         id="email"
-                                                        value=""
+                                                        value="{{email}}"
                                                         required
                                                         name="email"
                                                     />
                                                 </div>
+                                                {% if email_error %}
+
+                                                <div
+                                                    class="text-sm text-danger"
+                                                >
+                                                    This email is used with
+                                                    another account
+                                                </div>
+                                                {% endif %}
                                                 <div class="form-group">
                                                     <label
                                                         for="skype"
@@ -97,7 +114,7 @@
                                                         class="form-control"
                                                         id="skype"
                                                         required
-                                                        value=""
+                                                        value="{{phone}}"
                                                         name="phone"
                                                     />
                                                 </div>
@@ -129,6 +146,12 @@
                                                         required
                                                     />
                                                 </div>
+                                                {% if password_error %}
+
+                                                <div class="text-sm text-danger">
+                                                    Password should match
+                                                </div>
+                                                {% endif %}
                                                 <!-- <div
                                                     class="
                                                         g-recaptcha
