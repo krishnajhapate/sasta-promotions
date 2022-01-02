@@ -21,12 +21,13 @@
                                     <div class="card">
                                         <form
                                             method="post"
-                                            action="/"
+                                            action="{% url 'login' %}"
                                             class="
                                                 component_form_group
                                                 component_checkbox_remember_me
                                             "
                                         >
+                                            {% csrf_token %}
                                             <div class="form-row">
                                                 <div class="custom-col">
                                                     <div class="form-group">
@@ -49,6 +50,12 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            {% if error %}
+
+                                            <div class="text-sm text-danger">
+                                                Invaild username or password
+                                            </div>
+                                            {% endif %}
                                             <div class="form-row">
                                                 <div class="custom-col">
                                                     <div class="form-group">
