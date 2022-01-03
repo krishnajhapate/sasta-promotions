@@ -134,7 +134,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "static"
 STATICFILES_DIRS = [
     '/home/ubuntu/app/env/lib/python3.8/site-packages/django/contrib/admin/static',
-    '/var/www/static/',
+   
 ]
 
 # Default primary key field type
