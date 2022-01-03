@@ -78,7 +78,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'app',
+    #     'USER': 'appuser',
+    #     'PASSWORD': 'ashish@23',
+    #     'HOST': 'localhost',
+    #     'PORT': '',
+    # }
 }
 
 # Password validation
@@ -86,7 +94,6 @@ DATABASES = {
 AUTH_USER_MODEL = 'authapp.User'
 
 TIME_ZONE = 'Asia/Kolkata'
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
