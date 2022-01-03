@@ -8,6 +8,9 @@ from authapp.models import User
 
 
 def register(request):
+    if request.user:
+        return redirect('dashboard')
+
     if request.method == "POST":
         username = request.POST.get('username', None)
         password1 = request.POST.get('password1', None)
@@ -64,8 +67,8 @@ def register(request):
 
 
 def login(request):
-    # if request.user:
-    #     return redirect('home')
+    if request.user:
+        return redirect('dashboard')
 
     # Authenticating
     if request.method == "POST":
