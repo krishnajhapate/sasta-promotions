@@ -52,20 +52,17 @@
         <link
             rel="stylesheet"
             type="text/css"
-            href="{% static 'css/bootstrap.css' %}"
+            href="/static/css/bootstrap.css"
         />
         <link
             rel="stylesheet"
             type="text/css"
-            href="{% static 'css/bootstrap.data.css' %}"
+            href="/static/css/bootstrap.data.css"
         />
     </head>
     <body>
         {% block content %} {% endblock content %}
-        <script
-            type="text/javascript"
-            src="{% static 'js/file1.js' %}"
-        ></script>
+        <script type="text/javascript" src="/static/js/file1.js"></script>
         <script
             type="text/javascript"
             src="{% static 'js/file3.js' %}"
