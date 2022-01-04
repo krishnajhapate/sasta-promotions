@@ -1,23 +1,19 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% load static %}
 
 <div class="wrapper wrapper-sidebar-navbar" style="background-color: #160b3e">
     <div id="block_34" class="component_private_navbar">
         <span class="component_private_navbar">
             <div class="component-navbar-private__wrapper">
                 <div
-                    class="
-                        sidebar-block__top-static
-                        component-navbar component-navbar__navbar-private
-                        editor__component-wrapper
-                    "
+                    class="sidebar-block__top-static component-navbar component-navbar__navbar-private editor__component-wrapper"
                 >
                     <div>
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <div class="sidebar-block__top-brand">
                                 <div class="component-navbar-logo">
-                                    <a href="/en">
+                                    <a href="{% url 'dashboard' %}">
                                         <img
-                                            src="https://cdn.mypanel.link/sl1v5i/omwktrjr2pkj9gi5.png"
+                                            src="{% static 'images/logobest.jpeg' %}"
                                             class="sidebar-block__top-logo"
                                             alt=""
                                             title=""
@@ -44,29 +40,17 @@
                             >
                                 <div class="d-flex component-navbar-collapse">
                                     <ul
-                                        class="
-                                            navbar-nav navbar-nav-sidebar-menu
-                                        "
+                                        class="navbar-nav navbar-nav-sidebar-menu"
                                     >
                                         <li
-                                            class="
-                                                nav-item
-                                                component-navbar-nav-item
-                                                component-navbar-private-nav-item
-                                            "
+                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
-                                                class="
-                                                    component-navbar-nav-link
-                                                    component-navbar-nav-link__navbar-private
-                                                    component-navbar-nav-link-active__navbar-private
-                                                "
+                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private component-navbar-nav-link-active__navbar-private"
                                                 href="/"
                                             >
                                                 <span
-                                                    class="
-                                                        component-navbar-nav-link-icon
-                                                    "
+                                                    class="component-navbar-nav-link-icon"
                                                 >
                                                     <span
                                                         class="fas fa-cart-plus"
@@ -76,23 +60,14 @@
                                             </a>
                                         </li>
                                         <li
-                                            class="
-                                                nav-item
-                                                component-navbar-nav-item
-                                                component-navbar-private-nav-item
-                                            "
+                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
-                                                class="
-                                                    component-navbar-nav-link
-                                                    component-navbar-nav-link__navbar-private
-                                                "
+                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
                                                 href="/services"
                                             >
                                                 <span
-                                                    class="
-                                                        component-navbar-nav-link-icon
-                                                    "
+                                                    class="component-navbar-nav-link-icon"
                                                 >
                                                     <span
                                                         class="fad fa-bars"
@@ -102,52 +77,31 @@
                                             </a>
                                         </li>
                                         <li
-                                            class="
-                                                nav-item
-                                                component-navbar-nav-item
-                                                component-navbar-private-nav-item
-                                            "
+                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
-                                                class="
-                                                    component-navbar-nav-link
-                                                    component-navbar-nav-link__navbar-private
-                                                "
+                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
                                                 href="/orders"
                                             >
                                                 <span
-                                                    class="
-                                                        component-navbar-nav-link-icon
-                                                    "
+                                                    class="component-navbar-nav-link-icon"
                                                 >
                                                     <span
-                                                        class="
-                                                            fas
-                                                            fa-bags-shopping
-                                                        "
+                                                        class="fas fa-bags-shopping"
                                                     ></span>
                                                 </span>
                                                 Orders
                                             </a>
                                         </li>
                                         <li
-                                            class="
-                                                nav-item
-                                                component-navbar-nav-item
-                                                component-navbar-private-nav-item
-                                            "
+                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
-                                                class="
-                                                    component-navbar-nav-link
-                                                    component-navbar-nav-link__navbar-private
-                                                "
+                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
                                                 href="/refill"
                                             >
                                                 <span
-                                                    class="
-                                                        component-navbar-nav-link-icon
-                                                    "
+                                                    class="component-navbar-nav-link-icon"
                                                 >
                                                     <span
                                                         class="fas fa-gas-pump"
@@ -157,110 +111,65 @@
                                             </a>
                                         </li>
                                         <li
-                                            class="
-                                                nav-item
-                                                component-navbar-nav-item
-                                                component-navbar-private-nav-item
-                                            "
+                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
-                                                class="
-                                                    component-navbar-nav-link
-                                                    component-navbar-nav-link__navbar-private
-                                                "
+                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
                                                 href="/addfunds"
                                             >
                                                 <span
-                                                    class="
-                                                        component-navbar-nav-link-icon
-                                                    "
+                                                    class="component-navbar-nav-link-icon"
                                                 >
                                                     <span
-                                                        class="
-                                                            fab
-                                                            fa-cc-amazon-pay
-                                                        "
+                                                        class="fab fa-cc-amazon-pay"
                                                     ></span>
                                                 </span>
                                                 Add funds
                                             </a>
                                         </li>
                                         <li
-                                            class="
-                                                nav-item
-                                                component-navbar-nav-item
-                                                component-navbar-private-nav-item
-                                            "
+                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
-                                                class="
-                                                    component-navbar-nav-link
-                                                    component-navbar-nav-link__navbar-private
-                                                "
+                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
                                                 href="/api"
                                             >
                                                 <span
-                                                    class="
-                                                        component-navbar-nav-link-icon
-                                                    "
+                                                    class="component-navbar-nav-link-icon"
                                                 >
                                                     <span
-                                                        class="
-                                                            fad
-                                                            fa-signal-stream
-                                                        "
+                                                        class="fad fa-signal-stream"
                                                     ></span>
                                                 </span>
                                                 API
                                             </a>
                                         </li>
                                         <li
-                                            class="
-                                                nav-item
-                                                component-navbar-nav-item
-                                                component-navbar-private-nav-item
-                                            "
+                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
-                                                class="
-                                                    component-navbar-nav-link
-                                                    component-navbar-nav-link__navbar-private
-                                                "
+                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
                                                 href="/affiliates"
                                             >
                                                 <span
-                                                    class="
-                                                        component-navbar-nav-link-icon
-                                                    "
+                                                    class="component-navbar-nav-link-icon"
                                                 >
                                                     <span
-                                                        class="
-                                                            fas
-                                                            fa-network-wired
-                                                        "
+                                                        class="fas fa-network-wired"
                                                     ></span>
                                                 </span>
                                                 Affiliates
                                             </a>
                                         </li>
                                         <li
-                                            class="
-                                                nav-item
-                                                component-navbar-nav-item
-                                                component-navbar-private-nav-item
-                                            "
+                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
-                                                class="
-                                                    component-navbar-nav-link
-                                                    component-navbar-nav-link__navbar-private
-                                                "
+                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
                                                 href="/child-panels"
                                             >
                                                 <span
-                                                    class="
-                                                        component-navbar-nav-link-icon
-                                                    "
+                                                    class="component-navbar-nav-link-icon"
                                                 >
                                                     <span
                                                         class="fad fa-browser"
@@ -270,52 +179,31 @@
                                             </a>
                                         </li>
                                         <li
-                                            class="
-                                                nav-item
-                                                component-navbar-nav-item
-                                                component-navbar-private-nav-item
-                                            "
+                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
-                                                class="
-                                                    component-navbar-nav-link
-                                                    component-navbar-nav-link__navbar-private
-                                                "
+                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
                                                 href="/tickets"
                                             >
                                                 <span
-                                                    class="
-                                                        component-navbar-nav-link-icon
-                                                    "
+                                                    class="component-navbar-nav-link-icon"
                                                 >
                                                     <span
-                                                        class="
-                                                            fas
-                                                            fa-ticket-alt
-                                                        "
+                                                        class="fas fa-ticket-alt"
                                                     ></span>
                                                 </span>
                                                 Tickets
                                             </a>
                                         </li>
                                         <li
-                                            class="
-                                                nav-item
-                                                component-navbar-nav-item
-                                                component-navbar-private-nav-item
-                                            "
+                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
-                                                class="
-                                                    component-navbar-nav-link
-                                                    component-navbar-nav-link__navbar-private
-                                                "
+                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
                                                 href="/massorder"
                                             >
                                                 <span
-                                                    class="
-                                                        component-navbar-nav-link-icon
-                                                    "
+                                                    class="component-navbar-nav-link-icon"
                                                 >
                                                     <span
                                                         class="fad fa-truck"
@@ -329,52 +217,29 @@
                                         class="navbar-nav navbar-nav-currencies"
                                     >
                                         <li
-                                            class="
-                                                nav-item
-                                                d-flex
-                                                align-items-center
-                                                component-navbar-nav-item
-                                                component-navbar-private-nav-item
-                                                component-navbar-balance-wrap__navbar-private
-                                            "
+                                            class="nav-item d-flex align-items-center component-navbar-nav-item component-navbar-private-nav-item component-navbar-balance-wrap__navbar-private"
                                         >
                                             <a
-                                                class="
-                                                    component-navbar-balance-item__navbar-private
-                                                "
+                                                class="component-navbar-balance-item__navbar-private"
                                                 >₹18.49521</a
                                             >
                                         </li>
                                     </ul>
                                     <ul class="navbar-nav">
                                         <li
-                                            class="
-                                                nav-item
-                                                component-navbar-nav-item
-                                                component-navbar-private-nav-item
-                                            "
+                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
-                                                class="
-                                                    component-navbar-nav-link
-                                                    component-navbar-nav-link__navbar-private
-                                                "
+                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
                                                 href="/account"
                                                 >Account</a
                                             >
                                         </li>
                                         <li
-                                            class="
-                                                nav-item
-                                                component-navbar-nav-item
-                                                component-navbar-private-nav-item
-                                            "
+                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
-                                                class="
-                                                    component-navbar-nav-link
-                                                    component-navbar-nav-link__navbar-private
-                                                "
+                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
                                                 href="/logout"
                                                 >Logout</a
                                             >
@@ -421,20 +286,10 @@
                                     <div class="totals-block__card">
                                         <div class="totals-block__card-left">
                                             <div
-                                                class="
-                                                    totals-block__icon-preview
-                                                    style-bg-primary-alpha-10
-                                                    style-border-radius-default
-                                                    style-text-primary
-                                                "
+                                                class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
                                             >
                                                 <span
-                                                    class="
-                                                        totals-block__icon
-                                                        style-text-primary
-                                                        far
-                                                        fa-list-ul
-                                                    "
+                                                    class="totals-block__icon style-text-primary far fa-list-ul"
                                                     style="
                                                         font-size: 38px;
                                                         transform: rotate(0deg);
@@ -448,10 +303,7 @@
                                         <div class="totals-block__card-right">
                                             <div class="totals-block__count">
                                                 <div
-                                                    class="
-                                                        totals-block__count-value
-                                                        style-text-primary
-                                                    "
+                                                    class="totals-block__count-value style-text-primary"
                                                     style="
                                                         font-size: 36px;
                                                         line-height: 36px;
@@ -487,20 +339,10 @@
                                     <div class="totals-block__card">
                                         <div class="totals-block__card-left">
                                             <div
-                                                class="
-                                                    totals-block__icon-preview
-                                                    style-bg-primary-alpha-10
-                                                    style-border-radius-default
-                                                    style-text-primary
-                                                "
+                                                class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
                                             >
                                                 <span
-                                                    class="
-                                                        totals-block__icon
-                                                        style-text-primary
-                                                        far
-                                                        fa-clipboard-list
-                                                    "
+                                                    class="totals-block__icon style-text-primary far fa-clipboard-list"
                                                     style="
                                                         font-size: 38px;
                                                         transform: rotate(0deg);
@@ -514,10 +356,7 @@
                                         <div class="totals-block__card-right">
                                             <div class="totals-block__count">
                                                 <div
-                                                    class="
-                                                        totals-block__count-value
-                                                        style-text-primary
-                                                    "
+                                                    class="totals-block__count-value style-text-primary"
                                                     style="
                                                         font-size: 36px;
                                                         line-height: 36px;
@@ -553,20 +392,10 @@
                                     <div class="totals-block__card">
                                         <div class="totals-block__card-left">
                                             <div
-                                                class="
-                                                    totals-block__icon-preview
-                                                    style-bg-primary-alpha-10
-                                                    style-border-radius-default
-                                                    style-text-primary
-                                                "
+                                                class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
                                             >
                                                 <span
-                                                    class="
-                                                        totals-block__icon
-                                                        style-text-primary
-                                                        far
-                                                        fa-users
-                                                    "
+                                                    class="totals-block__icon style-text-primary far fa-users"
                                                     style="
                                                         font-size: 38px;
                                                         transform: rotate(0deg);
@@ -580,10 +409,7 @@
                                         <div class="totals-block__card-right">
                                             <div class="totals-block__count">
                                                 <div
-                                                    class="
-                                                        totals-block__count-value
-                                                        style-text-primary
-                                                    "
+                                                    class="totals-block__count-value style-text-primary"
                                                     style="
                                                         font-size: 36px;
                                                         line-height: 36px;
@@ -619,20 +445,10 @@
                                     <div class="totals-block__card">
                                         <div class="totals-block__card-left">
                                             <div
-                                                class="
-                                                    totals-block__icon-preview
-                                                    style-bg-primary-alpha-10
-                                                    style-border-radius-default
-                                                    style-text-primary
-                                                "
+                                                class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
                                             >
                                                 <span
-                                                    class="
-                                                        totals-block__icon
-                                                        style-text-primary
-                                                        far
-                                                        fa-clipboard-list-check
-                                                    "
+                                                    class="totals-block__icon style-text-primary far fa-clipboard-list-check"
                                                     style="
                                                         font-size: 38px;
                                                         transform: rotate(0deg);
@@ -646,10 +462,7 @@
                                         <div class="totals-block__card-right">
                                             <div class="totals-block__count">
                                                 <div
-                                                    class="
-                                                        totals-block__count-value
-                                                        style-text-primary
-                                                    "
+                                                    class="totals-block__count-value style-text-primary"
                                                     style="
                                                         font-size: 36px;
                                                         line-height: 36px;
@@ -680,10 +493,7 @@
                         <div class="row px-lg-4">
                             <div class="col-12">
                                 <div
-                                    class="
-                                        text-block__description
-                                        style-text-white
-                                    "
+                                    class="text-block__description style-text-white"
                                 >
                                     <p class="text-center text-white">
                                         <span style="font-size: 20px"
@@ -745,11 +555,7 @@
                         <div class="row">
                             <div class="col-lg-7 mb-3 mb-lg-0">
                                 <div
-                                    class="
-                                        component_form_group
-                                        component_card
-                                        component_radio_button
-                                    "
+                                    class="component_form_group component_card component_radio_button"
                                 >
                                     <div class="card">
                                         <form
@@ -1198,11 +1004,7 @@
                                                     </select>
                                                 </div>
                                                 <div
-                                                    class="
-                                                        form-group
-                                                        fields
-                                                        component_service_description
-                                                    "
+                                                    class="form-group fields component_service_description"
                                                     id="service_description"
                                                 >
                                                     <label
@@ -1211,9 +1013,7 @@
                                                         >Description</label
                                                     >
                                                     <div
-                                                        class="
-                                                            panel-description
-                                                        "
+                                                        class="panel-description"
                                                     >
                                                         Instant.<br />Speed up
                                                         to 4k/day.<br />Good
@@ -1224,25 +1024,16 @@
                                                 </div>
                                                 <div id="fields">
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_user_name"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-user_name"
                                                             >Username</label
                                                         >
                                                         <input
-                                                            class="
-                                                                form-control
-                                                                w-full
-                                                            "
+                                                            class="form-control w-full"
                                                             name="OrderForm[user_name]"
                                                             value=""
                                                             type="text"
@@ -1250,16 +1041,11 @@
                                                         />
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            fields
-                                                        "
+                                                        class="form-group fields"
                                                         id="order_link"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-link"
                                                             >Link</label
                                                         >
@@ -1272,16 +1058,11 @@
                                                         />
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            fields
-                                                        "
+                                                        class="form-group fields"
                                                         id="order_quantity"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-quantity"
                                                             >Quantity</label
                                                         >
@@ -1292,26 +1073,17 @@
                                                             type="text"
                                                             id="field-orderform-fields-quantity"
                                                         /><small
-                                                            class="
-                                                                help-block
-                                                                min-max
-                                                            "
+                                                            class="help-block min-max"
                                                             >Min: 20 - Max:
                                                             15000</small
                                                         >
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_keywords"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-keywords"
                                                             >Keywords (1 per
                                                             line)</label
@@ -1325,17 +1097,11 @@
                                                         ></textarea>
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_comment"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-comment"
                                                             >Comments (1 per
                                                             line)</label
@@ -1349,17 +1115,11 @@
                                                         ></textarea>
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_mentionUsernames"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-mentionUsernames"
                                                             >Usernames (1 per
                                                             line)</label
@@ -1373,26 +1133,17 @@
                                                         ></textarea>
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_usernames"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-usernames"
                                                             >Usernames (1 per
                                                             line)</label
                                                         >
                                                         <textarea
-                                                            class="
-                                                                form-control
-                                                                w-full
-                                                            "
+                                                            class="form-control w-full"
                                                             name="OrderForm[usernames]"
                                                             id="field-orderform-fields-usernames"
                                                             cols="30"
@@ -1400,17 +1151,11 @@
                                                         ></textarea>
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_usernames_custom"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-usernames_custom"
                                                             >Usernames (1 per
                                                             line)</label
@@ -1424,17 +1169,11 @@
                                                         ></textarea>
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_username"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-username"
                                                             >Username</label
                                                         >
@@ -1447,17 +1186,11 @@
                                                         />
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_mediaUrl"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-mediaUrl"
                                                             >Media URL</label
                                                         >
@@ -1470,17 +1203,11 @@
                                                         />
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_hashtag"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-hashtag"
                                                             >Hashtag</label
                                                         >
@@ -1493,17 +1220,11 @@
                                                         />
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_hashtags"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-hashtags"
                                                             >Hashtags (1 per
                                                             line)</label
@@ -1518,21 +1239,14 @@
                                                     </div>
                                                     <div id="dripfeed">
                                                         <div
-                                                            class="
-                                                                form-group
-                                                                fields
-                                                            "
+                                                            class="form-group fields"
                                                             id="order_check"
                                                         >
                                                             <div
-                                                                class="
-                                                                    form-group__checkbox
-                                                                "
+                                                                class="form-group__checkbox"
                                                             >
                                                                 <label
-                                                                    class="
-                                                                        form-group__checkbox-label
-                                                                    "
+                                                                    class="form-group__checkbox-label"
                                                                 >
                                                                     <input
                                                                         name="OrderForm[check]"
@@ -1541,44 +1255,31 @@
                                                                         id="field-orderform-fields-check"
                                                                     />
                                                                     <span
-                                                                        class="
-                                                                            checkmark
-                                                                        "
+                                                                        class="checkmark"
                                                                     ></span>
                                                                 </label>
                                                                 <label
                                                                     for="field-orderform-fields-check"
-                                                                    class="
-                                                                        form-group__label-title
-                                                                    "
+                                                                    class="form-group__label-title"
                                                                 >
                                                                     Drip-feed
                                                                 </label>
                                                             </div>
                                                             <div
-                                                                class="
-                                                                    hidden
-                                                                    depend-fields
-                                                                "
+                                                                class="hidden depend-fields"
                                                                 id="dripfeed-options"
                                                                 data-depend="field-orderform-fields-check"
                                                             >
                                                                 <div
-                                                                    class="
-                                                                        form-group
-                                                                    "
+                                                                    class="form-group"
                                                                 >
                                                                     <label
-                                                                        class="
-                                                                            control-label
-                                                                        "
+                                                                        class="control-label"
                                                                         for="field-orderform-fields-runs"
                                                                         >Runs</label
                                                                     >
                                                                     <input
-                                                                        class="
-                                                                            form-control
-                                                                        "
+                                                                        class="form-control"
                                                                         name="OrderForm[runs]"
                                                                         value=""
                                                                         type="text"
@@ -1587,22 +1288,16 @@
                                                                 </div>
 
                                                                 <div
-                                                                    class="
-                                                                        form-group
-                                                                    "
+                                                                    class="form-group"
                                                                 >
                                                                     <label
-                                                                        class="
-                                                                            control-label
-                                                                        "
+                                                                        class="control-label"
                                                                         for="field-orderform-fields-interval"
                                                                         >Interval
                                                                         (minutes)</label
                                                                     >
                                                                     <input
-                                                                        class="
-                                                                            form-control
-                                                                        "
+                                                                        class="form-control"
                                                                         name="OrderForm[interval]"
                                                                         value=""
                                                                         type="text"
@@ -1611,22 +1306,16 @@
                                                                 </div>
 
                                                                 <div
-                                                                    class="
-                                                                        form-group
-                                                                    "
+                                                                    class="form-group"
                                                                 >
                                                                     <label
-                                                                        class="
-                                                                            control-label
-                                                                        "
+                                                                        class="control-label"
                                                                         for="field-orderform-fields-total-quantity"
                                                                         >Total
                                                                         quantity</label
                                                                     >
                                                                     <input
-                                                                        class="
-                                                                            form-control
-                                                                        "
+                                                                        class="form-control"
                                                                         name="OrderForm[total_quantity]"
                                                                         value=""
                                                                         type="text"
@@ -1638,17 +1327,11 @@
                                                         </div>
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_posts"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-posts"
                                                             >New posts</label
                                                         >
@@ -1661,17 +1344,11 @@
                                                         />
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_min"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="order_count"
                                                             >Quantity</label
                                                         >
@@ -1681,18 +1358,13 @@
                                                             >
                                                                 <input
                                                                     type="text"
-                                                                    class="
-                                                                        form-control
-                                                                    "
+                                                                    class="form-control"
                                                                     id="order_count"
                                                                     name="OrderForm[min]"
                                                                     value=""
                                                                     placeholder="Min"
                                                                 /><small
-                                                                    class="
-                                                                        help-block
-                                                                        min-max
-                                                                    "
+                                                                    class="help-block min-max"
                                                                     >Min: 20 -
                                                                     Max:
                                                                     15000</small
@@ -1704,9 +1376,7 @@
                                                             >
                                                                 <input
                                                                     type="text"
-                                                                    class="
-                                                                        form-control
-                                                                    "
+                                                                    class="form-control"
                                                                     id="order_count"
                                                                     name="OrderForm[max]"
                                                                     value=""
@@ -1716,11 +1386,7 @@
                                                         </div>
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_delay"
                                                     >
                                                         <div class="row">
@@ -1728,16 +1394,12 @@
                                                                 class="col-md-6"
                                                             >
                                                                 <label
-                                                                    class="
-                                                                        control-label
-                                                                    "
+                                                                    class="control-label"
                                                                     for="field-orderform-fields-delay"
                                                                     >Delay</label
                                                                 >
                                                                 <select
-                                                                    class="
-                                                                        form-control
-                                                                    "
+                                                                    class="form-control"
                                                                     name="OrderForm[delay]"
                                                                     id="field-orderform-fields-delay"
                                                                 >
@@ -1882,15 +1544,10 @@
                                                                     >Expiry</label
                                                                 >
                                                                 <div
-                                                                    class="
-                                                                        input-group
-                                                                    "
+                                                                    class="input-group"
                                                                 >
                                                                     <input
-                                                                        class="
-                                                                            form-control
-                                                                            datetime
-                                                                        "
+                                                                        class="form-control datetime"
                                                                         autocomplete="off"
                                                                         name="OrderForm[expiry]"
                                                                         value=""
@@ -1898,26 +1555,15 @@
                                                                         id="field-orderform-fields-expiry"
                                                                     />
                                                                     <span
-                                                                        class="
-                                                                            input-group-btn
-                                                                        "
+                                                                        class="input-group-btn"
                                                                     >
                                                                         <button
-                                                                            class="
-                                                                                btn
-                                                                                btn-default
-                                                                                btn-big-secondary
-                                                                                clear-datetime
-                                                                            "
+                                                                            class="btn btn-default btn-big-secondary clear-datetime"
                                                                             type="button"
                                                                             data-rel="#field-orderform-fields-expiry"
                                                                         >
                                                                             <span
-                                                                                class="
-                                                                                    fa
-                                                                                    far
-                                                                                    fa-trash-alt
-                                                                                "
+                                                                                class="fa far fa-trash-alt"
                                                                             ></span>
                                                                         </button>
                                                                     </span>
@@ -1926,17 +1572,11 @@
                                                         </div>
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_comment_username"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-comment_username"
                                                             >Username of the
                                                             comment owner</label
@@ -1950,17 +1590,11 @@
                                                         />
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_answer_number"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-answer_number"
                                                             >Answer
                                                             number</label
@@ -1974,17 +1608,11 @@
                                                         />
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_email"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-email"
                                                             >Email</label
                                                         >
@@ -1997,17 +1625,11 @@
                                                         />
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            hidden
-                                                            fields
-                                                        "
+                                                        class="form-group hidden fields"
                                                         id="order_groups"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-groups"
                                                             >Groups</label
                                                         >
@@ -2020,26 +1642,16 @@
                                                         ></textarea>
                                                     </div>
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            fields
-                                                        "
+                                                        class="form-group fields"
                                                         id="order_average_time"
                                                         style="display: block"
                                                     >
                                                         <label
-                                                            class="
-                                                                control-label
-                                                            "
+                                                            class="control-label"
                                                             for="field-orderform-fields-average_time"
                                                             >Average time
                                                             <span
-                                                                class="
-                                                                    ml-1
-                                                                    mr-1
-                                                                    fa
-                                                                    fa-exclamation-circle
-                                                                "
+                                                                class="ml-1 mr-1 fa fa-exclamation-circle"
                                                                 data-toggle="tooltip"
                                                                 data-placement="right"
                                                                 title=""
@@ -2078,10 +1690,7 @@
                                                 value="05N568_BZlqyKLAhKfVT4-ZW5p-5CzIIIoMoeA63yViXx0qbkIAPPfNm3U1rj2Gg0GOc_dpFfWZj2WQQXPGkPg=="
                                             />
                                             <div
-                                                class="
-                                                    new-order-button-submit
-                                                    component_button_submit
-                                                "
+                                                class="new-order-button-submit component_button_submit"
                                             >
                                                 <button
                                                     type="submit"
@@ -2096,11 +1705,7 @@
                             </div>
                             <div class="col-lg-5">
                                 <div
-                                    class="
-                                        component_content_card
-                                        component_content_button
-                                        component_content_headers
-                                    "
+                                    class="component_content_card component_content_button component_content_headers"
                                 >
                                     <div class="card">
                                         <div class="new-order__content-title">
