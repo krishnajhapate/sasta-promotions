@@ -2,8 +2,9 @@ from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate
 from django.contrib import messages
-
+from django.contrib.auth import logout
 from authapp.models import User
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -82,3 +83,9 @@ def login(request):
             return render(request, 'home.html', {"error": True})
 
     return render(request, 'home.html')
+
+@login_required
+def logout_page(request):
+    logout(request)
+
+    return redirect('home')
