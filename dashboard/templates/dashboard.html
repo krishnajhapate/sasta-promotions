@@ -64,7 +64,7 @@
                                         >
                                             <a
                                                 class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                                href="/services"
+                                                href="{% url 'services' %}"
                                             >
                                                 <span
                                                     class="component-navbar-nav-link-icon"
@@ -93,7 +93,7 @@
                                                 Orders
                                             </a>
                                         </li>
-                                        <li
+                                        <!-- <li
                                             class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
@@ -109,7 +109,7 @@
                                                 </span>
                                                 Refill
                                             </a>
-                                        </li>
+                                        </li> -->
                                         <li
                                             class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
@@ -127,7 +127,7 @@
                                                 Add funds
                                             </a>
                                         </li>
-                                        <li
+                                        <!-- <li
                                             class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
@@ -143,8 +143,8 @@
                                                 </span>
                                                 API
                                             </a>
-                                        </li>
-                                        <li
+                                        </li> -->
+                                        <!-- <li
                                             class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
@@ -160,8 +160,8 @@
                                                 </span>
                                                 Affiliates
                                             </a>
-                                        </li>
-                                        <li
+                                        </li> -->
+                                        <!-- <li
                                             class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
@@ -177,7 +177,7 @@
                                                 </span>
                                                 Child panel
                                             </a>
-                                        </li>
+                                        </li> -->
                                         <li
                                             class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
@@ -195,7 +195,7 @@
                                                 Tickets
                                             </a>
                                         </li>
-                                        <li
+                                        <!-- <li
                                             class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                         >
                                             <a
@@ -211,7 +211,7 @@
                                                 </span>
                                                 Mass order
                                             </a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                     <ul
                                         class="navbar-nav navbar-nav-currencies"
@@ -309,7 +309,7 @@
                                                         line-height: 36px;
                                                     "
                                                 >
-                                                    ashishtiwaridm
+                                                    {{request.user.username}}
                                                 </div>
                                             </div>
                                             <div

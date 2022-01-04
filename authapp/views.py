@@ -9,7 +9,8 @@ from django.contrib.auth.decorators import login_required
 
 
 def register(request):
-    if request.user:
+    # print(request.user, "here")
+    if request.user.is_authenticated:
         return redirect('dashboard')
 
     if request.method == "POST":
@@ -62,13 +63,14 @@ def register(request):
         )
         user_create.set_password(password1)
         user_create.save()
-        return HttpResponse("User Created")
+        return redirect('dashboard')
+
 
     return render(request, 'register.html')
 
 
 def login(request):
-    if request.user:
+    if request.user.is_authenticated:
         return redirect('dashboard')
 
     # Authenticating
@@ -76,13 +78,15 @@ def login(request):
         username = request.POST.get('username', None)
         password = request.POST.get('password', None)
 
-        user = authenticate(username=username, password=password)
+        user = authenticate(request, username=username, password=password)
         if user is not None:
-            return redirect('home')
+        
+            return redirect('dashboard')
         else:
             return render(request, 'home.html', {"error": True})
 
     return render(request, 'home.html')
+
 
 @login_required
 def logout_page(request):
