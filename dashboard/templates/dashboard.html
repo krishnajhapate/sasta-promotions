@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% load get_account_pay %}
+{% block content %}
 <div class="wrapper wrapper-sidebar-navbar">
     {% include 'components/dashboard_leftsidebar.html' %}
 
@@ -62,7 +64,7 @@
                                             <div
                                                 class="totals-block__card-name"
                                             >
-                                                <p>Welcome to panel!</p>
+                                                <p>Welcome!</p>
                                             </div>
                                         </div>
                                     </div>
@@ -215,7 +217,7 @@
                                                         line-height: 36px;
                                                     "
                                                 >
-                                                    ₹21.65551
+                                                    ₹{% get_account_balance user %}
                                                 </div>
                                             </div>
                                             <div
