@@ -66,8 +66,6 @@ def register(request):
         user = authenticate(username=username, password=password1)
         if user:
             login_func(request, user)
-
-            print('here')
             return redirect('dashboard')
 
     return render(request, 'register.html')
@@ -85,8 +83,6 @@ def login(request):
         user = authenticate(username=username, password=password)
         if user:
             login_func(request, user)
-
-            print('here')
             return redirect('dashboard')
         else:
             return render(request, 'home.html', {"error": True})
