@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate ,login as login_func
+from django.contrib.auth import authenticate, login as login_func
 from django.contrib import messages
 from django.contrib.auth import logout
 from authapp.models import User
@@ -63,7 +63,12 @@ def register(request):
         )
         user_create.set_password(password1)
         user_create.save()
-        return redirect('dashboard')
+        user = authenticate(username=username, password=password1)
+        if user:
+            login_func(request, user)
+
+            print('here')
+            return redirect('dashboard')
 
     return render(request, 'register.html')
 
@@ -79,7 +84,7 @@ def login(request):
 
         user = authenticate(username=username, password=password)
         if user:
-            login_func(request,user)
+            login_func(request, user)
 
             print('here')
             return redirect('dashboard')
