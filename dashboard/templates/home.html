@@ -22,10 +22,7 @@
                                         <form
                                             method="post"
                                             action="{% url 'login' %}"
-                                            class="
-                                                component_form_group
-                                                component_checkbox_remember_me
-                                            "
+                                            class="component_form_group component_checkbox_remember_me"
                                         >
                                             {% csrf_token %}
                                             <div class="form-row">
@@ -60,14 +57,10 @@
                                                 <div class="custom-col">
                                                     <div class="form-group">
                                                         <div
-                                                            class="
-                                                                form-group__checkbox
-                                                            "
+                                                            class="form-group__checkbox"
                                                         >
                                                             <label
-                                                                class="
-                                                                    form-group__checkbox-label
-                                                                "
+                                                                class="form-group__checkbox-label"
                                                             >
                                                                 <input
                                                                     type="checkbox"
@@ -75,15 +68,11 @@
                                                                     id="block_28_remember_me"
                                                                 />
                                                                 <span
-                                                                    class="
-                                                                        checkmark
-                                                                    "
+                                                                    class="checkmark"
                                                                 ></span>
                                                             </label>
                                                             <label
-                                                                class="
-                                                                    form-group__label-title
-                                                                "
+                                                                class="form-group__label-title"
                                                                 for="block_28_remember_me"
                                                                 >Remember
                                                                 me</label
@@ -91,12 +80,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {{request.user.username}} sfdj
                                                 <div class="custom-col">
                                                     <div class="form-group">
                                                         <div
-                                                            class="
-                                                                sign-in__forgot
-                                                            "
+                                                            class="sign-in__forgot"
                                                         >
                                                             <a
                                                                 href="/resetpassword"
@@ -110,16 +98,10 @@
                                             <div class="form-row">
                                                 <div class="custom-col">
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            d-flex
-                                                            component_button_submit
-                                                        "
+                                                        class="form-group d-flex component_button_submit"
                                                     >
                                                         <button
-                                                            class="
-                                                                btn btn-primary
-                                                            "
+                                                            class="btn btn-primary"
                                                             type="submit"
                                                         >
                                                             Sign in
@@ -130,25 +112,17 @@
                                             <div class="form-row">
                                                 <div class="custom-col">
                                                     <div
-                                                        class="
-                                                            form-group
-                                                            d-flex
-                                                            justify-content-center
-                                                        "
+                                                        class="form-group d-flex justify-content-center"
                                                     >
                                                         <div
-                                                            class="
-                                                                block-signin__remember
-                                                            "
+                                                            class="block-signin__remember"
                                                         >
                                                             <p>
                                                                 Do not have an
                                                                 account?
                                                             </p>
                                                             <a
-                                                                class="
-                                                                    block-signin__link
-                                                                "
+                                                                class="block-signin__link"
                                                                 href="{% url 'register' %}"
                                                                 >Sign up</a
                                                             >
