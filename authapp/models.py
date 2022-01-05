@@ -23,7 +23,7 @@ class User(AbstractUser):
 
 class AccountBalance(models.Model):
     user = OneToOneField(User,on_delete=models.CASCADE)
-    money = models.IntegerField(default=0)
+    money = models.FloatField(default=0.00)
     updated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:

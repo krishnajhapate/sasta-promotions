@@ -1,4 +1,5 @@
 {% load static %}
+{% load get_account_pay %}
 <div id="block_34" class="component_private_navbar">
     <span class="component_private_navbar">
         <div class="component-navbar-private__wrapper">
@@ -215,7 +216,7 @@
                                     >
                                         <a
                                             class="component-navbar-balance-item__navbar-private"
-                                            >₹21.65551</a
+                                            >₹{% get_account_balance user %} </a
                                         >
                                     </li>
                                 </ul>
