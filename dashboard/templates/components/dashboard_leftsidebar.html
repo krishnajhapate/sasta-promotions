@@ -1,3 +1,4 @@
+{% load static %}
 <div id="block_34" class="component_private_navbar">
     <span class="component_private_navbar">
         <div class="component-navbar-private__wrapper">
@@ -8,9 +9,9 @@
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="sidebar-block__top-brand">
                             <div class="component-navbar-logo">
-                                <a href="/en">
+                                <a href="{% url 'dashboard' %}">
                                     <img
-                                        src="https://cdn.mypanel.link/sl1v5i/omwktrjr2pkj9gi5.png"
+                                        src="{% static 'images/logobest.jpeg' %}"
                                         class="sidebar-block__top-logo"
                                         alt=""
                                         title=""
@@ -42,7 +43,7 @@
                                     >
                                         <a
                                             class="component-navbar-nav-link component-navbar-nav-link__navbar-private component-navbar-nav-link-active__navbar-private"
-                                            href="/"
+                                            href="{% url 'dashboard' %}"
                                         >
                                             <span
                                                 class="component-navbar-nav-link-icon"
@@ -59,7 +60,7 @@
                                     >
                                         <a
                                             class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                            href="/services"
+                                            href="{% url 'services' %}"
                                         >
                                             <span
                                                 class="component-navbar-nav-link-icon"
@@ -76,7 +77,7 @@
                                     >
                                         <a
                                             class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                            href="/orders"
+                                            href="{% url 'dashboard' %}"
                                         >
                                             <span
                                                 class="component-navbar-nav-link-icon"
@@ -88,7 +89,7 @@
                                             Orders
                                         </a>
                                     </li>
-                                    <li
+                                    <!-- <li
                                         class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                     >
                                         <a
@@ -104,13 +105,13 @@
                                             </span>
                                             Refill
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li
                                         class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                     >
                                         <a
                                             class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                            href="/addfunds"
+                                            href="{% url 'dashboard' %}"
                                         >
                                             <span
                                                 class="component-navbar-nav-link-icon"
@@ -122,7 +123,7 @@
                                             Add funds
                                         </a>
                                     </li>
-                                    <li
+                                    <!-- <li
                                         class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                     >
                                         <a
@@ -138,8 +139,8 @@
                                             </span>
                                             API
                                         </a>
-                                    </li>
-                                    <li
+                                    </li> -->
+                                    <!-- <li
                                         class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                     >
                                         <a
@@ -155,8 +156,8 @@
                                             </span>
                                             Affiliates
                                         </a>
-                                    </li>
-                                    <li
+                                    </li> -->
+                                    <!-- <li
                                         class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                     >
                                         <a
@@ -172,13 +173,13 @@
                                             </span>
                                             Child panel
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li
                                         class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                     >
                                         <a
                                             class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                            href="/tickets"
+                                            href="{% url 'tickets' %}"
                                         >
                                             <span
                                                 class="component-navbar-nav-link-icon"
@@ -190,7 +191,7 @@
                                             Tickets
                                         </a>
                                     </li>
-                                    <li
+                                    <!-- <li
                                         class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                     >
                                         <a
@@ -206,7 +207,7 @@
                                             </span>
                                             Mass order
                                         </a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                                 <ul class="navbar-nav navbar-nav-currencies">
                                     <li
@@ -233,7 +234,7 @@
                                     >
                                         <a
                                             class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                            href="/logout"
+                                            href="{% url 'logout' %}"
                                             >Logout</a
                                         >
                                     </li>
@@ -253,9 +254,9 @@
                 <div class="component-sidebar__menu-wrapper">
                     <div class="sidebar-block__top-brand">
                         <div class="component-navbar-logo">
-                            <a href="/en">
+                            <a href="{% url 'dashboard' %}">
                                 <img
-                                    src="https://cdn.mypanel.link/sl1v5i/omwktrjr2pkj9gi5.png"
+                                    src="{% static 'images/logobest.jpeg' %}"
                                     class="sidebar-block__top-logo"
                                     alt=""
                                     title=""
@@ -271,7 +272,7 @@
                         >
                             <a
                                 class="component-sidebar__menu-item-link"
-                                href="/"
+                                href="{% url 'dashboard' %}"
                             >
                                 <span class="sidebar-block__menu-item-icon">
                                     <span class="fas fa-cart-plus"></span>
@@ -284,7 +285,7 @@
                         <li class="component-sidebar__menu-item">
                             <a
                                 class="component-sidebar__menu-item-link"
-                                href="/services"
+                                href="{% url 'services' %}"
                             >
                                 <span class="sidebar-block__menu-item-icon">
                                     <span class="fad fa-bars"></span>
@@ -297,7 +298,7 @@
                         <li class="component-sidebar__menu-item">
                             <a
                                 class="component-sidebar__menu-item-link"
-                                href="/orders"
+                                href="{% url 'dashboard' %}"
                             >
                                 <span class="sidebar-block__menu-item-icon">
                                     <span class="fas fa-bags-shopping"></span>
@@ -307,7 +308,7 @@
                                 >
                             </a>
                         </li>
-                        <li class="component-sidebar__menu-item">
+                        <!-- <li class="component-sidebar__menu-item">
                             <a
                                 class="component-sidebar__menu-item-link"
                                 href="/refill"
@@ -319,7 +320,7 @@
                                     >Refill</span
                                 >
                             </a>
-                        </li>
+                        </li> -->
                         <li class="component-sidebar__menu-item">
                             <a
                                 class="component-sidebar__menu-item-link"
@@ -333,7 +334,7 @@
                                 >
                             </a>
                         </li>
-                        <li class="component-sidebar__menu-item">
+                        <!-- <li class="component-sidebar__menu-item">
                             <a
                                 class="component-sidebar__menu-item-link"
                                 href="/api"
@@ -345,8 +346,8 @@
                                     >API</span
                                 >
                             </a>
-                        </li>
-                        <li class="component-sidebar__menu-item">
+                        </li> -->
+                        <!-- <li class="component-sidebar__menu-item">
                             <a
                                 class="component-sidebar__menu-item-link"
                                 href="/affiliates"
@@ -358,8 +359,8 @@
                                     >Affiliates</span
                                 >
                             </a>
-                        </li>
-                        <li class="component-sidebar__menu-item">
+                        </li> -->
+                        <!-- <li class="component-sidebar__menu-item">
                             <a
                                 class="component-sidebar__menu-item-link"
                                 href="/child-panels"
@@ -371,11 +372,11 @@
                                     >Child panel</span
                                 >
                             </a>
-                        </li>
+                        </li> -->
                         <li class="component-sidebar__menu-item">
                             <a
                                 class="component-sidebar__menu-item-link"
-                                href="/tickets"
+                                href="{% url 'tickets' %}"
                             >
                                 <span class="sidebar-block__menu-item-icon">
                                     <span class="fas fa-ticket-alt"></span>
@@ -385,7 +386,7 @@
                                 >
                             </a>
                         </li>
-                        <li class="component-sidebar__menu-item">
+                        <!-- <li class="component-sidebar__menu-item">
                             <a
                                 class="component-sidebar__menu-item-link"
                                 href="/massorder"
@@ -397,7 +398,7 @@
                                     >Mass order</span
                                 >
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
