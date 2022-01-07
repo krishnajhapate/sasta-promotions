@@ -22,7 +22,7 @@
                                 >
                                     <div class="card">
                                         <form
-                                            action="/"
+                                            action="{% url 'dashboard' %}"
                                             method="post"
                                             id="order-form"
                                         >
@@ -308,8 +308,8 @@
         )[0]
         average_time.value = `${services.average_time_hours} hours ${services.average_time_minutes} minutes`
         min_max.innerHTML= `Min: ${services.min_order} - Max: ${services.max_order} `
-        charge.min = services.min_order
-        charge.min = services.min_order
+        quantity.min = services.min_order
+        quantity.max = services.max_order
 
     })
 
