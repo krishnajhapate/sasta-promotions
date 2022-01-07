@@ -124,11 +124,11 @@
                                                             for="field-orderform-fields-quantity"
                                                             >Quantity</label
                                                         >
+                                                        <!-- onchange="detectPriceChange(this)" -->
                                                         <input
                                                             class="form-control quantity"
-                                                            name="OrderForm[quantity]"
-                                                            onchange="detectPriceChange(this)"
-                                                            value="23"
+                                                            name="quantity"
+                                                            oninput="detectPriceChange(this)"
                                                             type="number"
                                                             id="field-orderform-fields-quantity"
                                                         /><small
@@ -218,7 +218,7 @@
     const panel_description = document.querySelector(".panel-description");
     const min_max = document.querySelector(".min-max");
     const average_time = document.querySelector("#field-orderform-fields-average_time");
-    const quantity = document.querySelector(".quantity");
+    var quantity = document.getElementById("field-orderform-fields-quantity");
     const charge = document.querySelector("#charge");
     var select = document.getElementById("orderform-service");
 
@@ -294,10 +294,21 @@
 
 
     const detectPriceChange  = (e)=>{
-        console.log(e,'here')
+        const services = services_data.filter(
+            (key) => key.id === Number(select.value)
+        )[0]
+        charge.value = (services.rate*e.value/1000)
     }
 
-    // listners
-    quantity.addEventListener("change",detectPriceChange(this))
+    window.addEventListener('load',()=>{
+        const services = services_data.filter(
+            (key) => key.id === Number(select.value)
+        )[0]
+        average_time.value = `${services.average_time_hours} hours ${services.average_time_minutes} minutes`
+        min_max.innerHTML= `Min: ${services.min_order} - Max: ${services.max_order} `
+
+
+    })
+
 </script>
 {% endblock content %}
