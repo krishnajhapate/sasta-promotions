@@ -3,7 +3,7 @@ from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from services.models import CategoryModel, ServicesModel
-from services.serializers import ServicesSerializer
+from services.serializers import CategorySerializer, ServicesSerializer
 
 # Create your views here.
 
@@ -31,5 +31,16 @@ class ServicesView(APIView):
         Return a list of all users.
         """
         service = ServicesModel.objects.filter(active=True)
-        serializer = ServicesSerializer(service,many=True)
+        serializer = ServicesSerializer(service, many=True)
+        return Response(serializer.data)
+
+
+class CategoriesView(APIView):
+
+    def get(self, request, format=None):
+        """
+        Return a list of all users.
+        """
+        service = CategoryModel.objects.filter(active=True)
+        serializer = CategorySerializer(service, many=True)
         return Response(serializer.data)

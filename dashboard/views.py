@@ -28,7 +28,8 @@ def dashboard(request):
         if service.count() > 0:
             category.services = service
             services.append(category)
-    return render(request, "dashboard.html", {"category": categories})
+
+    return render(request, "dashboard.html", {"categories": services})
 
 
 def about_page(request):
