@@ -19,6 +19,11 @@ def home_page(request):
 
 @login_required
 def dashboard(request):
+
+    if request.method == "POST":
+        print(request.POST)
+
+
     categories = CategoryModel.objects.filter(active=True)
 
     print(categories)

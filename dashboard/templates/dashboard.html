@@ -109,9 +109,10 @@
                                                         >
                                                         <input
                                                             class="form-control"
-                                                            name="OrderForm[link]"
+                                                            name="link"
                                                             value=""
-                                                            type="text"
+                                                            required
+                                                            type="url"
                                                             id="field-orderform-fields-link"
                                                         />
                                                     </div>
@@ -130,6 +131,7 @@
                                                             name="quantity"
                                                             oninput="detectPriceChange(this)"
                                                             type="number"
+                                                            required
                                                             id="field-orderform-fields-quantity"
                                                         /><small
                                                             class="help-block min-max"
@@ -306,7 +308,8 @@
         )[0]
         average_time.value = `${services.average_time_hours} hours ${services.average_time_minutes} minutes`
         min_max.innerHTML= `Min: ${services.min_order} - Max: ${services.max_order} `
-
+        charge.min = services.min_order
+        charge.min = services.min_order
 
     })
 
