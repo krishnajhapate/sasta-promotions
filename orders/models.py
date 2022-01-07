@@ -23,3 +23,9 @@ class OrdersModel(models.Model):
     charge = models.FloatField(blank=True, null=True)
     last_updated = models.DateTimeField(auto_now=True)
     order_placed = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return  self.service.name + "-" + self.status
+
+    class Meta:
+        verbose_name = "Order"
