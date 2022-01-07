@@ -1,6 +1,4 @@
-{% extends 'base.html' %} 
-{% load get_account_pay %}
-{% block content %}
+{% extends 'base.html' %} {% load get_account_pay %} {% block content %}
 <div class="wrapper wrapper-sidebar-navbar">
     {% include 'components/dashboard_leftsidebar.html' %}
 
@@ -264,15 +262,10 @@
                                                         id="orderform-category"
                                                         name="OrderForm[category]"
                                                     >
-                                                    
-                                                        <option
-                                                            value="84"
-                                                        >
+                                                        <option value="84">
                                                             🔥SASTAPROVIDER
                                                             SPECIAL🔥REELS,VIEWS,LIKES,FOLLOWERS
                                                         </option>
-                                                        
-                                                       
                                                     </select>
                                                 </div>
                                                 <div
@@ -1014,15 +1007,20 @@
                 </div>
             </div>
         </div>
-        <div class="wrapper-content__footer"></div>
+        {{category}}
     </div>
 </div>
 
 <style>
     @media (max-width: 991px) {
-         .wrapper-sidebar-navbar {
+        .wrapper-sidebar-navbar {
             flex-direction: column;
         }
     }
 </style>
+
+<script>
+    const data = "{{category}}";
+    console.log(data, "data");
+</script>
 {% endblock content %}
