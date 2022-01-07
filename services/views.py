@@ -1,6 +1,9 @@
 from django.shortcuts import render
-
+from rest_framework import serializers
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from services.models import CategoryModel, ServicesModel
+from services.serializers import ServicesSerializer
 
 # Create your views here.
 
@@ -19,3 +22,14 @@ def services(request):
             services.append(category)
 
     return render(request, 'services.html', {"categories": services})
+
+
+class ServicesView(APIView):
+
+    def get(self, request, format=None):
+        """
+        Return a list of all users.
+        """
+        service = ServicesModel.objects.filter(active=True)
+        serializer = ServicesSerializer(service,many=True)
+        return Response(serializer.data)
