@@ -1,0 +1,396 @@
+{% extends 'base.html' %} {% block content %}
+<div class="wrapper wrapper-sidebar-navbar">
+    {% include 'components/dashboard_leftsidebar.html' %}
+
+    <div class="wrapper-content">
+        <div class="wrapper-content__header"></div>
+        <div class="wrapper-content__body">
+            <div id="block_2">
+                <div class="orders-history">
+                    <div class="bg"></div>
+                    <div class="divider-top"></div>
+                    <div class="divider-bottom"></div>
+                    <div class="container-fluid">
+                        <div class="row px-lg-4">
+                            <div class="col">
+                                <div class="orders-history__margin-tab">
+                                    <div class="component_status_tabs">
+                                        <div class="">
+                                            <ul class="nav nav-pills tab">
+                                                <li class="nav-item">
+                                                    <a
+                                                        class="nav-link"
+                                                        href="/orders"
+                                                        >All</a
+                                                    >
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a
+                                                        class="nav-link"
+                                                        href="/orders/pending"
+                                                        >Pending</a
+                                                    >
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a
+                                                        class="nav-link"
+                                                        href="/orders/inprogress"
+                                                        >In progress</a
+                                                    >
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a
+                                                        class="nav-link"
+                                                        href="/orders/completed"
+                                                        >Completed</a
+                                                    >
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a
+                                                        class="nav-link"
+                                                        href="/orders/partial"
+                                                        >Partial</a
+                                                    >
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a
+                                                        class="nav-link"
+                                                        href="/orders/processing"
+                                                        >Processing</a
+                                                    >
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a
+                                                        class="nav-link active"
+                                                        href="/orders/canceled"
+                                                        >Canceled</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row px-lg-4">
+                            <div class="col">
+                                <div class="orders-history__margin-table">
+                                    <div class="table-bg component_table">
+                                        <div class="table-wr">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <div
+                                                                class="orders-history__margin-search"
+                                                            >
+                                                                <div
+                                                                    class="component_form_group component_button_search"
+                                                                >
+                                                                    <div
+                                                                        class=""
+                                                                    >
+                                                                        <form
+                                                                            action="/orders"
+                                                                            method="get"
+                                                                            id="history-search"
+                                                                        >
+                                                                            <div
+                                                                                class="input-group"
+                                                                            >
+                                                                                <input
+                                                                                    type="text"
+                                                                                    name="search"
+                                                                                    class="form-control"
+                                                                                    value=""
+                                                                                    placeholder="Search"
+                                                                                />
+                                                                                <div
+                                                                                    class="input-group-append"
+                                                                                >
+                                                                                    <button
+                                                                                        class="btn btn-secondary"
+                                                                                        type="submit"
+                                                                                    >
+                                                                                        <span
+                                                                                            class="far fa-search"
+                                                                                        ></span>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                            <div
+                                                class="table-responsive table-responsive__search"
+                                            >
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Date</th>
+                                                            <th>Link</th>
+                                                            <th>Charge</th>
+                                                            <th class="nowrap">
+                                                                Start count
+                                                            </th>
+                                                            <th>Quantity</th>
+                                                            <th>Service</th>
+                                                            <th>Status</th>
+                                                            <th>Remains</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td data-label="ID">
+                                                                174878
+                                                            </td>
+                                                            <td
+                                                                data-label="Date"
+                                                            >
+                                                                <span
+                                                                    class="nowrap"
+                                                                    >2021-12-06</span
+                                                                >
+                                                                <span
+                                                                    class="nowrap"
+                                                                    >01:30:05</span
+                                                                >
+                                                            </td>
+                                                            <td
+                                                                data-label="Link"
+                                                                class="table-link component_service_link"
+                                                            >
+                                                                <a
+                                                                    href="https://anon.ws/?https://www.instagram.com/p/CXHHeDpsXDp/?utm_medium=share_sheet"
+                                                                    target="_blank"
+                                                                    >https://www.instagram.com/p/CXHHeDpsXDp/?utm_medium=share_sheet</a
+                                                                >
+                                                            </td>
+                                                            <td
+                                                                data-label="Charge"
+                                                            >
+                                                                0.00
+                                                            </td>
+                                                            <td
+                                                                data-label="Start count"
+                                                                class="nowrap"
+                                                            >
+                                                                0
+                                                            </td>
+                                                            <td
+                                                                data-label="Quantity"
+                                                            >
+                                                                1000
+                                                            </td>
+                                                            <td
+                                                                data-label="Service"
+                                                                class="table-service"
+                                                            >
+                                                                ✨Instagram
+                                                                Views + Reels +
+                                                                TV | New Server
+                                                                | Max 10M |
+                                                                Fastest As of
+                                                                Now🔥
+                                                            </td>
+                                                            <td
+                                                                data-label="Status"
+                                                            >
+                                                                Canceled
+                                                            </td>
+                                                            <td
+                                                                data-label="Remains"
+                                                            >
+                                                                1000
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td data-label="ID">
+                                                                171167
+                                                            </td>
+                                                            <td
+                                                                data-label="Date"
+                                                            >
+                                                                <span
+                                                                    class="nowrap"
+                                                                    >2021-12-03</span
+                                                                >
+                                                                <span
+                                                                    class="nowrap"
+                                                                    >15:56:58</span
+                                                                >
+                                                            </td>
+                                                            <td
+                                                                data-label="Link"
+                                                                class="table-link component_service_link"
+                                                            >
+                                                                <a
+                                                                    href="https://anon.ws/?https://www.instagram.com/reel/CXBGQH6DUbU824QFC-bdwC_gmA4u0kMaPjIMBY0/?utm_medium=copy_link"
+                                                                    target="_blank"
+                                                                    >https://www.instagram.com/reel/CXBGQH6DUbU824QFC-bdwC_gmA4u0kMaPjIMBY0/?utm_medium=copy_link</a
+                                                                >
+                                                            </td>
+                                                            <td
+                                                                data-label="Charge"
+                                                            >
+                                                                0.00
+                                                            </td>
+                                                            <td
+                                                                data-label="Start count"
+                                                                class="nowrap"
+                                                            ></td>
+                                                            <td
+                                                                data-label="Quantity"
+                                                            >
+                                                                500
+                                                            </td>
+                                                            <td
+                                                                data-label="Service"
+                                                                class="table-service"
+                                                            >
+                                                                Instagram Likes
+                                                                | Instant | Fast
+                                                                | MAX 15K ⚡️🔥
+                                                            </td>
+                                                            <td
+                                                                data-label="Status"
+                                                            >
+                                                                Canceled
+                                                            </td>
+                                                            <td
+                                                                data-label="Remains"
+                                                            >
+                                                                500
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row px-lg-4">
+                            <div class="col-5">
+                                <nav class="component_pagination">
+                                    <div class=""></div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper-content__footer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @media (max-width: 991px) {
+        .wrapper-sidebar-navbar {
+            flex-direction: column;
+        }
+    }
+    .tab .nav-item .active {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0px;
+        color: #07264a;
+        background: #ffffff;
+        border-color: #000000;
+    }
+    .tab .nav-item {
+        margin-right: 8px;
+    }
+    .tab .nav-item .nav-link {
+        font-size: 14px;
+        letter-spacing: 0px;
+        font-weight: 500;
+        font-style: normal;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 12px;
+        padding-right: 12px;
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.2);
+        border-color: #000000;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-style: solid;
+        border-left-width: 0px;
+        border-right-width: 0px;
+        border-top-width: 0px;
+        border-bottom-width: 0px;
+        box-shadow: none;
+    }
+    .table {
+        margin-bottom: 0px;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+    .table thead:first-child tr th:first-child {
+        padding-left: 16px;
+        border-top-left-radius: 16px;
+    }
+    .table thead:first-child tr th:last-child {
+        padding-right: 16px;
+        border-top-right-radius: 16px;
+    }
+    .table thead:last-of-type tr th {
+        border-top-width: 0;
+        border-bottom-width: 0;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+    }
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+    }
+    .table th,
+    .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+    .table-wr {
+        box-shadow: 0 16px 24px 0 rgba(0, 0, 0, 0.08);
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+    .table thead:first-child tr th {
+        font-size: 14px;
+        letter-spacing: 0px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-right: 24px;
+        padding-left: 24px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        vertical-align: middle;
+        height: 56px;
+        border-bottom-width: 0px;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        color: #61768e !important;
+        background: #ffffff !important;
+    }
+    .table-responsive__search {
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+</style>
+{% endblock content %}

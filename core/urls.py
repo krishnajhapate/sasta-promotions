@@ -22,6 +22,7 @@ urlpatterns = [
     path('', include('dashboard.urls')),
     path('', include('services.urls')),
     path('', include('authapp.urls')),
+    path('', include('orders.urls')),
     path('admin/', admin.site.urls),
 ]
 

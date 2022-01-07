@@ -21,12 +21,12 @@ def home_page(request):
 def dashboard(request):
 
     if request.method == "POST":
+        
         print(request.POST)
 
 
     categories = CategoryModel.objects.filter(active=True)
 
-    print(categories)
     services = []
     for category in categories:
         service = ServicesModel.objects.filter(active=True, category=category)
