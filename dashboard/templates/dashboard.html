@@ -274,6 +274,11 @@
             select.appendChild(option);
 
         })
+        average_time.value = `${services[0].average_time_hours} hours ${services[0].average_time_minutes} minutes`
+        min_max.innerHTML= `Min: ${services[0].min_order} - Max: ${services[0].max_order} `
+        quantity.min = services[0].min_order
+        quantity.max = services[0].max_order
+        
     };
 
     const serviceChange = (e) => {
