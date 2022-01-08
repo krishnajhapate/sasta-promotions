@@ -27,6 +27,12 @@
                                             id="order-form"
                                         >
                                             <div class="component_button_forms">
+                                                {% if error_message %}
+
+                                            <div class="text-sm my-1 text-danger">
+                                                {{error_message}}
+                                            </div>
+                                            {% endif %}
                                                 <div class="form-group">
                                                     <label
                                                         for="orderform-category"
@@ -182,6 +188,7 @@
                                                 </div>
                                             </div>
                                            {% csrf_token %}
+                                           
                                             <div
                                                 class="new-order-button-submit component_button_submit"
                                             >

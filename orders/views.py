@@ -12,4 +12,5 @@ def orders(request, status=None):
     search = request.GET.get('search', None)
     if search:
         orders = orders.filter(link__contains=search)
+    orders = orders.order_by('-last_updated')
     return render(request, "orders.html", {"orders": orders,"search":search or ""})
