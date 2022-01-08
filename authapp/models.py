@@ -2,7 +2,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db.models.fields.related import OneToOneField
 from django.utils.translation import gettext_lazy as _
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
+from orders.models import OrdersModel
 # Create your models here.
 
 
@@ -28,3 +31,8 @@ class AccountBalance(models.Model):
 
     def __str__(self) -> str:
         return self.user.name + "- " + str(self.money)+ " Rs "
+
+
+@receiver(post_save,sender=OrdersModel)
+def update_account_balance_on_order(instance,sender,*args,**kwargs):
+    print(instance)
