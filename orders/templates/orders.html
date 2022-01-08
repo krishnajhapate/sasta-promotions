@@ -136,30 +136,31 @@
                                                             <th>Date</th>
                                                             <th>Link</th>
                                                             <th>Charge</th>
-                                                            <th class="nowrap">
+                                                            <!-- <th class="nowrap">
                                                                 Start count
-                                                            </th>
+                                                            </th> -->
                                                             <th>Quantity</th>
                                                             <th>Service</th>
                                                             <th>Status</th>
-                                                            <th>Remains</th>
+                                                            <!-- <th>Remains</th> -->
                                                         </tr>
                                                     </thead>
+                                                    {% for order in orders %}
                                                     <tbody>
                                                         <tr>
                                                             <td data-label="ID">
-                                                                174878
+                                                                {{order.id}}
                                                             </td>
                                                             <td
                                                                 data-label="Date"
                                                             >
                                                                 <span
                                                                     class="nowrap"
-                                                                    >2021-12-06</span
+                                                                    >{{order.order_placed|date:"Y-m-d"}}</span
                                                                 >
                                                                 <span
                                                                     class="nowrap"
-                                                                    >01:30:05</span
+                                                                    >{{order.order_placed|date:"H:i:s"}}</span
                                                                 >
                                                             </td>
                                                             <td
@@ -167,109 +168,48 @@
                                                                 class="table-link component_service_link"
                                                             >
                                                                 <a
-                                                                    href="https://anon.ws/?https://www.instagram.com/p/CXHHeDpsXDp/?utm_medium=share_sheet"
+                                                                    href="{{order.link}}"
                                                                     target="_blank"
-                                                                    >https://www.instagram.com/p/CXHHeDpsXDp/?utm_medium=share_sheet</a
+                                                                    >{{order.link}}</a
                                                                 >
                                                             </td>
                                                             <td
                                                                 data-label="Charge"
                                                             >
-                                                                0.00
+                                                                {{order.charge}}
                                                             </td>
-                                                            <td
+                                                            <!-- <td
                                                                 data-label="Start count"
                                                                 class="nowrap"
                                                             >
                                                                 0
-                                                            </td>
+                                                            </td> -->
                                                             <td
                                                                 data-label="Quantity"
                                                             >
-                                                                1000
+                                                            {{order.quantity}}
                                                             </td>
                                                             <td
                                                                 data-label="Service"
                                                                 class="table-service"
                                                             >
-                                                                ✨Instagram
-                                                                Views + Reels +
-                                                                TV | New Server
-                                                                | Max 10M |
-                                                                Fastest As of
-                                                                Now🔥
+                                                            {{order.service.name}}
                                                             </td>
                                                             <td
                                                                 data-label="Status"
                                                             >
-                                                                Canceled
+                                                            {{order.status}}
                                                             </td>
-                                                            <td
+                                                            <!-- <td
                                                                 data-label="Remains"
                                                             >
                                                                 1000
-                                                            </td>
+                                                            </td> -->
                                                         </tr>
-                                                        <tr>
-                                                            <td data-label="ID">
-                                                                171167
-                                                            </td>
-                                                            <td
-                                                                data-label="Date"
-                                                            >
-                                                                <span
-                                                                    class="nowrap"
-                                                                    >2021-12-03</span
-                                                                >
-                                                                <span
-                                                                    class="nowrap"
-                                                                    >15:56:58</span
-                                                                >
-                                                            </td>
-                                                            <td
-                                                                data-label="Link"
-                                                                class="table-link component_service_link"
-                                                            >
-                                                                <a
-                                                                    href="https://anon.ws/?https://www.instagram.com/reel/CXBGQH6DUbU824QFC-bdwC_gmA4u0kMaPjIMBY0/?utm_medium=copy_link"
-                                                                    target="_blank"
-                                                                    >https://www.instagram.com/reel/CXBGQH6DUbU824QFC-bdwC_gmA4u0kMaPjIMBY0/?utm_medium=copy_link</a
-                                                                >
-                                                            </td>
-                                                            <td
-                                                                data-label="Charge"
-                                                            >
-                                                                0.00
-                                                            </td>
-                                                            <td
-                                                                data-label="Start count"
-                                                                class="nowrap"
-                                                            ></td>
-                                                            <td
-                                                                data-label="Quantity"
-                                                            >
-                                                                500
-                                                            </td>
-                                                            <td
-                                                                data-label="Service"
-                                                                class="table-service"
-                                                            >
-                                                                Instagram Likes
-                                                                | Instant | Fast
-                                                                | MAX 15K ⚡️🔥
-                                                            </td>
-                                                            <td
-                                                                data-label="Status"
-                                                            >
-                                                                Canceled
-                                                            </td>
-                                                            <td
-                                                                data-label="Remains"
-                                                            >
-                                                                500
-                                                            </td>
-                                                        </tr>
+
+                                                      
                                                     </tbody>
+                                                    {% endfor %}
                                                 </table>
                                             </div>
                                         </div>

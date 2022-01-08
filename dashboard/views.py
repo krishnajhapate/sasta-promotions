@@ -31,10 +31,10 @@ def dashboard(request):
         order_create = OrdersModel.objects.create(service=service,
                                                   quantity=quantity,
                                                   link=link,
-                                                  charge=charge)
+                                                  charge=charge,
+                                                  user=request.user)
         if order_create:
             return redirect('orders')
-
 
     categories = CategoryModel.objects.filter(active=True)
 
