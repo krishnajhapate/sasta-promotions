@@ -60,8 +60,15 @@ class TransanctionsModel(models.Model):
     last_updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
-    # def __str__(self) -> str:
-    #     return self.
-
     class Meta:
         verbose_name = "Transanction"
+
+
+class OrderTransanctionModel(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    order = models.ForeignKey(OrdersModel, on_delete=models.CASCADE)
+    transanction_type = models.CharField(max_length=20,
+                                         choices=TRANSANCTION_TYPE,
+                                         default="Debit")
+    note = models.CharField(max_length=100,blank=True,null=True)
+    created = models.DateTimeField(auto_now_add=True)

@@ -5,17 +5,15 @@ from django.utils.translation import gettext_lazy as _
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
-from orders.models import OrdersModel
+from orders.models import OrdersModel, TransanctionsModel
 # Create your models here.
 
 
-
-
 class User(AbstractUser):
-    
+
     name = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=100, blank=True)
- 
+
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['name']
 
@@ -24,15 +22,24 @@ class User(AbstractUser):
     def __str__(self):
         return str(self.name)
 
+
 class AccountBalance(models.Model):
-    user = OneToOneField(User,on_delete=models.CASCADE)
+    user = OneToOneField(User, on_delete=models.CASCADE)
     money = models.FloatField(default=0.00)
     updated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
-        return self.user.name + "- " + str(self.money)+ " Rs "
+        return self.user.name + "- " + str(self.money) + " Rs "
 
 
-@receiver(post_save,sender=OrdersModel)
-def update_account_balance_on_order(instance,sender,*args,**kwargs):
+@receiver(post_save, sender=OrdersModel)
+def update_account_balance_on_order(instance, sender, *args, **kwargs):
+    if instance.status == "Pending":
+        balance = AccountBalance.objects.get(user=instance.user)
+        balance.money = balance.money - instance.charge
+        balance.save()
+
+
+@receiver(post_save, sender=TransanctionsModel)
+def update_account_balance_on_transanction(instance, sender, *args, **kwargs):
     print(instance)
