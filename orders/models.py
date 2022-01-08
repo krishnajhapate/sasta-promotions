@@ -80,3 +80,6 @@ class OrderTransanctionModel(models.Model):
 
     class Meta:
         verbose_name = "Order History"
+
+
+

@@ -16,5 +16,5 @@ def get_spent_balance(user):
     balance = OrdersModel.objects.filter(user=user).exclude(status="Cancelled")
     total = 0
     for i in balance:
-        total += balance.charge
+        total += i.charge
     return total
