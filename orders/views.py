@@ -28,5 +28,6 @@ def add_funds(request):
             amount=amount,
             transaction_id=order_id,
         )
-        print(request.POST)
-    return render(request, "add_funds.html")
+    transactions = TransanctionsModel.objects.filter(user=request.user)
+
+    return render(request, "add_funds.html",{"transactions":transactions})

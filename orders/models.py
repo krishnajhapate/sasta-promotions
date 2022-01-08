@@ -62,7 +62,7 @@ class TransanctionsModel(models.Model):
                               choices=TRANSANCTION_STATUS,
                               default='Pending')
     transaction_id = models.CharField(max_length=400,blank=True,null=True)
-    amount = models.IntegerField()
+    amount = models.FloatField()
     last_updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
