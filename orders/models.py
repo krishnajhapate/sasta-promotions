@@ -61,6 +61,7 @@ class TransanctionsModel(models.Model):
     status = models.CharField(max_length=20,
                               choices=TRANSANCTION_STATUS,
                               default='Pending')
+    transaction_id = models.CharField(max_length=400,blank=True,null=True)
     amount = models.IntegerField()
     last_updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)

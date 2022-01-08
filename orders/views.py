@@ -23,6 +23,10 @@ def add_funds(request):
     if request.method == "POST":
         amount = request.POST.get('amount', None)
         order_id = request.POST.get('order_id', None)
-        transaction = TransanctionsModel.objects.create(user=request.user, amount=amount)
+        transaction = TransanctionsModel.objects.create(
+            user=request.user,
+            amount=amount,
+            transaction_id=order_id,
+        )
         print(request.POST)
     return render(request, "add_funds.html")
