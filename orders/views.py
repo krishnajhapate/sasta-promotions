@@ -14,3 +14,7 @@ def orders(request, status=None):
         orders = orders.filter(link__contains=search)
     orders = orders.order_by('-last_updated')
     return render(request, "orders.html", {"orders": orders,"search":search or ""})
+
+def add_funds(request):
+
+    return render(request,"add_funds.html")
