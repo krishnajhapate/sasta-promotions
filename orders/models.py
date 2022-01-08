@@ -70,5 +70,8 @@ class OrderTransanctionModel(models.Model):
     transanction_type = models.CharField(max_length=20,
                                          choices=TRANSANCTION_TYPE,
                                          default="Debit")
-    note = models.CharField(max_length=100,blank=True,null=True)
+    note = models.CharField(max_length=100, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Order History"
