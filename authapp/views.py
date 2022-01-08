@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login as login_func
 from django.contrib import messages
 from django.contrib.auth import logout
-from authapp.models import User
+from authapp.models import AccountBalance, User
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -63,6 +63,7 @@ def register(request):
         )
         user_create.set_password(password1)
         user_create.save()
+        AccountBalance.objects.create(user=user_create)
         user = authenticate(username=username, password=password1)
         if user:
             login_func(request, user)

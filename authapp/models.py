@@ -20,7 +20,7 @@ class User(AbstractUser):
     # objects = CustomUserManager()
 
     def __str__(self):
-        return str(self.name)
+        return str(self.first_name)
 
 
 class AccountBalance(models.Model):
@@ -30,6 +30,8 @@ class AccountBalance(models.Model):
 
     def __str__(self) -> str:
         return self.user.name + "- " + str(self.money) + " Rs "
+
+
 
 
 @receiver(post_save, sender=OrdersModel)
