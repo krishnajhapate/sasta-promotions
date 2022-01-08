@@ -53,9 +53,14 @@ class TransanctionsModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_approved = models.BooleanField(default=False)
     transanction_type = models.CharField(max_length=20,
-                                         choices=TRANSANCTION_TYPE)
-    method = models.CharField(max_length=20, choices=METHOD_STATUS)
-    status = models.CharField(max_length=20, choices=TRANSANCTION_STATUS)
+                                         choices=TRANSANCTION_TYPE,
+                                         default='Credit')
+    method = models.CharField(max_length=20,
+                              choices=METHOD_STATUS,
+                              default='QR')
+    status = models.CharField(max_length=20,
+                              choices=TRANSANCTION_STATUS,
+                              default='Pending')
     amount = models.IntegerField()
     last_updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
