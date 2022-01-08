@@ -20,50 +20,50 @@
                                                 <li class="nav-item">
                                                     <a
                                                         class="nav-link"
-                                                        href="/orders"
+                                                        href="{% url 'orders'  %}"
                                                         >All</a
                                                     >
                                                 </li>
                                                 <li class="nav-item">
                                                     <a
                                                         class="nav-link"
-                                                        href="/orders/pending"
+                                                        href="{% url 'order_status' 'Pending' %}"
                                                         >Pending</a
                                                     >
                                                 </li>
                                                 <li class="nav-item">
                                                     <a
                                                         class="nav-link"
-                                                        href="/orders/inprogress"
+                                                        href="{% url 'order_status' 'In progress' %}"
                                                         >In progress</a
                                                     >
                                                 </li>
                                                 <li class="nav-item">
                                                     <a
                                                         class="nav-link"
-                                                        href="/orders/completed"
+                                                        href="{% url 'order_status' 'Completed' %}"
                                                         >Completed</a
                                                     >
                                                 </li>
                                                 <li class="nav-item">
                                                     <a
                                                         class="nav-link"
-                                                        href="/orders/partial"
+                                                        href="{% url 'order_status' 'Partial' %}"
                                                         >Partial</a
                                                     >
                                                 </li>
                                                 <li class="nav-item">
                                                     <a
                                                         class="nav-link"
-                                                        href="/orders/processing"
+                                                        href="{% url 'order_status' 'Processing' %}"
                                                         >Processing</a
                                                     >
                                                 </li>
                                                 <li class="nav-item">
                                                     <a
                                                         class="nav-link active"
-                                                        href="/orders/canceled"
-                                                        >Canceled</a
+                                                        href="{% url 'order_status' 'Cancelled' %}"
+                                                        >Cancelled</a
                                                     >
                                                 </li>
                                             </ul>
@@ -99,10 +99,10 @@
                                                                                 class="input-group"
                                                                             >
                                                                                 <input
-                                                                                    type="text"
+                                                                                    type="search"
                                                                                     name="search"
                                                                                     class="form-control"
-                                                                                    value=""
+                                                                                    value="{{search}}"
                                                                                     placeholder="Search"
                                                                                 />
                                                                                 <div
