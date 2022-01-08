@@ -53,10 +53,16 @@ class TransanctionsModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_approved = models.BooleanField(default=False)
     transanction_type = models.CharField(max_length=20,
-                                         choices=TRANSANCTION_TYPE)
-    method = models.CharField(max_length=20, choices=METHOD_STATUS)
-    status = models.CharField(max_length=20, choices=TRANSANCTION_STATUS)
-    amount = models.IntegerField()
+                                         choices=TRANSANCTION_TYPE,
+                                         default='Credit')
+    method = models.CharField(max_length=20,
+                              choices=METHOD_STATUS,
+                              default='QR')
+    status = models.CharField(max_length=20,
+                              choices=TRANSANCTION_STATUS,
+                              default='Pending')
+    transaction_id = models.CharField(max_length=400,blank=True,null=True)
+    amount = models.FloatField()
     last_updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -75,3 +81,6 @@ class OrderTransanctionModel(models.Model):
 
     class Meta:
         verbose_name = "Order History"
+
+
+

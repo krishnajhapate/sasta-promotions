@@ -325,6 +325,8 @@
                                                         value=""
                                                         type="text"
                                                         id="field-transaction_id"
+                                                        required
+
                                                     />
                                                 </div>
                                                 <div class="form-group">
@@ -346,14 +348,11 @@
                                                         id="amount"
                                                         min="10"
                                                         step="0.01"
+                                                        required
                                                     />
                                                 </div>
                                             </div>
-                                            <input
-                                                type="hidden"
-                                                name="_csrf"
-                                                value="UhwefV6SG55E89ryEJ53vPU1t6hWUgGy1cN4kKzOIP0rTiZPFuVD-SC9mIUpqgX7mF_C_zcfLOuMujTE5pwSyg=="
-                                            />
+                                           {% csrf_token %}
                                             <div
                                                 class="component_button_submit"
                                             >
@@ -396,292 +395,22 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                {% for transaction in transactions %}
                                                 <tr>
-                                                    <td>8918</td>
+                                                    <td>{{transaction.id}}</td>
                                                     <td>
                                                         <span class="nowrap"
-                                                            >2022-01-05</span
+                                                            >{{transaction.created|date:"Y-m-d"}}</span
                                                         >
                                                         <span class="nowrap"
-                                                            >16:44:14</span
+                                                            >{{transaction.created|date:"H:i:s"}}</span
                                                         >
                                                     </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>30.00</td>
+                                                    <td>{{transaction.method}}</td>
+                                                    <td>{{transaction.amount}}</td>
+                                                    <td>{{transaction.status}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>8916</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2022-01-05</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >16:10:15</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>30.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>8878</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2022-01-04</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >18:09:18</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>125.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>8833</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2022-01-03</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >17:34:15</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>30.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>8654</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-12-30</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >04:05:13</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>50.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>8444</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-12-25</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >11:33:14</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>30.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>7590</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-12-03</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >19:28:10</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>30.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>7483</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-12-01</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >00:23:11</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>20.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>7373</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-11-28</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >16:27:11</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>50.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6833</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-11-16</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >21:31:13</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>50.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6769</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-11-15</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >12:58:05</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>40.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6605</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-11-11</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >19:42:05</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>50.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6498</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-11-09</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >16:00:06</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>50.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6409</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-11-07</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >12:35:05</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>50.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5970</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-10-27</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >18:18:04</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>300.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5967</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-10-27</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >16:15:05</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>20.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5605</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-10-17</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >16:43:05</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>50.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5246</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-10-08</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >22:44:06</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>110.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5055</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-10-03</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >22:24:30</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>100.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4961</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-10-01</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >08:04:34</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>100.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4899</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-09-29</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >20:06:37</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>20.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4776</td>
-                                                    <td>
-                                                        <span class="nowrap"
-                                                            >2021-09-27</span
-                                                        >
-                                                        <span class="nowrap"
-                                                            >10:42:46</span
-                                                        >
-                                                    </td>
-                                                    <td>Paytm QR</td>
-                                                    <td>50.00</td>
-                                                </tr>
+                                                {% endfor %}
                                             </tbody>
                                         </table>
                                     </div>

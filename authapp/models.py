@@ -20,7 +20,7 @@ class User(AbstractUser):
     # objects = CustomUserManager()
 
     def __str__(self):
-        return str(self.name)
+        return str(self.first_name)
 
 
 class AccountBalance(models.Model):
@@ -29,7 +29,9 @@ class AccountBalance(models.Model):
     updated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
-        return self.user.name + "- " + str(self.money) + " Rs "
+        return self.user.first_name + "- " + str(self.money) + " Rs "
+
+
 
 
 @receiver(post_save, sender=OrdersModel)
@@ -61,5 +63,8 @@ def update_account_balance_on_order(instance, sender, *args, **kwargs):
 
 
 @receiver(post_save, sender=TransanctionsModel)
-def update_account_balance_on_transanction(instance, sender, *args, **kwargs):
-    print(instance)
+def update_account_balance(instance, sender, *args, **kwargs):
+    if instance.status == "Approved":
+        balance = AccountBalance.objects.get(user=instance.user)
+        balance.money += instance.amount
+        balance.save()
