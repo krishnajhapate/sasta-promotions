@@ -1,0 +1,826 @@
+{% extends 'base.html' %} {% block content %}
+<div class="wrapper wrapper-sidebar-navbar">
+    {% include 'components/dashboard_leftsidebar.html' %}
+
+    <div class="wrapper-content">
+        <div class="wrapper-content__header"></div>
+        <div class="wrapper-content__body">
+            <!-- Main variables *content* -->
+            <div id="block_38">
+                <div class="text-block">
+                    <div class="bg"></div>
+                    <div class="divider-top"></div>
+                    <div class="divider-bottom"></div>
+                    <div class="container">
+                        <div class="row px-lg-4">
+                            <div class="col-12">
+                                <div
+                                    class="text-block__description style-text-white"
+                                >
+                                    <p class="text-center text-white">
+                                        <span style="font-size: 44px"
+                                            ><span style="text-align: CENTER"
+                                                ><span
+                                                    style="
+                                                        color: rgba(
+                                                            249,
+                                                            0,
+                                                            0,
+                                                            1
+                                                        );
+                                                    "
+                                                    ><strong
+                                                        style="
+                                                            font-weight: bold;
+                                                        "
+                                                        >WARNING</strong
+                                                    ></span
+                                                ></span
+                                            ></span
+                                        >
+                                    </p>
+                                    <p class="text-white">
+                                        <strong style="font-weight: bold"
+                                            >Calling on the Paytm Number is not
+                                            allowed. Any problem or query will
+                                            be solved through tickets only.
+                                            Including Payments and orders issue.
+                                            If you Anyone call on paytm number
+                                            thier account might be immediately
+                                            suspended without any prior
+                                            notice.</strong
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="block_17">
+                <div class="add-funds__form">
+                    <div class="bg"></div>
+                    <div class="divider-top"></div>
+                    <div class="divider-bottom"></div>
+                    <div class="container-fluid">
+                        <div class="row add-funds__form-alignment px-lg-4">
+                            <div class="col-lg-8">
+                                <div class="component_card">
+                                    <div class="card">
+                                        <form
+                                            method="post"
+                                            action="{% url 'add_funds' %}"
+                                            class="component_form_group"
+                                        >
+                                            <div class="">
+                                                <div class="form-group">
+                                                    <label
+                                                        for="method"
+                                                        class="control-label"
+                                                        >Method</label
+                                                    >
+                                                    <select
+                                                        class="form-control"
+                                                        id="method"
+                                                        name="AddFoundsForm[type]"
+                                                    >
+                                                        <option value="37286">
+                                                            QR
+                                                        </option>
+                                                        <!-- <option value="46586">
+                                                            Perfect Money
+                                                        </option>
+                                                        <option value="46776">
+                                                            Cashmaal [USD]
+                                                        </option> -->
+                                                    </select>
+                                                </div>
+                                                <div
+                                                    class="form-group fields"
+                                                    id="order_description"
+                                                >
+                                                    <label
+                                                        class="control-label"
+                                                        for="field-description"
+                                                        >Instruction</label
+                                                    >
+                                                    <div
+                                                        class="panel-body border-solid border-rounded text-center"
+                                                    >
+                                                        <p></p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            NEW QR
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            INSTRUCTIONS<br />
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            <br />
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            1- Scan the QR code
+                                                            and make Payment.
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            2- Enter order ID
+                                                            and Amount below.<br />
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            3-Wait some time and
+                                                            your funds would be
+                                                            added.
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            <br />
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            <span
+                                                                style="
+                                                                    background-color: rgb(
+                                                                        255,
+                                                                        255,
+                                                                        0
+                                                                    );
+                                                                "
+                                                                >4-If the QR
+                                                                Scan is not
+                                                                working in Paytm
+                                                                Then Pay Using
+                                                                PhonePe</span
+                                                            >.<br />
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            <br />
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            Important note -
+                                                            1-Enter full order
+                                                            id always. If
+                                                            payment is made from
+                                                            phone pe then enter
+                                                            order id with the
+                                                            letter.
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            <br />
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            2- Google pay will
+                                                            not work on qr code.
+                                                            If you want to make
+                                                            payment from google
+                                                            pay then contact us
+                                                            on ticket.
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            <img
+                                                                src="/static/images/qr_page-0001.jpeg"
+                                                                style="
+                                                                    display: inline-block;
+                                                                    width: 546px;
+                                                                    max-width: 100%;
+                                                                "
+                                                                class="img-responsive"
+                                                            /><span
+                                                                style="
+                                                                    font-weight: 700;
+                                                                "
+                                                                ><font
+                                                                    color="#010101"
+                                                                    ><br /></font
+                                                            ></span>
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            <span
+                                                                style="
+                                                                    font-weight: 700;
+                                                                "
+                                                                ><font
+                                                                    color="#010101"
+                                                                    ><br /></font
+                                                            ></span>
+                                                        </p>
+                                                        <p
+                                                            style="
+                                                                margin-bottom: 0px;
+                                                                font-family: Barlow;
+                                                                font-size: 16px;
+                                                                text-align: center;
+                                                            "
+                                                        >
+                                                            <br />
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="form-group fields"
+                                                    id="order_transaction_id"
+                                                >
+                                                    <label
+                                                        class="control-label"
+                                                        for="field-transaction_id"
+                                                        >Order ID</label
+                                                    >
+                                                    <input
+                                                        class="form-control"
+                                                        name="order_id"
+                                                        value=""
+                                                        type="text"
+                                                        id="field-transaction_id"
+                                                    />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="amount"
+                                                        class="control-label"
+                                                        ><span id="amount_label"
+                                                            >Amount</span
+                                                        >
+                                                        <span
+                                                            id="amount_label_currency"
+                                                            class="hidden"
+                                                        ></span
+                                                    ></label>
+                                                    <input
+                                                        type="number"
+                                                        class="form-control"
+                                                        name="amount"
+                                                        id="amount"
+                                                        min="10"
+                                                        step="0.01"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <input
+                                                type="hidden"
+                                                name="_csrf"
+                                                value="UhwefV6SG55E89ryEJ53vPU1t6hWUgGy1cN4kKzOIP0rTiZPFuVD-SC9mIUpqgX7mF_C_zcfLOuMujTE5pwSyg=="
+                                            />
+                                            <div
+                                                class="component_button_submit"
+                                            >
+                                                <div class="">
+                                                    <button
+                                                        type="submit"
+                                                        class="btn btn-block btn-primary"
+                                                    >
+                                                        Check
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="block_16">
+                <div class="add-funds__list">
+                    <div class="bg"></div>
+                    <div class="divider-top"></div>
+                    <div class="divider-bottom"></div>
+                    <div class="container-fluid">
+                        <div class="row add-funds__table-list px-lg-4 mb-3">
+                            <div class="col-lg-8">
+                                <div class="table-bg component_table">
+                                    <div class="table-wr table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Date</th>
+                                                    <th>Method</th>
+                                                    <th>Amount</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>8918</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2022-01-05</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >16:44:14</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>30.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8916</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2022-01-05</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >16:10:15</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>30.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8878</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2022-01-04</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >18:09:18</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>125.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8833</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2022-01-03</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >17:34:15</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>30.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8654</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-12-30</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >04:05:13</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>50.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8444</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-12-25</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >11:33:14</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>30.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7590</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-12-03</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >19:28:10</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>30.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7483</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-12-01</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >00:23:11</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>20.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7373</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-11-28</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >16:27:11</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>50.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6833</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-11-16</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >21:31:13</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>50.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6769</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-11-15</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >12:58:05</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>40.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6605</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-11-11</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >19:42:05</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>50.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6498</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-11-09</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >16:00:06</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>50.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6409</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-11-07</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >12:35:05</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>50.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5970</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-10-27</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >18:18:04</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>300.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5967</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-10-27</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >16:15:05</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>20.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5605</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-10-17</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >16:43:05</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>50.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5246</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-10-08</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >22:44:06</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>110.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5055</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-10-03</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >22:24:30</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>100.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4961</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-10-01</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >08:04:34</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>100.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4899</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-09-29</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >20:06:37</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>20.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4776</td>
+                                                    <td>
+                                                        <span class="nowrap"
+                                                            >2021-09-27</span
+                                                        >
+                                                        <span class="nowrap"
+                                                            >10:42:46</span
+                                                        >
+                                                    </td>
+                                                    <td>Paytm QR</td>
+                                                    <td>50.00</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row add-funds__table-list px-lg-4">
+                            <div class="col-lg-8">
+                                <nav class="component_pagination">
+                                    <div class=""></div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper-content__footer"></div>
+    </div>
+</div>
+
+<style>
+    @media (max-width: 991px) {
+        .wrapper-sidebar-navbar {
+            flex-direction: column;
+        }
+    }
+    .tab .nav-item .active {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0px;
+        color: #07264a;
+        background: #ffffff;
+        border-color: #000000;
+    }
+    .tab .nav-item {
+        margin-right: 8px;
+    }
+    .tab .nav-item .nav-link {
+        font-size: 14px;
+        letter-spacing: 0px;
+        font-weight: 500;
+        font-style: normal;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 12px;
+        padding-right: 12px;
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.2);
+        border-color: #000000;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-style: solid;
+        border-left-width: 0px;
+        border-right-width: 0px;
+        border-top-width: 0px;
+        border-bottom-width: 0px;
+        box-shadow: none;
+    }
+    .table {
+        margin-bottom: 0px;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+    .table thead:first-child tr th:first-child {
+        padding-left: 16px;
+        border-top-left-radius: 16px;
+    }
+    .table thead:first-child tr th:last-child {
+        padding-right: 16px;
+        border-top-right-radius: 16px;
+    }
+    .table thead:last-of-type tr th {
+        border-top-width: 0;
+        border-bottom-width: 0;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+    }
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+    }
+    .table th,
+    .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+    .table-wr {
+        box-shadow: 0 16px 24px 0 rgba(0, 0, 0, 0.08);
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+    .table thead:first-child tr th {
+        font-size: 14px;
+        letter-spacing: 0px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-right: 24px;
+        padding-left: 24px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        vertical-align: middle;
+        height: 56px;
+        border-bottom-width: 0px;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        color: #61768e !important;
+        background: #ffffff !important;
+    }
+    .table-responsive__search {
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+    .table tbody tr td {
+        font-size: 16px !important;
+        letter-spacing: 0px !important;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 24px;
+        padding-right: 24px;
+        vertical-align: middle;
+        height: 40px;
+        color: #334e6e;
+        background: #ffffff;
+        border-color: #dbd7e8;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #dbd7e8;
+    }
+    .table tbody tr:nth-child(odd) td {
+        background: #e4e1ee;
+    }
+</style>
+{% endblock content %}

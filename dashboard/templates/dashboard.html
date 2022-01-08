@@ -1,551 +1,14 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
-
-<div class="wrapper wrapper-sidebar-navbar" style="background-color: #160b3e">
-    <div id="block_34" class="component_private_navbar">
-        <span class="component_private_navbar">
-            <div class="component-navbar-private__wrapper">
-                <div
-                    class="sidebar-block__top-static component-navbar component-navbar__navbar-private editor__component-wrapper"
-                >
-                    <div>
-                        <nav class="navbar navbar-expand-lg navbar-light">
-                            <div class="sidebar-block__top-brand">
-                                <div class="component-navbar-logo">
-                                    <a href="{% url 'dashboard' %}">
-                                        <img
-                                            src="{% static 'images/logobest.jpeg' %}"
-                                            class="sidebar-block__top-logo"
-                                            alt=""
-                                            title=""
-                                        />
-                                    </a>
-                                </div>
-                            </div>
-                            <button
-                                class="navbar-toggler"
-                                type="button"
-                                data-toggle="collapse"
-                                data-target="#navbar-collapse-34"
-                                aria-controls="navbar-collapse-34"
-                                aria-expanded="false"
-                                aria-label="Toggle navigation"
-                            >
-                                <span class="navbar-burger">
-                                    <span class="navbar-burger-line"></span>
-                                </span>
-                            </button>
-                            <div
-                                class="collapse navbar-collapse"
-                                id="navbar-collapse-34"
-                            >
-                                <div class="d-flex component-navbar-collapse">
-                                    <ul
-                                        class="navbar-nav navbar-nav-sidebar-menu"
-                                    >
-                                        <li
-                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
-                                        >
-                                            <a
-                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private component-navbar-nav-link-active__navbar-private"
-                                                href="/"
-                                            >
-                                                <span
-                                                    class="component-navbar-nav-link-icon"
-                                                >
-                                                    <span
-                                                        class="fas fa-cart-plus"
-                                                    ></span>
-                                                </span>
-                                                New order
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
-                                        >
-                                            <a
-                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                                href="/services"
-                                            >
-                                                <span
-                                                    class="component-navbar-nav-link-icon"
-                                                >
-                                                    <span
-                                                        class="fad fa-bars"
-                                                    ></span>
-                                                </span>
-                                                Services
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
-                                        >
-                                            <a
-                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                                href="/orders"
-                                            >
-                                                <span
-                                                    class="component-navbar-nav-link-icon"
-                                                >
-                                                    <span
-                                                        class="fas fa-bags-shopping"
-                                                    ></span>
-                                                </span>
-                                                Orders
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
-                                        >
-                                            <a
-                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                                href="/refill"
-                                            >
-                                                <span
-                                                    class="component-navbar-nav-link-icon"
-                                                >
-                                                    <span
-                                                        class="fas fa-gas-pump"
-                                                    ></span>
-                                                </span>
-                                                Refill
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
-                                        >
-                                            <a
-                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                                href="/addfunds"
-                                            >
-                                                <span
-                                                    class="component-navbar-nav-link-icon"
-                                                >
-                                                    <span
-                                                        class="fab fa-cc-amazon-pay"
-                                                    ></span>
-                                                </span>
-                                                Add funds
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
-                                        >
-                                            <a
-                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                                href="/api"
-                                            >
-                                                <span
-                                                    class="component-navbar-nav-link-icon"
-                                                >
-                                                    <span
-                                                        class="fad fa-signal-stream"
-                                                    ></span>
-                                                </span>
-                                                API
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
-                                        >
-                                            <a
-                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                                href="/affiliates"
-                                            >
-                                                <span
-                                                    class="component-navbar-nav-link-icon"
-                                                >
-                                                    <span
-                                                        class="fas fa-network-wired"
-                                                    ></span>
-                                                </span>
-                                                Affiliates
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
-                                        >
-                                            <a
-                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                                href="/child-panels"
-                                            >
-                                                <span
-                                                    class="component-navbar-nav-link-icon"
-                                                >
-                                                    <span
-                                                        class="fad fa-browser"
-                                                    ></span>
-                                                </span>
-                                                Child panel
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
-                                        >
-                                            <a
-                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                                href="/tickets"
-                                            >
-                                                <span
-                                                    class="component-navbar-nav-link-icon"
-                                                >
-                                                    <span
-                                                        class="fas fa-ticket-alt"
-                                                    ></span>
-                                                </span>
-                                                Tickets
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
-                                        >
-                                            <a
-                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                                href="/massorder"
-                                            >
-                                                <span
-                                                    class="component-navbar-nav-link-icon"
-                                                >
-                                                    <span
-                                                        class="fad fa-truck"
-                                                    ></span>
-                                                </span>
-                                                Mass order
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul
-                                        class="navbar-nav navbar-nav-currencies"
-                                    >
-                                        <li
-                                            class="nav-item d-flex align-items-center component-navbar-nav-item component-navbar-private-nav-item component-navbar-balance-wrap__navbar-private"
-                                        >
-                                            <a
-                                                class="component-navbar-balance-item__navbar-private"
-                                                >₹18.49521</a
-                                            >
-                                        </li>
-                                    </ul>
-                                    <ul class="navbar-nav">
-                                        <li
-                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
-                                        >
-                                            <a
-                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                                href="/account"
-                                                >Account</a
-                                            >
-                                        </li>
-                                        <li
-                                            class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
-                                        >
-                                            <a
-                                                class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                                href="/logout"
-                                                >Logout</a
-                                            >
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </span>
-        {% include 'components/dashboard_leftsidebar.html' %}
-    </div>
+{% extends 'base.html' %} {% block content %}
+<div class="wrapper wrapper-sidebar-navbar">
+    {% include 'components/dashboard_leftsidebar.html' %}
 
     <div class="wrapper-content">
         <div class="wrapper-content__header"></div>
         <div class="wrapper-content__body">
-            <!-- Main variables *content* -->
-            <div id="block_77">
-                <div class="totals">
-                    <div class="bg"></div>
-                    <div class="divider-top"></div>
-                    <div class="divider-bottom"></div>
-                    <div class="container-fluid">
-                        <div
-                            class="row align-items-start justify-content-start"
-                        >
-                            <div class="col-lg-3 col-md-6 col-sm-12 mb-2 mt-2">
-                                <div
-                                    class="card h-100"
-                                    style="
-                                        padding-top: 24px;
-                                        padding-bottom: 24px;
-                                        border-left-width: 0px;
-                                        border-right-width: 0px;
-                                        border-bottom-width: 0px;
-                                        border-top-width: 0px;
-                                        box-shadow: 0 8px 24px 0
-                                            rgba(0, 0, 0, 0.32);
-                                        border-style: solid;
-                                    "
-                                >
-                                    <div class="totals-block__card">
-                                        <div class="totals-block__card-left">
-                                            <div
-                                                class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
-                                            >
-                                                <span
-                                                    class="totals-block__icon style-text-primary far fa-list-ul"
-                                                    style="
-                                                        font-size: 38px;
-                                                        transform: rotate(0deg);
+            {% include 'components/dashboard_herosection.html' %}
+            <div />
+            {% include 'components/dashboard_offers.html' %}
 
-                                                        text-shadow: none;
-                                                        border-radius: 0px;
-                                                    "
-                                                ></span>
-                                            </div>
-                                        </div>
-                                        <div class="totals-block__card-right">
-                                            <div class="totals-block__count">
-                                                <div
-                                                    class="totals-block__count-value style-text-primary"
-                                                    style="
-                                                        font-size: 36px;
-                                                        line-height: 36px;
-                                                    "
-                                                >
-                                                    ashishtiwaridm
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="totals-block__card-name"
-                                            >
-                                                <p>Welcome to panel!</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 mb-2 mt-2">
-                                <div
-                                    class="card h-100"
-                                    style="
-                                        padding-top: 24px;
-                                        padding-bottom: 24px;
-                                        border-left-width: 0px;
-                                        border-right-width: 0px;
-                                        border-bottom-width: 0px;
-                                        border-top-width: 0px;
-                                        box-shadow: 0 8px 24px 0
-                                            rgba(0, 0, 0, 0.32);
-                                        border-style: solid;
-                                    "
-                                >
-                                    <div class="totals-block__card">
-                                        <div class="totals-block__card-left">
-                                            <div
-                                                class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
-                                            >
-                                                <span
-                                                    class="totals-block__icon style-text-primary far fa-clipboard-list"
-                                                    style="
-                                                        font-size: 38px;
-                                                        transform: rotate(0deg);
-
-                                                        text-shadow: none;
-                                                        border-radius: 0px;
-                                                    "
-                                                ></span>
-                                            </div>
-                                        </div>
-                                        <div class="totals-block__card-right">
-                                            <div class="totals-block__count">
-                                                <div
-                                                    class="totals-block__count-value style-text-primary"
-                                                    style="
-                                                        font-size: 36px;
-                                                        line-height: 36px;
-                                                    "
-                                                >
-                                                    1,151.50
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="totals-block__card-name"
-                                            >
-                                                <p>Spent balance</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 mb-2 mt-2">
-                                <div
-                                    class="card h-100"
-                                    style="
-                                        padding-top: 24px;
-                                        padding-bottom: 24px;
-                                        border-left-width: 0px;
-                                        border-right-width: 0px;
-                                        border-bottom-width: 0px;
-                                        border-top-width: 0px;
-                                        box-shadow: 0 8px 24px 0
-                                            rgba(0, 0, 0, 0.32);
-                                        border-style: solid;
-                                    "
-                                >
-                                    <div class="totals-block__card">
-                                        <div class="totals-block__card-left">
-                                            <div
-                                                class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
-                                            >
-                                                <span
-                                                    class="totals-block__icon style-text-primary far fa-users"
-                                                    style="
-                                                        font-size: 38px;
-                                                        transform: rotate(0deg);
-
-                                                        text-shadow: none;
-                                                        border-radius: 0px;
-                                                    "
-                                                ></span>
-                                            </div>
-                                        </div>
-                                        <div class="totals-block__card-right">
-                                            <div class="totals-block__count">
-                                                <div
-                                                    class="totals-block__count-value style-text-primary"
-                                                    style="
-                                                        font-size: 36px;
-                                                        line-height: 36px;
-                                                    "
-                                                >
-                                                    201410
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="totals-block__card-name"
-                                            >
-                                                <p>Panel orders</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 mb-2 mt-2">
-                                <div
-                                    class="card h-100"
-                                    style="
-                                        padding-top: 24px;
-                                        padding-bottom: 24px;
-                                        border-left-width: 0px;
-                                        border-right-width: 0px;
-                                        border-bottom-width: 0px;
-                                        border-top-width: 0px;
-                                        box-shadow: 0 8px 24px 0
-                                            rgba(0, 0, 0, 0.32);
-                                        border-style: solid;
-                                    "
-                                >
-                                    <div class="totals-block__card">
-                                        <div class="totals-block__card-left">
-                                            <div
-                                                class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
-                                            >
-                                                <span
-                                                    class="totals-block__icon style-text-primary far fa-clipboard-list-check"
-                                                    style="
-                                                        font-size: 38px;
-                                                        transform: rotate(0deg);
-
-                                                        text-shadow: none;
-                                                        border-radius: 0px;
-                                                    "
-                                                ></span>
-                                            </div>
-                                        </div>
-                                        <div class="totals-block__card-right">
-                                            <div class="totals-block__count">
-                                                <div
-                                                    class="totals-block__count-value style-text-primary"
-                                                    style="
-                                                        font-size: 36px;
-                                                        line-height: 36px;
-                                                    "
-                                                >
-                                                    ₹18.49521
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="totals-block__card-name"
-                                            >
-                                                <p>Account balance</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="block_85">
-                <div class="text-block">
-                    <div class="bg"></div>
-                    <div class="divider-top"></div>
-                    <div class="divider-bottom"></div>
-                    <div class="container">
-                        <div class="row px-lg-4">
-                            <div class="col-12">
-                                <div
-                                    class="text-block__description style-text-white"
-                                >
-                                    <p class="text-center text-white">
-                                        <span style="font-size: 20px"
-                                            ><strong style="font-weight: bold"
-                                                >NEW YEAR OFFER🎉</strong
-                                            ></span
-                                        >
-                                    </p>
-                                    <p><br /></p>
-                                    <p class="text-center text-white">
-                                        <span style="color: rgba(255, 0, 0, 1)"
-                                            ><span style="font-size: 36px"
-                                                ><strong
-                                                    style="font-weight: bold"
-                                                    >5%</strong
-                                                ></span
-                                            ></span
-                                        ><span style="font-size: 36px"
-                                            ><strong style="font-weight: bold">
-                                                BONUS ON
-                                            </strong></span
-                                        ><span style="color: rgba(234, 2, 2, 1)"
-                                            ><span style="font-size: 36px"
-                                                ><strong
-                                                    style="font-weight: bold"
-                                                    >ADDING</strong
-                                                ></span
-                                            ></span
-                                        ><span style="font-size: 36px"
-                                            ><strong style="font-weight: bold">
-                                                FUND [</strong
-                                            ></span
-                                        ><span
-                                            style="color: rgba(255, 229, 0, 1)"
-                                            ><span style="font-size: 36px"
-                                                ><strong
-                                                    style="font-weight: bold"
-                                                    >MIN 5000/-</strong
-                                                ></span
-                                            ></span
-                                        ><span style="font-size: 36px"
-                                            ><strong style="font-weight: bold"
-                                                >]</strong
-                                            ></span
-                                        >
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div id="block_13">
                 <div class="new_order-block">
                     <div class="bg"></div>
@@ -559,11 +22,17 @@
                                 >
                                     <div class="card">
                                         <form
-                                            action="/"
+                                            action="{% url 'dashboard' %}"
                                             method="post"
                                             id="order-form"
                                         >
                                             <div class="component_button_forms">
+                                                {% if error_message %}
+
+                                            <div class="text-sm my-1 text-danger">
+                                                {{error_message}}
+                                            </div>
+                                            {% endif %}
                                                 <div class="form-group">
                                                     <label
                                                         for="orderform-category"
@@ -574,278 +43,16 @@
                                                         class="form-control"
                                                         id="orderform-category"
                                                         name="OrderForm[category]"
+                                                        onchange="catChange(this)"
                                                     >
+                                                        {% for category in categories %}
+
                                                         <option
-                                                            value="84"
-                                                            selected=""
+                                                            value="{{category.id}}"
                                                         >
-                                                            🔥SASTAPROVIDER
-                                                            SPECIAL🔥REELS,VIEWS,LIKES,FOLLOWERS
+                                                            {{category.name}}
                                                         </option>
-                                                        <option value="117">
-                                                            💲▶ YouTube
-                                                            Services: 𝗕𝗲𝘀𝘁 𝗳𝗼𝗿
-                                                            𝗠𝗼𝗻𝗶𝘁𝗶𝘇𝗮𝘁𝗶𝗼𝗻
-                                                            [premium servers]
-                                                        </option>
-                                                        <option value="105">
-                                                            ⭐Our Best Services
-                                                            (Recommended)⭐
-                                                        </option>
-                                                        <option value="101">
-                                                            🙂 Instagram
-                                                            Followers Bulk
-                                                            Packages
-                                                        </option>
-                                                        <option value="5">
-                                                            💝Instagram
-                                                            Followers Refill💝
-                                                            NON DROP*
-                                                        </option>
-                                                        <option value="8">
-                                                            💖Instagram Likes
-                                                            𝙃𝙄𝙂𝙃 𝙌𝙐𝘼𝙇𝙄𝙏𝙔 💖
-                                                        </option>
-                                                        <option value="116">
-                                                            🔥 Amazing Refill
-                                                            NON DROP Services 🔥
-                                                        </option>
-                                                        <option value="112">
-                                                            💲💝Cheapest
-                                                            Instagram Likes💝💲
-                                                            [ Not Guaranteed ]
-                                                        </option>
-                                                        <option value="99">
-                                                            ⌚Limited Time
-                                                            Offer⏳
-                                                        </option>
-                                                        <option value="96">
-                                                            🔥OUR TOP SERVICES
-                                                            ⚡
-                                                        </option>
-                                                        <option value="12">
-                                                            💢 Reels Likes,
-                                                            Comments, Saves etc
-                                                            💢
-                                                        </option>
-                                                        <option value="11">
-                                                            💢 Instagram Reel
-                                                            Views 💢
-                                                        </option>
-                                                        <option value="113">
-                                                            💫 Instagram Video
-                                                            Views 💫
-                                                        </option>
-                                                        <option value="85">
-                                                            ⛽Instagram Refill
-                                                            Services
-                                                            Part-2🔥Cheap&amp;Best😉
-                                                        </option>
-                                                        <option value="88">
-                                                            ❤Instagram Views
-                                                            +Reel Views 👌[SUPER
-                                                            FAST SPEED]⚡
-                                                        </option>
-                                                        <option value="90">
-                                                            ❤Instagram Comment
-                                                            💌
-                                                        </option>
-                                                        <option value="7">
-                                                            💛Instagram
-                                                            Followers Non
-                                                            Refill【&#xFEFF;ＲＥＡＬ】💛
-                                                        </option>
-                                                        <option value="1">
-                                                            🔥🇮🇳 Pure Indian
-                                                            Services 🇮🇳🔥 100%
-                                                            [START IN 0-48Hr]
-                                                            V.I.P✔
-                                                        </option>
-                                                        <option value="53">
-                                                            ❤ Instagram: Auto
-                                                            Likes Good Quality
-                                                            👌❤
-                                                        </option>
-                                                        <option value="67">
-                                                            TikTok Services🔥
-                                                        </option>
-                                                        <option value="27">
-                                                            🚗 Instagram Auto
-                                                            Services 🚗
-                                                        </option>
-                                                        <option value="109">
-                                                            😍 Promotion
-                                                            Services [Cheap]
-                                                        </option>
-                                                        <option value="15">
-                                                            💌 Instagram Saves,
-                                                            Impression, Profile
-                                                            Visit etc. 💌
-                                                        </option>
-                                                        <option value="13">
-                                                            📺 IGTV 📺
-                                                        </option>
-                                                        <option value="14">
-                                                            ⚡ Instagram Story
-                                                            &amp; Live Video
-                                                            Views ⚡
-                                                        </option>
-                                                        <option value="106">
-                                                            🇮🇳Independence Day
-                                                            Special🇮🇳
-                                                        </option>
-                                                        <option value="107">
-                                                            🇮🇳 TOP INDIAN
-                                                            SERVICE SPECIAL
-                                                        </option>
-                                                        <option value="28">
-                                                            🎯 Instagram Country
-                                                            Targeted Services 🎯
-                                                        </option>
-                                                        <option value="108">
-                                                            ⛈️ Monsoon Offer ⛈️
-                                                            [ until 31/08/2021 ]
-                                                        </option>
-                                                        <option value="4">
-                                                            💎 Best Services
-                                                            𝐻𝐼𝒢𝐻 𝒬𝒰𝒜𝐿𝐼𝒯𝒴 💎
-                                                        </option>
-                                                        <option value="16">
-                                                            〽 Telegram 〽
-                                                        </option>
-                                                        <option value="122">
-                                                            Telegram Members
-                                                            [usa/iran]
-                                                        </option>
-                                                        <option value="121">
-                                                            Telegram Members
-                                                            [NON DROP + LOW
-                                                            DROP]
-                                                        </option>
-                                                        <option value="120">
-                                                            Telegram Pro
-                                                            Services
-                                                        </option>
-                                                        <option value="325">
-                                                            Telegram No
-                                                            Guarantee
-                                                        </option>
-                                                        <option value="17">
-                                                            👍 Facebook Post
-                                                            Likes and Reactions
-                                                            ❤😡😢😂🤗😯
-                                                        </option>
-                                                        <option value="115">
-                                                            ⚡ Facebook: Post
-                                                            Likes | Post Emoji
-                                                            (Indian🔥)
-                                                        </option>
-                                                        <option value="19">
-                                                            💤 FaceBook Page
-                                                            Likes and Followers
-                                                            💤
-                                                        </option>
-                                                        <option value="20">
-                                                            👨&zwj;💻 Facebook
-                                                            Profile Followers
-                                                            👨&zwj;💻
-                                                        </option>
-                                                        <option value="21">
-                                                            💯 Facebook Video
-                                                            Views 💯
-                                                        </option>
-                                                        <option value="22">
-                                                            📛 Youtube
-                                                            Subscribers 📛
-                                                        </option>
-                                                        <option value="23">
-                                                            👀 Youtube Views 👀
-                                                        </option>
-                                                        <option value="24">
-                                                            ⏲👀 Youtube Watch
-                                                            Time 👀⏲
-                                                        </option>
-                                                        <option value="25">
-                                                            ➿ Youtube Comments
-                                                            ➿
-                                                        </option>
-                                                        <option value="26">
-                                                            🐦 Twitter Followers
-                                                            🐦
-                                                        </option>
-                                                        <option value="33">
-                                                            🔆 Youtube
-                                                            Likes/Dislikes🔆
-                                                        </option>
-                                                        <option value="51">
-                                                            ✍️🔥Exclusive
-                                                            Comments Services
-                                                            [BLUE TICK]
-                                                        </option>
-                                                        <option value="54">
-                                                            💎 Best Servers
-                                                            [🔥NON DROP🔥]
-                                                        </option>
-                                                        <option value="31">
-                                                            ☑️ Website Traffic
-                                                            Worldwide
-                                                        </option>
-                                                        <option value="92">
-                                                            ♛ Clubhouse: [
-                                                            Followers | Room
-                                                            Visitors ] 🔜
-                                                        </option>
-                                                        <option value="55">
-                                                            🍓 LIMITED OFFER 💯
-                                                        </option>
-                                                        <option value="59">
-                                                            🔥 Spotify
-                                                        </option>
-                                                        <option value="60">
-                                                            INSTAGRAM POLL
-                                                            VOTE😍
-                                                        </option>
-                                                        <option value="62">
-                                                            🆕 What's New?
-                                                        </option>
-                                                        <option value="64">
-                                                            ☑️ YouTube Views
-                                                            [Adsense Earning]
-                                                        </option>
-                                                        <option value="65">
-                                                            ☑️ Youtube Adwords
-                                                            Views
-                                                        </option>
-                                                        <option value="66">
-                                                            ▼Linkedin
-                                                        </option>
-                                                        <option value="93">
-                                                            🖱️Web Site Organic
-                                                            Traffic
-                                                        </option>
-                                                        <option value="94">
-                                                            👥 Facebook Live
-                                                            Stream
-                                                        </option>
-                                                        <option value="97">
-                                                            👥 Facebook Event /
-                                                            Group Members /
-                                                            Others
-                                                        </option>
-                                                        <option value="114">
-                                                            testing don't fetch
-                                                        </option>
-                                                        <option value="118">
-                                                            telegram testing
-                                                            baajii
-                                                        </option>
-                                                        <option value="394">
-                                                            ⏺ Telegram Targeted
-                                                            Members 📌NEW
-                                                        </option>
-                                                        <option value="0">
-                                                            Other
-                                                        </option>
+                                                        {% endfor %}
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
@@ -857,150 +64,21 @@
                                                     <select
                                                         class="form-control"
                                                         id="orderform-service"
-                                                        name="OrderForm[service]"
+                                                        name="service"
+                                                        onchange="serviceChange(this)"
                                                     >
-                                                        <option
-                                                            data-type="12"
-                                                            value="1167"
-                                                        >
-                                                            ɪɢ Followers for
-                                                            Private profile -
-                                                            65.76 per 1000
-                                                        </option>
-                                                        <option
-                                                            data-type="0"
-                                                            value="1118"
-                                                        >
-                                                            🇮🇳Instagram
-                                                            Followers [Real]
-                                                            [Indian Majority]
-                                                            [Perfect Quality]
-                                                            [5-10K/D] [0-10/M]
-                                                            [Recommended] -
-                                                            23.73 per 1000
-                                                        </option>
-                                                        <option
-                                                            data-type="0"
-                                                            value="815"
-                                                        >
-                                                            😍 Instagram Real
-                                                            Mix Likes [30 Day
-                                                            Refill Button ✔ Max:
-                                                            50k🚀Speed:- 1 Click
-                                                            Delivery 🔥NON DROP
-                                                            - 📢 Recommended -
-                                                            10.00 per 1000
-                                                        </option>
-                                                        <option
-                                                            data-type="0"
-                                                            value="848"
-                                                        >
-                                                            Instagram Followers
-                                                            - ( 70% Real ) [ Max
-                                                            - 100K | Speed:
-                                                            10K/Day ] [ Refill
-                                                            Button: 30 Days ] [
-                                                            Ultrafast - INSTANT
-                                                            ] - 62.05 per 1000
-                                                        </option>
-                                                        <option
-                                                            data-type="0"
-                                                            value="754"
-                                                        >
-                                                            Instagram REAL HQ
-                                                            USA🇱🇷 Followers |
-                                                            𝐍𝐎𝐍𝐃𝐑𝐎𝐏!! |&nbsp;
-                                                            Instant! 🔥🔥[R30] -
-                                                            218.71 per 1000
-                                                        </option>
-                                                        <option
-                                                            data-type="0"
-                                                            value="804"
-                                                        >
-                                                            🇮🇳 Instagram
-                                                            Followers Fastest
-                                                            Server [70% Indian
-                                                            Active] [30 Days
-                                                            Refill Button] [Max
-                                                            10% Drop] [High
-                                                            Quality] [Fastest
-                                                            Server] [0-5/M] -
-                                                            59.95 per 1000
-                                                        </option>
-                                                        <option
-                                                            data-type="0"
-                                                            value="572"
-                                                        >
-                                                            Instagram Likes +
-                                                            Reel Likes |
-                                                            Exclusive | Cheapest
-                                                            | Superfast | MAX
-                                                            10K⚡️⚡️⚡️ - 5.83
-                                                            per 1000
-                                                        </option>
-                                                        <option
-                                                            data-type="0"
-                                                            value="573"
-                                                        >
-                                                            TikTok Views |
-                                                            DAILY-INSTANT START
-                                                            | MAX 10M
-                                                            ⚡️⚡️⚡️⚡️🔥🔥 -
-                                                            0.18 per 1000
-                                                        </option>
-                                                        <option
-                                                            data-type="0"
-                                                            value="574"
-                                                        >
-                                                            Emergency Instagram
-                                                            Views | Impressions
-                                                            | MAX 10M ⭐⭐⭐ -
-                                                            34.08 per 1000
-                                                        </option>
-                                                        <option
-                                                            data-type="0"
-                                                            value="575"
-                                                        >
-                                                            Instagram Views+Reel
-                                                            Views | Cheapest |
-                                                            MAX 500K - 1.61 per
-                                                            1000
-                                                        </option>
-                                                        <option
-                                                            data-type="0"
-                                                            value="576"
-                                                        >
-                                                            Instagram Views |
-                                                            New | Fast | MAX 4M
-                                                            ⭐ - 3.58 per 1000
-                                                        </option>
-                                                        <option
-                                                            data-type="12"
-                                                            value="581"
-                                                        >
-                                                            Instagram Likes |
-                                                            Instant | Fast | MAX
-                                                            15K ⚡️🔥 - 4.42 per
-                                                            1000
-                                                        </option>
-                                                        <option
-                                                            data-type="12"
-                                                            value="582"
-                                                        >
-                                                            Instagram Followers
-                                                            | Fastest | MAX 10K
-                                                            ⚡️⚡️⚡️ - 23.20
-                                                            per 1000
-                                                        </option>
-                                                        <option
-                                                            data-type="12"
-                                                            value="701"
-                                                        >
-                                                            TikTok Views - [
-                                                            Promotional -
-                                                            Fastest Delivery ]
-                                                            🔥💧 - 0.18 per 1000
-                                                        </option>
+                                                        {% for category in categories %} 
+                                                            {% if forloop.first %} 
+                                                                {% for service in category.services %}
+
+                                                                <option
+                                                                    value="{{service.id}}"
+                                                                >
+                                                                    {{service.name}}
+                                                                </option>
+                                                                {% endfor %}
+                                                            {% endif %} 
+                                                        {% endfor %}
                                                     </select>
                                                 </div>
                                                 <div
@@ -1013,33 +91,19 @@
                                                         >Description</label
                                                     >
                                                     <div
-                                                        class="panel-description"
+                                                        class=" form-control panel-description"
                                                     >
-                                                        Instant.<br />Speed up
-                                                        to 4k/day.<br />Good
-                                                        quality.<br />Can be
-                                                        used for a Private
-                                                        account.<br />No Refill.
+                                                    {% for category in categories %} 
+                                                    {% if forloop.first %} 
+                                                        {% for service in category.services %}
+
+                                                            {{service.description}}
+                                                        {% endfor %}
+                                                    {% endif %} 
+                                                {% endfor %}
                                                     </div>
                                                 </div>
                                                 <div id="fields">
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_user_name"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-user_name"
-                                                            >Username</label
-                                                        >
-                                                        <input
-                                                            class="form-control w-full"
-                                                            name="OrderForm[user_name]"
-                                                            value=""
-                                                            type="text"
-                                                            id="field-orderform-fields-user_name"
-                                                        />
-                                                    </div>
                                                     <div
                                                         class="form-group fields"
                                                         id="order_link"
@@ -1051,9 +115,10 @@
                                                         >
                                                         <input
                                                             class="form-control"
-                                                            name="OrderForm[link]"
+                                                            name="link"
                                                             value=""
-                                                            type="text"
+                                                            required
+                                                            type="url"
                                                             id="field-orderform-fields-link"
                                                         />
                                                     </div>
@@ -1066,580 +131,18 @@
                                                             for="field-orderform-fields-quantity"
                                                             >Quantity</label
                                                         >
+                                                        <!-- onchange="detectPriceChange(this)" -->
                                                         <input
-                                                            class="form-control"
-                                                            name="OrderForm[quantity]"
-                                                            value=""
-                                                            type="text"
+                                                            class="form-control quantity"
+                                                            name="quantity"
+                                                            oninput="detectPriceChange(this)"
+                                                            type="number"
+                                                            required
                                                             id="field-orderform-fields-quantity"
                                                         /><small
                                                             class="help-block min-max"
-                                                            >Min: 20 - Max:
-                                                            15000</small
+                                                            ></small
                                                         >
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_keywords"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-keywords"
-                                                            >Keywords (1 per
-                                                            line)</label
-                                                        >
-                                                        <textarea
-                                                            class="form-control"
-                                                            name="OrderForm[keywords]"
-                                                            id="field-orderform-fields-keywords"
-                                                            cols="30"
-                                                            rows="10"
-                                                        ></textarea>
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_comment"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-comment"
-                                                            >Comments (1 per
-                                                            line)</label
-                                                        >
-                                                        <textarea
-                                                            class="form-control"
-                                                            name="OrderForm[comment]"
-                                                            id="field-orderform-fields-comment"
-                                                            cols="30"
-                                                            rows="10"
-                                                        ></textarea>
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_mentionUsernames"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-mentionUsernames"
-                                                            >Usernames (1 per
-                                                            line)</label
-                                                        >
-                                                        <textarea
-                                                            class="form-control"
-                                                            name="OrderForm[mentionUsernames]"
-                                                            id="field-orderform-fields-mentionUsernames"
-                                                            cols="30"
-                                                            rows="10"
-                                                        ></textarea>
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_usernames"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-usernames"
-                                                            >Usernames (1 per
-                                                            line)</label
-                                                        >
-                                                        <textarea
-                                                            class="form-control w-full"
-                                                            name="OrderForm[usernames]"
-                                                            id="field-orderform-fields-usernames"
-                                                            cols="30"
-                                                            rows="10"
-                                                        ></textarea>
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_usernames_custom"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-usernames_custom"
-                                                            >Usernames (1 per
-                                                            line)</label
-                                                        >
-                                                        <textarea
-                                                            class="form-control"
-                                                            name="OrderForm[usernames_custom]"
-                                                            id="field-orderform-fields-usernames_custom"
-                                                            cols="30"
-                                                            rows="10"
-                                                        ></textarea>
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_username"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-username"
-                                                            >Username</label
-                                                        >
-                                                        <input
-                                                            class="form-control"
-                                                            name="OrderForm[username]"
-                                                            value=""
-                                                            type="text"
-                                                            id="field-orderform-fields-username"
-                                                        />
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_mediaUrl"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-mediaUrl"
-                                                            >Media URL</label
-                                                        >
-                                                        <input
-                                                            class="form-control"
-                                                            name="OrderForm[mediaUrl]"
-                                                            value=""
-                                                            type="text"
-                                                            id="field-orderform-fields-mediaUrl"
-                                                        />
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_hashtag"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-hashtag"
-                                                            >Hashtag</label
-                                                        >
-                                                        <input
-                                                            class="form-control"
-                                                            name="OrderForm[hashtag]"
-                                                            value=""
-                                                            type="text"
-                                                            id="field-orderform-fields-hashtag"
-                                                        />
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_hashtags"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-hashtags"
-                                                            >Hashtags (1 per
-                                                            line)</label
-                                                        >
-                                                        <textarea
-                                                            class="form-control"
-                                                            name="OrderForm[hashtags]"
-                                                            id="field-orderform-fields-hashtags"
-                                                            cols="30"
-                                                            rows="10"
-                                                        ></textarea>
-                                                    </div>
-                                                    <div id="dripfeed">
-                                                        <div
-                                                            class="form-group fields"
-                                                            id="order_check"
-                                                        >
-                                                            <div
-                                                                class="form-group__checkbox"
-                                                            >
-                                                                <label
-                                                                    class="form-group__checkbox-label"
-                                                                >
-                                                                    <input
-                                                                        name="OrderForm[check]"
-                                                                        value="1"
-                                                                        type="checkbox"
-                                                                        id="field-orderform-fields-check"
-                                                                    />
-                                                                    <span
-                                                                        class="checkmark"
-                                                                    ></span>
-                                                                </label>
-                                                                <label
-                                                                    for="field-orderform-fields-check"
-                                                                    class="form-group__label-title"
-                                                                >
-                                                                    Drip-feed
-                                                                </label>
-                                                            </div>
-                                                            <div
-                                                                class="hidden depend-fields"
-                                                                id="dripfeed-options"
-                                                                data-depend="field-orderform-fields-check"
-                                                            >
-                                                                <div
-                                                                    class="form-group"
-                                                                >
-                                                                    <label
-                                                                        class="control-label"
-                                                                        for="field-orderform-fields-runs"
-                                                                        >Runs</label
-                                                                    >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        name="OrderForm[runs]"
-                                                                        value=""
-                                                                        type="text"
-                                                                        id="field-orderform-fields-runs"
-                                                                    />
-                                                                </div>
-
-                                                                <div
-                                                                    class="form-group"
-                                                                >
-                                                                    <label
-                                                                        class="control-label"
-                                                                        for="field-orderform-fields-interval"
-                                                                        >Interval
-                                                                        (minutes)</label
-                                                                    >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        name="OrderForm[interval]"
-                                                                        value=""
-                                                                        type="text"
-                                                                        id="field-orderform-fields-interval"
-                                                                    />
-                                                                </div>
-
-                                                                <div
-                                                                    class="form-group"
-                                                                >
-                                                                    <label
-                                                                        class="control-label"
-                                                                        for="field-orderform-fields-total-quantity"
-                                                                        >Total
-                                                                        quantity</label
-                                                                    >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        name="OrderForm[total_quantity]"
-                                                                        value=""
-                                                                        type="text"
-                                                                        id="field-orderform-fields-total-quantity"
-                                                                        readonly=""
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_posts"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-posts"
-                                                            >New posts</label
-                                                        >
-                                                        <input
-                                                            class="form-control"
-                                                            name="OrderForm[posts]"
-                                                            value=""
-                                                            type="text"
-                                                            id="field-orderform-fields-posts"
-                                                        />
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_min"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="order_count"
-                                                            >Quantity</label
-                                                        >
-                                                        <div class="row">
-                                                            <div
-                                                                class="col-md-6"
-                                                            >
-                                                                <input
-                                                                    type="text"
-                                                                    class="form-control"
-                                                                    id="order_count"
-                                                                    name="OrderForm[min]"
-                                                                    value=""
-                                                                    placeholder="Min"
-                                                                /><small
-                                                                    class="help-block min-max"
-                                                                    >Min: 20 -
-                                                                    Max:
-                                                                    15000</small
-                                                                >
-                                                            </div>
-
-                                                            <div
-                                                                class="col-md-6"
-                                                            >
-                                                                <input
-                                                                    type="text"
-                                                                    class="form-control"
-                                                                    id="order_count"
-                                                                    name="OrderForm[max]"
-                                                                    value=""
-                                                                    placeholder="Max"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_delay"
-                                                    >
-                                                        <div class="row">
-                                                            <div
-                                                                class="col-md-6"
-                                                            >
-                                                                <label
-                                                                    class="control-label"
-                                                                    for="field-orderform-fields-delay"
-                                                                    >Delay</label
-                                                                >
-                                                                <select
-                                                                    class="form-control"
-                                                                    name="OrderForm[delay]"
-                                                                    id="field-orderform-fields-delay"
-                                                                >
-                                                                    <option
-                                                                        value="0"
-                                                                    >
-                                                                        No delay
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="300"
-                                                                    >
-                                                                        5
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="600"
-                                                                    >
-                                                                        10
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="900"
-                                                                    >
-                                                                        15
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="1800"
-                                                                    >
-                                                                        30
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="3600"
-                                                                    >
-                                                                        60
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="5400"
-                                                                    >
-                                                                        90
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="7200"
-                                                                    >
-                                                                        120
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="9000"
-                                                                    >
-                                                                        150
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="10800"
-                                                                    >
-                                                                        180
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="12600"
-                                                                    >
-                                                                        210
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="14400"
-                                                                    >
-                                                                        240
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="16200"
-                                                                    >
-                                                                        270
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="18000"
-                                                                    >
-                                                                        300
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="21600"
-                                                                    >
-                                                                        360
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="25200"
-                                                                    >
-                                                                        420
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="28800"
-                                                                    >
-                                                                        480
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="32400"
-                                                                    >
-                                                                        540
-                                                                        minutes
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="36000"
-                                                                    >
-                                                                        600
-                                                                        minutes
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                            <div
-                                                                class="col-md-6"
-                                                            >
-                                                                <label
-                                                                    for="field-orderform-fields-expiry"
-                                                                    >Expiry</label
-                                                                >
-                                                                <div
-                                                                    class="input-group"
-                                                                >
-                                                                    <input
-                                                                        class="form-control datetime"
-                                                                        autocomplete="off"
-                                                                        name="OrderForm[expiry]"
-                                                                        value=""
-                                                                        type="text"
-                                                                        id="field-orderform-fields-expiry"
-                                                                    />
-                                                                    <span
-                                                                        class="input-group-btn"
-                                                                    >
-                                                                        <button
-                                                                            class="btn btn-default btn-big-secondary clear-datetime"
-                                                                            type="button"
-                                                                            data-rel="#field-orderform-fields-expiry"
-                                                                        >
-                                                                            <span
-                                                                                class="fa far fa-trash-alt"
-                                                                            ></span>
-                                                                        </button>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_comment_username"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-comment_username"
-                                                            >Username of the
-                                                            comment owner</label
-                                                        >
-                                                        <input
-                                                            class="form-control"
-                                                            name="OrderForm[comment_username]"
-                                                            value=""
-                                                            type="text"
-                                                            id="field-orderform-fields-comment_username"
-                                                        />
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_answer_number"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-answer_number"
-                                                            >Answer
-                                                            number</label
-                                                        >
-                                                        <input
-                                                            class="form-control"
-                                                            name="OrderForm[answer_number]"
-                                                            value=""
-                                                            type="text"
-                                                            id="field-orderform-fields-answer_number"
-                                                        />
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_email"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-email"
-                                                            >Email</label
-                                                        >
-                                                        <input
-                                                            class="form-control"
-                                                            name="OrderForm[email]"
-                                                            value=""
-                                                            type="text"
-                                                            id="field-orderform-fields-email"
-                                                        />
-                                                    </div>
-                                                    <div
-                                                        class="form-group hidden fields"
-                                                        id="order_groups"
-                                                    >
-                                                        <label
-                                                            class="control-label"
-                                                            for="field-orderform-fields-groups"
-                                                            >Groups</label
-                                                        >
-                                                        <textarea
-                                                            class="form-control"
-                                                            name="OrderForm[groups]"
-                                                            id="field-orderform-fields-groups"
-                                                            cols="30"
-                                                            rows="10"
-                                                        ></textarea>
                                                     </div>
                                                     <div
                                                         class="form-group fields"
@@ -1648,7 +151,7 @@
                                                     >
                                                         <label
                                                             class="control-label"
-                                                            for="field-orderform-fields-average_time"
+                                                            for="#e"
                                                             >Average time
                                                             <span
                                                                 class="ml-1 mr-1 fa fa-exclamation-circle"
@@ -1684,11 +187,8 @@
                                                     />
                                                 </div>
                                             </div>
-                                            <input
-                                                type="hidden"
-                                                name="_csrf"
-                                                value="05N568_BZlqyKLAhKfVT4-ZW5p-5CzIIIoMoeA63yViXx0qbkIAPPfNm3U1rj2Gg0GOc_dpFfWZj2WQQXPGkPg=="
-                                            />
+                                           {% csrf_token %}
+                                           
                                             <div
                                                 class="new-order-button-submit component_button_submit"
                                             >
@@ -1703,46 +203,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5">
-                                <div
-                                    class="component_content_card component_content_button component_content_headers"
-                                >
-                                    <div class="card">
-                                        <div class="new-order__content-title">
-                                            <div class="position-relative">
-                                                <h3>
-                                                    Need to make your online
-                                                    presence noticeable?
-                                                </h3>
-                                            </div>
-                                        </div>
-                                        <div class="new-order__content-text">
-                                            <p>
-                                                We can help you with that! You
-                                                can achieve great exposure
-                                                online using automated SMM
-                                                services we offer on our panel.
-                                            </p>
-                                            <p><br /></p>
-                                            <p>
-                                                All you have to do is to place
-                                                an order, and everything will be
-                                                done for you. We accept
-                                                different payment methods to
-                                                make adding funds to your
-                                                account super convenient.
-                                            </p>
-                                            <p><br /></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {% include 'components/dashboard_rightformcontainer.html' %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="wrapper-content__footer"></div>
     </div>
 </div>
 
@@ -1752,16 +218,111 @@
             flex-direction: column;
         }
     }
-    .body {
-        background-color: #160b3e !important;
-        color: #334e6e;
-        font-family: Barlow;
-        font-size: 16px;
-        line-height: 24px;
-        letter-spacing: 0px;
-        font-weight: 400;
-        font-style: normal;
-    }
 </style>
 
+<script>
+    let services_data = [];
+    let categories_data = [];
+    const panel_description = document.querySelector(".panel-description");
+    const min_max = document.querySelector(".min-max");
+    const average_time = document.querySelector("#field-orderform-fields-average_time");
+    var quantity = document.getElementById("field-orderform-fields-quantity");
+    const charge = document.querySelector("#charge");
+    var select = document.getElementById("orderform-service");
+
+
+    console.log(quantity)
+
+    // services get
+    const getServices = async () => {
+        try {
+            await fetch("/services_res")
+                .then((res) => res.json())
+                .then((res) => {
+                    services_data = res;
+                });
+            console.log(services_data, "sdata");
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    // categorues get
+
+    const getCategories = async () => {
+        try {
+            await fetch("/categories_res")
+                .then((res) => res.json())
+                .then((res) => {
+                    categories_data = res;
+                });
+            console.log(categories_data, "cadata");
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    getServices();
+    getCategories();
+
+    const catChange = (e) => {
+        const services = services_data.filter(
+            (key) => key.category === Number(e.value)
+        );
+
+        // setting category description
+        panel_description.innerHTML = services[0].description
+
+        // setting options
+        select.innerHTML = ""
+        services.map(key=>{
+            var option = document.createElement("option");
+            option.text = `${key.name} - ${key.rate} per 1000`;
+            option.value = key.id;
+            select.appendChild(option);
+
+        })
+        average_time.value = `${services[0].average_time_hours} hours ${services[0].average_time_minutes} minutes`
+        min_max.innerHTML= `Min: ${services[0].min_order} - Max: ${services[0].max_order} `
+        quantity.min = services[0].min_order
+        quantity.max = services[0].max_order
+        
+    };
+
+    const serviceChange = (e) => {
+        
+        const services = services_data.filter(
+            (key) => key.id === Number(e.value)
+        );
+
+        // min max set
+        min_max.innerHTML= `Min: ${services[0].min_order} - Max: ${services[0].max_order} `
+
+        // Average time
+        average_time.value = `${services[0].average_time_hours} hours ${services[0].average_time_minutes} minutes`
+
+        // setting category description
+        panel_description.innerHTML = services[0].description
+
+    };
+
+
+    const detectPriceChange  = (e)=>{
+        const services = services_data.filter(
+            (key) => key.id === Number(select.value)
+        )[0]
+        charge.value = (services.rate*e.value/1000)
+    }
+
+    window.addEventListener('load',()=>{
+        const services = services_data.filter(
+            (key) => key.id === Number(select.value)
+        )[0]
+        average_time.value = `${services.average_time_hours} hours ${services.average_time_minutes} minutes`
+        min_max.innerHTML= `Min: ${services.min_order} - Max: ${services.max_order} `
+        quantity.min = services.min_order
+        quantity.max = services.max_order
+
+    })
+
+</script>
 {% endblock content %}

@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login as login_func
 from django.contrib import messages
 from django.contrib.auth import logout
 from authapp.models import User
@@ -9,7 +9,8 @@ from django.contrib.auth.decorators import login_required
 
 
 def register(request):
-    if request.user:
+    # print(request.user, "here")
+    if request.user.is_authenticated:
         return redirect('dashboard')
 
     if request.method == "POST":
@@ -62,13 +63,16 @@ def register(request):
         )
         user_create.set_password(password1)
         user_create.save()
-        return HttpResponse("User Created")
+        user = authenticate(username=username, password=password1)
+        if user:
+            login_func(request, user)
+            return redirect('dashboard')
 
     return render(request, 'register.html')
 
 
 def login(request):
-    if request.user:
+    if request.user.is_authenticated:
         return redirect('dashboard')
 
     # Authenticating
@@ -77,12 +81,14 @@ def login(request):
         password = request.POST.get('password', None)
 
         user = authenticate(username=username, password=password)
-        if user is not None:
-            return redirect('home')
+        if user:
+            login_func(request, user)
+            return redirect('dashboard')
         else:
             return render(request, 'home.html', {"error": True})
 
     return render(request, 'home.html')
+
 
 @login_required
 def logout_page(request):

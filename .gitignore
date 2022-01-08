@@ -3,3 +3,4 @@ venv
 .vs_code
 settings
 .vscode
+*.sqlite3
