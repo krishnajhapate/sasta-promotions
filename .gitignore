@@ -4,3 +4,4 @@ venv
 settings
 .vscode
 *.sqlite3
+db.sqlite3
