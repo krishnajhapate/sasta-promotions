@@ -74,7 +74,7 @@
                                                                 <option
                                                                     value="{{service.id}}"
                                                                 >
-                                                                    {{service.name}}
+                                                                    {{service.name}} - ₹{{service.rate}} per 1000
                                                                 </option>
                                                                 {% endfor %}
                                                             {% endif %} 
@@ -277,7 +277,7 @@
         select.innerHTML = ""
         services.map(key=>{
             var option = document.createElement("option");
-            option.text = `${key.name} - ${key.rate} per 1000`;
+            option.text = `${key.name} - ₹${key.rate} per 1000`;
             option.value = key.id;
             select.appendChild(option);
 
