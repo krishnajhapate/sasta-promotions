@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -42,17 +43,25 @@ def tickets(request):
 
 
 def view_tickets(request, id=None):
-    try:
-        ticket = TicketsModel.objects.get(id=id)
-        messages = MessageModel.objects.filter(
-            ticket=ticket).order_by('-timestamp')
+    # try:
 
-        return render(request, "view_tickets.html", {
-            "messages": messages,
-            "ticket": ticket
-        })
-    except:
-        return redirect('tickets')
+    ticket = TicketsModel.objects.get(id=id)
+    if request.method == "POST":
+        message = request.POST.get('message', None)
+        message_create = MessageModel.objects.create(user=request.user,
+                                                     message=message,
+                                                     ticket=ticket)
+        return redirect(reverse("view_ticket", kwargs={"id": id}))
+
+    messages = MessageModel.objects.filter(ticket=ticket).order_by('timestamp')
+
+    return render(request, "view_tickets.html", {
+        "messages": messages,
+        "ticket": ticket
+    })
+
+# except:
+#     return redirect('tickets')
 
 
 class ServicesView(APIView):

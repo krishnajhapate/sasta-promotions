@@ -40,12 +40,12 @@
                                                             <div
                                                                 class="ticket-dialog__row-bottom-name"
                                                             >
-                                                                support
+                                                                support 
                                                             </div>
                                                             <div
                                                                 class="ticket-dialog__row-bottom-date"
                                                             >
-                                                               {{message.timestamp|date:"Y-M-d h:i:A"}}
+                                                                {{message.timestamp|date:"Y-M-d h:i:A"}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -83,7 +83,7 @@
                                             <div
                                                 class="ticket-dialog__footer component_form_group"
                                             >
-                                                <form method="post" action="">
+                                                <form method="post" action="{% url 'view_ticket' ticket.id %}">
                                                     <div class="">
                                                         <div class="form-group">
                                                             <label
@@ -92,15 +92,12 @@
                                                             <textarea
                                                                 class="form-control"
                                                                 rows="7"
-                                                                name="TicketMessageForm[message]"
+                                                                name="message"
+                                                                placeholder="Enter message"
                                                             ></textarea>
                                                         </div>
                                                     </div>
-                                                    <input
-                                                        type="hidden"
-                                                        name="_csrf"
-                                                        value="18wUlXBHpk3Th0BREiEdaK-ouuRyHOnn1qke77_0_57inma4JDbJKZ73DjxFRTAt4-DwnSBvtoXl5yy70KCNxw=="
-                                                    />
+                                                    {% csrf_token %}
                                                     <div
                                                         class="component_button_submit"
                                                     >
