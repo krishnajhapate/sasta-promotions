@@ -1,6 +1,7 @@
 import imp
 from operator import mod
 from pyexpat import model
+from tabnanny import verbose
 from django.db import models
 from django.conf import settings
 # Create your models here.
@@ -53,6 +54,9 @@ class TicketsModel(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = "Ticket"
+
 
 class MessageModel(models.Model):
     ticket = models.ForeignKey(TicketsModel, on_delete=models.CASCADE)
@@ -62,3 +66,9 @@ class MessageModel(models.Model):
                              null=True)
     message = models.CharField(max_length=200, null=True, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return "message#" + str(self.id)
+
+    class Meta:
+        verbose_name = "Message"
