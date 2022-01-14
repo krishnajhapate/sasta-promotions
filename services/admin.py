@@ -44,6 +44,11 @@ class MessagesAdmin(admin.TabularInline):
 @admin.register(TicketsModel)
 class TicketsAdmin(admin.ModelAdmin):
     inlines = (MessagesAdmin, )
+    list_display = (
+        'user',
+        'subject',
+        'status',
+    )
 
 
 admin.site.register(ServicesModel, ServiceModelAdminShow)

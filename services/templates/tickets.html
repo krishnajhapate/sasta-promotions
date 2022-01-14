@@ -19,7 +19,7 @@
                                         <form
                                             class="component_from_group"
                                             method="post"
-                                            action=""
+                                            action="{% url 'tickets' %}"
                                             id="ticketsend"
                                         >
                                             <div class="">
@@ -36,12 +36,14 @@
                                                     <div></div>
                                                 </div>
                                             </div>
+                                            {% csrf_token %}
                                             <div class="">
                                                 <div class="form-group">
                                                     <label>Subject</label>
                                                     <input
                                                         class="form-control"
-                                                        name="TicketForm[subject]"
+                                                        name="subject"
+                                                        placeholder="Enter subject"
                                                     />
                                                 </div>
                                                 <div class="form-group">
@@ -49,14 +51,10 @@
                                                     <textarea
                                                         class="form-control"
                                                         rows="7"
-                                                        name="TicketForm[message]"
+                                                        name="message"
+                                                        placeholder="Enter message"
                                                     ></textarea>
                                                 </div>
-                                                <input
-                                                    type="hidden"
-                                                    name="_csrf"
-                                                    value="MA0710Q-ZqWAqZ1irvqTGfEVdG76nTKgmaoF4Mplhi0FX0n6EE8Jwc3Z0w_5nr5cvV0-F6jubcKq5De0pTH0dA=="
-                                                />
                                             </div>
                                             <div
                                                 class="component_button_submit"
@@ -161,89 +159,30 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                {% for ticket in tickets %}
                                                                 <tr>
-                                                                    <td>793</td>
+                                                                    <td>{{ticket.id}}</td>
                                                                     <td>
                                                                         <a
-                                                                            href="/viewticket/793"
-                                                                            >My
-                                                                            order
-                                                                            showing
-                                                                            in
-                                                                            process
-                                                                            for
-                                                                            long
-                                                                            time
-                                                                            just
-                                                                            do
-                                                                            it
-                                                                            fast</a
+                                                                            href="{% url 'view_ticket' ticket.id %}"
+                                                                            >{{ticket.subject}}</a
                                                                         >
                                                                     </td>
                                                                     <td>
-                                                                        Answered
+                                                                        {{ticket.status}}
                                                                     </td>
                                                                     <td>
                                                                         <span
                                                                             class="nowrap"
-                                                                            >2022-01-07</span
+                                                                            >{{ticket.last_updated|date:"Y-M-d"}}</span
                                                                         >
                                                                         <span
                                                                             class="nowrap"
-                                                                            >01:00:11</span
+                                                                            >{{ticket.last_updated|date:"h:i:A"}}</span
                                                                         >
                                                                     </td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>792</td>
-                                                                    <td>
-                                                                        <a
-                                                                            href="/viewticket/792"
-                                                                            >I
-                                                                            have
-                                                                            send
-                                                                            followers</a
-                                                                        >
-                                                                    </td>
-                                                                    <td>
-                                                                        Answered
-                                                                    </td>
-                                                                    <td>
-                                                                        <span
-                                                                            class="nowrap"
-                                                                            >2022-01-05</span
-                                                                        >
-                                                                        <span
-                                                                            class="nowrap"
-                                                                            >19:39:32</span
-                                                                        >
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>794</td>
-                                                                    <td>
-                                                                        <a
-                                                                            href="/viewticket/794"
-                                                                            >204815
-                                                                            cancel
-                                                                            the
-                                                                            order</a
-                                                                        >
-                                                                    </td>
-                                                                    <td>
-                                                                        Answered
-                                                                    </td>
-                                                                    <td>
-                                                                        <span
-                                                                            class="nowrap"
-                                                                            >2022-01-05</span
-                                                                        >
-                                                                        <span
-                                                                            class="nowrap"
-                                                                            >19:38:45</span
-                                                                        >
-                                                                    </td>
-                                                                </tr>
+                                                                {% endfor %}
                                                             </tbody>
                                                         </table>
                                                         <div></div>

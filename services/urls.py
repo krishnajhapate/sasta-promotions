@@ -7,4 +7,5 @@ urlpatterns = [
     path('services_res', ServicesView.as_view()),
     path('categories_res', CategoriesView.as_view()),
     path('tickets', tickets, name="tickets"),
+    path('tickets/<int:id>', tickets, name="view_ticket"),
 ]

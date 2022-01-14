@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from services.models import CategoryModel, ServicesModel
+from services.models import CategoryModel, MessageModel, ServicesModel, TicketsModel
 from services.serializers import CategorySerializer, ServicesSerializer
 
 # Create your views here.
@@ -24,7 +24,21 @@ def services(request):
 
 
 def tickets(request):
-    return render(request, "tickets.html")
+    if request.method == "POST":
+        message = request.POST.get('message', None)
+        subject = request.POST.get('subject', None)
+        print(request.POST)
+        ticket = TicketsModel.objects.create(user=request.user,
+                                             subject=subject)
+        message_create = MessageModel.objects.create(user=request.user,
+                                                     message=message,
+                                                     ticket=ticket)
+        return redirect("tickets")
+
+    tickets = TicketsModel.objects.filter(
+        user=request.user).order_by('-created')
+
+    return render(request, "tickets.html", {"tickets": tickets})
 
 
 class ServicesView(APIView):
