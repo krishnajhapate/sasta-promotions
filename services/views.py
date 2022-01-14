@@ -41,6 +41,20 @@ def tickets(request):
     return render(request, "tickets.html", {"tickets": tickets})
 
 
+def view_tickets(request, id=None):
+    try:
+        ticket = TicketsModel.objects.get(id=id)
+        messages = MessageModel.objects.filter(
+            ticket=ticket).order_by('-timestamp')
+
+        return render(request, "view_tickets.html", {
+            "messages": messages,
+            "ticket": ticket
+        })
+    except:
+        return redirect('tickets')
+
+
 class ServicesView(APIView):
 
     def get(self, request, format=None):
