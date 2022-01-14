@@ -1,4 +1,4 @@
-{% load get_account_pay %}    <!-- Main variables *content* -->
+{% load get_account_pay get_live_updates %}    <!-- Main variables *content* -->
     <div id="block_77">
         <div class="totals">
             <div class="bg"></div>
@@ -156,7 +156,7 @@
                                                 line-height: 36px;
                                             "
                                         >
-                                            205434
+                                            {% get_orders_count %}
                                         </div>
                                     </div>
                                     <div
