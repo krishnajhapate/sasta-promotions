@@ -13,7 +13,6 @@ def services(request):
     cat = request.GET.get('cat')
     categories = CategoryModel.objects.filter(active=True)
 
-    print(categories)
     services = []
     for category in categories:
         service = ServicesModel.objects.filter(active=True, category=category)
@@ -22,6 +21,10 @@ def services(request):
             services.append(category)
 
     return render(request, 'services.html', {"categories": services})
+
+
+def tickets(request):
+    return render(request, "tickets.html")
 
 
 class ServicesView(APIView):

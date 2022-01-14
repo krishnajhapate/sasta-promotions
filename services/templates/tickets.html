@@ -1,1 +1,395 @@
-tickets
+{% extends 'base.html' %} {% block content %}
+<div class="wrapper wrapper-sidebar-navbar">
+    {% include 'components/dashboard_leftsidebar.html' %}
+
+    <div class="wrapper-content">
+        <div class="wrapper-content__header"></div>
+        <div class="wrapper-content__body">
+            <!-- Main variables *content* -->
+            <div id="block_20">
+                <div class="ticket-form">
+                    <div class="bg"></div>
+                    <div class="divider-top"></div>
+                    <div class="divider-bottom"></div>
+                    <div class="container-fluid">
+                        <div class="row px-lg-4 ticket-form__alignment">
+                            <div class="col-lg-8">
+                                <div class="component_card">
+                                    <div class="card">
+                                        <form
+                                            class="component_from_group"
+                                            method="post"
+                                            action=""
+                                            id="ticketsend"
+                                        >
+                                            <div class="">
+                                                <div
+                                                    class="alert alert-dismissible alert-danger ticket-danger"
+                                                    style="display: none"
+                                                >
+                                                    <button
+                                                        type="button"
+                                                        class="close"
+                                                    >
+                                                        ×
+                                                    </button>
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <div class="form-group">
+                                                    <label>Subject</label>
+                                                    <input
+                                                        class="form-control"
+                                                        name="TicketForm[subject]"
+                                                    />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Message</label>
+                                                    <textarea
+                                                        class="form-control"
+                                                        rows="7"
+                                                        name="TicketForm[message]"
+                                                    ></textarea>
+                                                </div>
+                                                <input
+                                                    type="hidden"
+                                                    name="_csrf"
+                                                    value="MA0710Q-ZqWAqZ1irvqTGfEVdG76nTKgmaoF4Mplhi0FX0n6EE8Jwc3Z0w_5nr5cvV0-F6jubcKq5De0pTH0dA=="
+                                                />
+                                            </div>
+                                            <div
+                                                class="component_button_submit"
+                                            >
+                                                <div class="">
+                                                    <button
+                                                        class="btn btn-block btn-primary"
+                                                        type="submit"
+                                                    >
+                                                        Submit ticket
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="block_31">
+                <div class="tickets-list">
+                    <div class="bg"></div>
+                    <div class="divider-top"></div>
+                    <div class="divider-bottom"></div>
+                    <div class="container-fluid">
+                        <div class="row px-lg-4 tickets-list__alignment">
+                            <div class="col-lg-8">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="tickets-list__margin-table">
+                                            <div
+                                                class="table-bg component_table"
+                                            >
+                                                <div class="table-wr">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    <div
+                                                                        class="component_form_group tickets-list__margin-search"
+                                                                    >
+                                                                        <div
+                                                                            class=""
+                                                                        >
+                                                                            <form
+                                                                                action="/tickets"
+                                                                                method="get"
+                                                                                id="history-search"
+                                                                            >
+                                                                                <div
+                                                                                    class="input-group"
+                                                                                >
+                                                                                    <input
+                                                                                        type="text"
+                                                                                        name="search"
+                                                                                        class="form-control"
+                                                                                        value=""
+                                                                                        placeholder="Search"
+                                                                                    />
+                                                                                    <div
+                                                                                        class="input-group-append component_button_search"
+                                                                                    >
+                                                                                        <button
+                                                                                            class="btn btn-secondary"
+                                                                                            type="submit"
+                                                                                        >
+                                                                                            <span
+                                                                                                class="far fa-search"
+                                                                                            ></span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                    <div
+                                                        class="table-responsive table-responsive__search"
+                                                    >
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>ID</th>
+                                                                    <th>
+                                                                        Subject
+                                                                    </th>
+                                                                    <th>
+                                                                        Status
+                                                                    </th>
+                                                                    <th
+                                                                        class="nowrap"
+                                                                    >
+                                                                        Last
+                                                                        update
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>793</td>
+                                                                    <td>
+                                                                        <a
+                                                                            href="/viewticket/793"
+                                                                            >My
+                                                                            order
+                                                                            showing
+                                                                            in
+                                                                            process
+                                                                            for
+                                                                            long
+                                                                            time
+                                                                            just
+                                                                            do
+                                                                            it
+                                                                            fast</a
+                                                                        >
+                                                                    </td>
+                                                                    <td>
+                                                                        Answered
+                                                                    </td>
+                                                                    <td>
+                                                                        <span
+                                                                            class="nowrap"
+                                                                            >2022-01-07</span
+                                                                        >
+                                                                        <span
+                                                                            class="nowrap"
+                                                                            >01:00:11</span
+                                                                        >
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>792</td>
+                                                                    <td>
+                                                                        <a
+                                                                            href="/viewticket/792"
+                                                                            >I
+                                                                            have
+                                                                            send
+                                                                            followers</a
+                                                                        >
+                                                                    </td>
+                                                                    <td>
+                                                                        Answered
+                                                                    </td>
+                                                                    <td>
+                                                                        <span
+                                                                            class="nowrap"
+                                                                            >2022-01-05</span
+                                                                        >
+                                                                        <span
+                                                                            class="nowrap"
+                                                                            >19:39:32</span
+                                                                        >
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>794</td>
+                                                                    <td>
+                                                                        <a
+                                                                            href="/viewticket/794"
+                                                                            >204815
+                                                                            cancel
+                                                                            the
+                                                                            order</a
+                                                                        >
+                                                                    </td>
+                                                                    <td>
+                                                                        Answered
+                                                                    </td>
+                                                                    <td>
+                                                                        <span
+                                                                            class="nowrap"
+                                                                            >2022-01-05</span
+                                                                        >
+                                                                        <span
+                                                                            class="nowrap"
+                                                                            >19:38:45</span
+                                                                        >
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <nav
+                                                    class="component_pagination"
+                                                >
+                                                    <div class=""></div>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper-content__footer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @media (max-width: 991px) {
+        .wrapper-sidebar-navbar {
+            flex-direction: column;
+        }
+    }
+    .tab .nav-item .active {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0px;
+        color: #07264a;
+        background: #ffffff;
+        border-color: #000000;
+    }
+    .tab .nav-item {
+        margin-right: 8px;
+    }
+    .tab .nav-item .nav-link {
+        font-size: 14px;
+        letter-spacing: 0px;
+        font-weight: 500;
+        font-style: normal;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 12px;
+        padding-right: 12px;
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.2);
+        border-color: #000000;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-style: solid;
+        border-left-width: 0px;
+        border-right-width: 0px;
+        border-top-width: 0px;
+        border-bottom-width: 0px;
+        box-shadow: none;
+    }
+    .table {
+        margin-bottom: 0px;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+    .table thead:first-child tr th:first-child {
+        padding-left: 16px;
+        border-top-left-radius: 16px;
+    }
+    .table thead:first-child tr th:last-child {
+        padding-right: 16px;
+        border-top-right-radius: 16px;
+    }
+    .table thead:last-of-type tr th {
+        border-top-width: 0;
+        border-bottom-width: 0;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+    }
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+    }
+    .table th,
+    .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+    .table-wr {
+        box-shadow: 0 16px 24px 0 rgba(0, 0, 0, 0.08);
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+    .table thead:first-child tr th {
+        font-size: 14px;
+        letter-spacing: 0px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-right: 24px;
+        padding-left: 24px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        vertical-align: middle;
+        height: 56px;
+        border-bottom-width: 0px;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        color: #61768e !important;
+        background: #ffffff !important;
+    }
+    .table-responsive__search {
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+    .table tbody tr td {
+        font-size: 16px !important;
+        letter-spacing: 0px !important;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 24px;
+        padding-right: 24px;
+        vertical-align: middle;
+        height: 40px;
+        color: #334e6e;
+        background: #ffffff;
+        border-color: #dbd7e8;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #dbd7e8;
+    }
+    .table tbody tr:nth-child(odd) td {
+        background: #e4e1ee;
+    }
+</style>
+{% endblock content %}
