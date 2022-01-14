@@ -1,6 +1,11 @@
+import imp
+from operator import mod
+from pyexpat import model
 from django.db import models
-
+from django.conf import settings
 # Create your models here.
+
+User = settings.AUTH_USER_MODEL
 
 
 class CategoryModel(models.Model):
@@ -9,8 +14,9 @@ class CategoryModel(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
     class Meta:
-        verbose_name="Categorie"
+        verbose_name = "Categorie"
 
 
 class ServicesModel(models.Model):
@@ -29,4 +35,30 @@ class ServicesModel(models.Model):
         return self.name
 
     class Meta:
-        verbose_name="Service"
+        verbose_name = "Service"
+
+
+MESSAGE_STATUS = (
+    ('Pending', 'Pending'),
+    ('Answered', 'Answered'),
+)
+
+
+class TicketsModel(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=400, blank=True, null=True)
+    status = models.CharField(choices=MESSAGE_STATUS,
+                              max_length=20,
+                              default="Pending")
+    created = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True)
+
+
+class MessageModel(models.Model):
+    ticket = models.ForeignKey(TicketsModel, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,
+                             on_delete=models.CASCADE,
+                             blank=True,
+                             null=True)
+    message = models.CharField(max_length=200, null=True, blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
