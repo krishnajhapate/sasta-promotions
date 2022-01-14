@@ -1,3 +1,4 @@
+{% load get_live_updates %}
 <div id="block_37">
     <div class="totals">
         <div class="bg"></div>
@@ -13,20 +14,10 @@
                         <div class="totals-block__card">
                             <div class="totals-block__card-left">
                                 <div
-                                    class="
-                                        totals-block__icon-preview
-                                        style-bg-primary-alpha-10
-                                        style-border-radius-default
-                                        style-text-primary
-                                    "
+                                    class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
                                 >
                                     <span
-                                        class="
-                                            totals-block__icon
-                                            style-text-primary
-                                            far
-                                            fa-list-ul
-                                        "
+                                        class="totals-block__icon style-text-primary far fa-list-ul"
                                         style="
                                             font-size: 38px;
                                             transform: rotate(0deg);
@@ -39,16 +30,13 @@
                             <div class="totals-block__card-right">
                                 <div class="totals-block__count">
                                     <div
-                                        class="
-                                            totals-block__count-value
-                                            style-text-primary
-                                        "
+                                        class="totals-block__count-value style-text-primary"
                                         style="
                                             font-size: 36px;
                                             line-height: 36px;
                                         "
                                     >
-                                        774
+                                        {% get_services_count %}
                                     </div>
                                 </div>
                                 <div class="totals-block__card-name">
@@ -66,20 +54,10 @@
                         <div class="totals-block__card">
                             <div class="totals-block__card-left">
                                 <div
-                                    class="
-                                        totals-block__icon-preview
-                                        style-bg-primary-alpha-10
-                                        style-border-radius-default
-                                        style-text-primary
-                                    "
+                                    class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
                                 >
                                     <span
-                                        class="
-                                            totals-block__icon
-                                            style-text-primary
-                                            far
-                                            fa-clipboard-list
-                                        "
+                                        class="totals-block__icon style-text-primary far fa-clipboard-list"
                                         style="
                                             font-size: 38px;
                                             transform: rotate(0deg);
@@ -92,16 +70,13 @@
                             <div class="totals-block__card-right">
                                 <div class="totals-block__count">
                                     <div
-                                        class="
-                                            totals-block__count-value
-                                            style-text-primary
-                                        "
+                                        class="totals-block__count-value style-text-primary"
                                         style="
                                             font-size: 36px;
                                             line-height: 36px;
                                         "
                                     >
-                                        196055
+                                    {% get_orders_count %}
                                     </div>
                                 </div>
                                 <div class="totals-block__card-name">
@@ -156,7 +131,7 @@
                 <div class="col-lg-8 block-features__cards">
                     <div class="row">
                         <div class="col-md-6 style-features-card">
-                            <div class="card features-card" >
+                            <div class="card features-card">
                                 <div class="block-features__card">
                                     <div
                                         class="block-features__card-icon"
@@ -167,12 +142,7 @@
                                         "
                                     >
                                         <span
-                                            class="
-                                                feature-block__icon
-                                                style-text-primary
-                                                fas
-                                                fa-crown
-                                            "
+                                            class="feature-block__icon style-text-primary fas fa-crown"
                                             style="
                                                 font-size: 24px;
                                                 width: 24px;
@@ -189,10 +159,7 @@
                                     </div>
                                     <div class="block-features__card-content">
                                         <div
-                                            class="
-                                                card-content__head
-                                                style-text-features-title
-                                            "
+                                            class="card-content__head style-text-features-title"
                                             style="
                                                 margin-bottom: 10px;
                                                 padding-left: 0px;
@@ -208,10 +175,7 @@
                                             </p>
                                         </div>
                                         <div
-                                            class="
-                                                card-content__desc
-                                                style-text-features-desc
-                                            "
+                                            class="card-content__desc style-text-features-desc"
                                             style="
                                                 padding-left: 0px;
                                                 padding-right: 0px;
@@ -227,7 +191,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 style-features-card">
-                            <div class="card features-card" >
+                            <div class="card features-card">
                                 <div class="block-features__card">
                                     <div
                                         class="block-features__card-icon"
@@ -238,12 +202,7 @@
                                         "
                                     >
                                         <span
-                                            class="
-                                                feature-block__icon
-                                                style-text-primary
-                                                fas
-                                                fa-box-usd
-                                            "
+                                            class="feature-block__icon style-text-primary fas fa-box-usd"
                                             style="
                                                 font-size: 24px;
                                                 width: 24px;
@@ -260,10 +219,7 @@
                                     </div>
                                     <div class="block-features__card-content">
                                         <div
-                                            class="
-                                                card-content__head
-                                                style-text-features-title
-                                            "
+                                            class="card-content__head style-text-features-title"
                                             style="
                                                 margin-bottom: 10px;
                                                 padding-left: 0px;
@@ -279,10 +235,7 @@
                                             </p>
                                         </div>
                                         <div
-                                            class="
-                                                card-content__desc
-                                                style-text-features-desc
-                                            "
+                                            class="card-content__desc style-text-features-desc"
                                             style="
                                                 padding-left: 0px;
                                                 padding-right: 0px;
@@ -299,7 +252,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 style-features-card">
-                            <div class="card features-card" >
+                            <div class="card features-card">
                                 <div class="block-features__card">
                                     <div
                                         class="block-features__card-icon"
@@ -310,12 +263,7 @@
                                         "
                                     >
                                         <span
-                                            class="
-                                                feature-block__icon
-                                                style-text-primary
-                                                fas
-                                                fa-hand-holding-usd
-                                            "
+                                            class="feature-block__icon style-text-primary fas fa-hand-holding-usd"
                                             style="
                                                 font-size: 24px;
                                                 width: 24px;
@@ -332,10 +280,7 @@
                                     </div>
                                     <div class="block-features__card-content">
                                         <div
-                                            class="
-                                                card-content__head
-                                                style-text-features-title
-                                            "
+                                            class="card-content__head style-text-features-title"
                                             style="
                                                 margin-bottom: 10px;
                                                 padding-left: 0px;
@@ -350,10 +295,7 @@
                                             </p>
                                         </div>
                                         <div
-                                            class="
-                                                card-content__desc
-                                                style-text-features-desc
-                                            "
+                                            class="card-content__desc style-text-features-desc"
                                             style="
                                                 padding-left: 0px;
                                                 padding-right: 0px;
@@ -370,7 +312,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 style-features-card">
-                            <div class="card features-card" >
+                            <div class="card features-card">
                                 <div class="block-features__card">
                                     <div
                                         class="block-features__card-icon"
@@ -381,12 +323,7 @@
                                         "
                                     >
                                         <span
-                                            class="
-                                                feature-block__icon
-                                                style-text-primary
-                                                fas
-                                                fa-box-heart
-                                            "
+                                            class="feature-block__icon style-text-primary fas fa-box-heart"
                                             style="
                                                 font-size: 24px;
                                                 width: 24px;
@@ -403,10 +340,7 @@
                                     </div>
                                     <div class="block-features__card-content">
                                         <div
-                                            class="
-                                                card-content__head
-                                                style-text-features-title
-                                            "
+                                            class="card-content__head style-text-features-title"
                                             style="
                                                 margin-bottom: 10px;
                                                 padding-left: 0px;
@@ -421,10 +355,7 @@
                                             </p>
                                         </div>
                                         <div
-                                            class="
-                                                card-content__desc
-                                                style-text-features-desc
-                                            "
+                                            class="card-content__desc style-text-features-desc"
                                             style="
                                                 padding-left: 0px;
                                                 padding-right: 0px;
