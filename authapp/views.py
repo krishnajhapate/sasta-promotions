@@ -19,6 +19,7 @@ def register(request):
         password2 = request.POST.get('password_confirm', None)
         firstname = request.POST.get('first_name', None)
         lastname = request.POST.get('last_name', None)
+        name = firstname + " " + lastname
         phone = request.POST.get('phone', None)
         email = request.POST.get('email', None)
 
@@ -30,7 +31,8 @@ def register(request):
                     "email": email,
                     "first_name": firstname,
                     "last_name": lastname,
-                    "phone": phone
+                    "phone": phone,
+                    "name": name
                 })
 
         user = User.objects.filter(username=username)

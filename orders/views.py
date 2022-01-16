@@ -20,6 +20,7 @@ def orders(request, status=None):
 
 
 def add_funds(request):
+    transactions = TransanctionsModel.objects.filter(user=request.user)
     if request.method == "POST":
         amount = request.POST.get('amount', None)
         order_id = request.POST.get('order_id', None)
@@ -28,6 +29,7 @@ def add_funds(request):
             amount=amount,
             transaction_id=order_id,
         )
-    transactions = TransanctionsModel.objects.filter(user=request.user)
+        return render(request, "add_funds.html",
+                      {"transactions": transactions})
 
-    return render(request, "add_funds.html",{"transactions":transactions})
+    return render(request, "add_funds.html", {"transactions": transactions})

@@ -32,8 +32,6 @@ class AccountBalance(models.Model):
         return self.user.first_name + "- " + str(self.money) + " Rs "
 
 
-
-
 @receiver(post_save, sender=OrdersModel)
 def update_account_balance_on_order(instance, sender, *args, **kwargs):
     if instance.status == "Pending":
