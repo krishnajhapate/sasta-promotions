@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import OrdersModel, TransanctionsModel
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -29,7 +29,5 @@ def add_funds(request):
             amount=amount,
             transaction_id=order_id,
         )
-        return render(request, "add_funds.html",
-                      {"transactions": transactions})
-
+        return redirect('add_funds')
     return render(request, "add_funds.html", {"transactions": transactions})
