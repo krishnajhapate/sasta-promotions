@@ -1,7 +1,5 @@
-{% extends 'base.html' %} 
-{% block title %}Orders -Promotionmaro.com {% endblock title %}
-
-{% block content %}
+{% extends 'base.html' %} {% block title %}Orders - Promotionmaro.com | Smm
+Panel{% endblock title %} {% block content %}
 <div class="wrapper wrapper-sidebar-navbar">
     {% include 'components/dashboard_leftsidebar.html' %}
 
@@ -190,18 +188,18 @@
                                                             <td
                                                                 data-label="Quantity"
                                                             >
-                                                            {{order.quantity}}
+                                                                {{order.quantity}}
                                                             </td>
                                                             <td
                                                                 data-label="Service"
                                                                 class="table-service"
                                                             >
-                                                            {{order.service.name}}
+                                                                {{order.service.name}}
                                                             </td>
                                                             <td
                                                                 data-label="Status"
                                                             >
-                                                            {{order.status}}
+                                                                {{order.status}}
                                                             </td>
                                                             <!-- <td
                                                                 data-label="Remains"
@@ -209,8 +207,6 @@
                                                                 1000
                                                             </td> -->
                                                         </tr>
-
-                                                      
                                                     </tbody>
                                                     {% endfor %}
                                                 </table>
@@ -239,6 +235,12 @@
     @media (max-width: 991px) {
         .wrapper-sidebar-navbar {
             flex-direction: column;
+        }
+        .tab .nav-item {
+            display: block;
+            width: 100%;
+            margin-bottom: 4px;
+            margin-right: 0px!important;
         }
     }
     .tab .nav-item .active {

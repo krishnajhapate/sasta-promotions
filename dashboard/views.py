@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from services.models import CategoryModel, ServicesModel
 from orders.models import OrdersModel
 from authapp.models import AccountBalance
+from django.contrib import messages
 # Create your views here.
 
 
@@ -50,8 +51,23 @@ def dashboard(request):
                                                   link=link,
                                                   charge=charge,
                                                   user=request.user)
+
         if order_create:
-            return redirect('orders')
+            messages.success(
+                request, 
+                f"""
+                <p> <strong>Order id</strong> #{order_create.id}</p>
+                                   <p> <strong>Service</strong> {order_create.service.name}  </p>
+                                   <p> <strong>Charge</strong> ₹{order_create.charge} </p>
+                                   <p> <strong>Quantity</strong> {order_create.quantity}  </p>
+                                   <p> <strong>Account Balance</strong> ₹{AccountBalance.objects.get(user=request.user).money}  </p>"""
+                # {
+                #     "balance":
+                #     AccountBalance.objects.get(user=request.user).money,
+                #     "order": order_create
+                # }
+                )
+            return redirect('dashboard')
 
     return render(request, "dashboard.html", {"categories": services})
 
