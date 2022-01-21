@@ -20,10 +20,7 @@
                                         <form
                                             action="{% url 'register' %}"
                                             method="post"
-                                            class="
-                                                component_form_group
-                                                component_checkbox
-                                            "
+                                            class="component_form_group component_checkbox"
                                         >
                                             <div class="">
                                                 <div class="form-group">
@@ -115,6 +112,7 @@
                                                         id="skype"
                                                         required
                                                         value="{{phone}}"
+                                                        maxlength="12"
                                                         name="phone"
                                                     />
                                                 </div>
@@ -148,7 +146,9 @@
                                                 </div>
                                                 {% if password_error %}
 
-                                                <div class="text-sm text-danger">
+                                                <div
+                                                    class="text-sm text-danger"
+                                                >
                                                     Password should match
                                                 </div>
                                                 {% endif %}
@@ -208,14 +208,10 @@
                                                 </div> -->
                                                 <div class="form-group">
                                                     <div
-                                                        class="
-                                                            form-group__checkbox
-                                                        "
+                                                        class="form-group__checkbox"
                                                     >
                                                         <label
-                                                            class="
-                                                                form-group__checkbox-label
-                                                            "
+                                                            class="form-group__checkbox-label"
                                                         >
                                                             <input
                                                                 type="checkbox"
@@ -224,24 +220,18 @@
                                                                 id="terms"
                                                             />
                                                             <span
-                                                                class="
-                                                                    checkmark
-                                                                "
+                                                                class="checkmark"
                                                             ></span>
                                                         </label>
                                                         <p
-                                                            class="
-                                                                form-group__label-title
-                                                            "
+                                                            class="form-group__label-title"
                                                             for="terms"
                                                         >
                                                             I have read and
                                                             agreed with<a
                                                                 href="/terms"
                                                                 target="_blank"
-                                                                class="
-                                                                    sign-up-center-terms-link
-                                                                "
+                                                                class="sign-up-center-terms-link"
                                                                 >Terms of
                                                                 Service</a
                                                             >
@@ -258,11 +248,7 @@
                                                     <div class="">
                                                         <button
                                                             type="submit"
-                                                            class="
-                                                                btn
-                                                                btn-block
-                                                                btn-primary
-                                                            "
+                                                            class="btn btn-block btn-primary"
                                                         >
                                                             Sign up
                                                         </button>
@@ -270,16 +256,11 @@
                                                 </div>
                                             </div>
                                             <div
-                                                class="
-                                                    text-center
-                                                    signin-content
-                                                "
+                                                class="text-center signin-content"
                                             >
                                                 Already have an account?<a
                                                     href="/"
-                                                    class="
-                                                        sign-up-center-signin-link
-                                                    "
+                                                    class="sign-up-center-signin-link"
                                                     >Sign in</a
                                                 >
                                             </div>
