@@ -186,8 +186,8 @@
                                         How to use promotionmaro.com website
                                     </h1>
                                     <iframe
+                                        class="yt-video"
                                         width="100%"
-                                        style="min-height: 350px"
                                         src="https://www.youtube.com/embed/iirmROWGNrY"
                                         title="YouTube video player"
                                         frameborder="0"
@@ -213,5 +213,10 @@
         {% include 'components/footer.html' %}
     </div>
 </div>
-
+<style>
+    
+    .yt-video {
+        min-height: 240px;
+    }
+</style>
 {% endblock content %}
