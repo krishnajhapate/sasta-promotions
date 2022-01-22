@@ -12,6 +12,7 @@ User = settings.AUTH_USER_MODEL
 class CategoryModel(models.Model):
     name = models.CharField(max_length=400)
     active = models.BooleanField(default=False)
+    ranking = models.IntegerField(blank=True,null=True,unique=True)
 
     def __str__(self) -> str:
         return self.name
@@ -31,6 +32,13 @@ class ServicesModel(models.Model):
     description = models.TextField(max_length=4000, blank=True, null=True)
     service_id = models.IntegerField(blank=True, null=True)
     active = models.BooleanField(default=False)
+    is_refill = models.BooleanField(default=False)
+
+    blow_id = models.IntegerField()
+    blow_active = models.BooleanField(default=False)
+
+    snakers_id = models.IntegerField()
+    snakers_active = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.name
