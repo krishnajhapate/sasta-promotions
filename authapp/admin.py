@@ -17,6 +17,4 @@ class UserAdmin(DjangoUserAdmin):
 class MoneyAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'money', 'updated')
 
-    ordering = [
-        '-updated',
-    ]
+    ordering = ['-updated']
