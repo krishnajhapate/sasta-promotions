@@ -12,6 +12,7 @@ STATUS_CHOICE = (
     ("Cancelled", "Cancelled"),
     ("Partial", "Partial"),
     ("In progress", "In progress"),
+    ("Test", "Test"),
 )
 
 
@@ -28,6 +29,10 @@ class OrdersModel(models.Model):
     last_updated = models.DateTimeField(auto_now=True)
     order_placed = models.DateTimeField(auto_now_add=True)
 
+    third_party_id = models.CharField(max_length=10, blank=True, null=True)
+    third_party_name = models.CharField(max_length=20, blank=True, null=True)
+    
+
     def __str__(self) -> str:
         return self.service.name + "-" + self.status
 
@@ -40,6 +45,7 @@ TRANSANCTION_STATUS = (
     ('Approved', 'Approved'),
     ('Cancelled', 'Cancelled'),
     ('Not Valid', 'Not Valid'),
+    ('Test', 'Test'),
 )
 
 TRANSANCTION_TYPE = (
@@ -61,7 +67,7 @@ class TransanctionsModel(models.Model):
     status = models.CharField(max_length=20,
                               choices=TRANSANCTION_STATUS,
                               default='Pending')
-    transaction_id = models.CharField(max_length=400,blank=True,null=True)
+    transaction_id = models.CharField(max_length=400, blank=True, null=True)
     amount = models.FloatField()
     last_updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -81,6 +87,3 @@ class OrderTransanctionModel(models.Model):
 
     class Meta:
         verbose_name = "Order History"
-
-
-
