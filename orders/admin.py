@@ -9,6 +9,7 @@ class OrderAdmin(admin.ModelAdmin):
                     'order_placed', 'last_updated')
     list_display_links = ('id', 'service', 'charge')
     list_filter = ('status', )
+    readonly_fields = ['third_party_id', 'third_party_name']
 
 
 @admin.register(TransanctionsModel)

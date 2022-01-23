@@ -18,7 +18,7 @@ def orders(request, status=None):
         "search": search or ""
     })
 
-
+@login_required
 def add_funds(request):
     transactions = TransanctionsModel.objects.filter(user=request.user)
     if request.method == "POST":
