@@ -4,3 +4,6 @@ from django.db import models
 
 class CounterOrder(models.Model):
     counter = models.IntegerField()
+
+class Settings(models.Model):
+    sneaker_api = models.CharField
