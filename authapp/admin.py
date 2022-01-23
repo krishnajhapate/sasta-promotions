@@ -7,7 +7,8 @@ from .models import AccountBalance, User
 # Register your models here.
 @admin.register(User)
 class UserAdmin(DjangoUserAdmin):
-    list_display = ('id', 'username', 'email', 'phone', 'is_staff')
+    list_display = ('id', 'username', 'email', 'phone', 'is_staff',
+                    'date_joined')
     list_display_links = ('id', 'username', 'email', 'phone')
 
     ordering = ['-id']
