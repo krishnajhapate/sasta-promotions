@@ -7,10 +7,15 @@ from .models import AccountBalance, User
 # Register your models here.
 @admin.register(User)
 class UserAdmin(DjangoUserAdmin):
-    list_display = ('id', 'name', 'username', 'email', 'phone', 'is_staff')
-    list_display_links = ('id', 'name', 'username', 'email', 'phone')
+    list_display = ('id', 'username', 'email', 'phone', 'is_staff',
+                    'date_joined')
+    list_display_links = ('id', 'username', 'email', 'phone')
+
+    ordering = ['-id']
 
 
 @admin.register(AccountBalance)
 class MoneyAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'money', 'updated')
+
+    ordering = ['-updated']

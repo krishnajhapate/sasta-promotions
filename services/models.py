@@ -30,7 +30,6 @@ class ServicesModel(models.Model):
     average_time_hours = models.IntegerField(blank=True, null=True)
     average_time_minutes = models.IntegerField(blank=True, null=True)
     description = models.TextField(max_length=4000, blank=True, null=True)
-    service_id = models.IntegerField(blank=True, null=True)
     active = models.BooleanField(default=False)
     is_refill = models.BooleanField(default=False)
 

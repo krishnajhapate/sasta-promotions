@@ -5,10 +5,11 @@ from .models import OrdersModel, TransanctionsModel, OrderTransanctionModel
 
 @admin.register(OrdersModel)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'service', 'status', 'quantity', 'charge',
+    list_display = ('id', 'user', 'service', 'status', 'quantity', 'charge',
                     'order_placed', 'last_updated')
     list_display_links = ('id', 'service', 'charge')
     list_filter = ('status', )
+    readonly_fields = ['third_party_id', 'third_party_name']
 
 
 @admin.register(TransanctionsModel)

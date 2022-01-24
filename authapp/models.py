@@ -26,7 +26,7 @@ class User(AbstractUser):
 class AccountBalance(models.Model):
     user = OneToOneField(User, on_delete=models.CASCADE)
     money = models.FloatField(default=0.00)
-    updated = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
         return self.user.first_name + "- " + str(self.money) + " Rs "
