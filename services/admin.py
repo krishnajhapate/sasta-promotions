@@ -23,7 +23,7 @@ class ServiceModelAdminShow(admin.ModelAdmin):
 
 class CategoryModelAdmin(admin.ModelAdmin):
     # inlines = [ServiceModelAdmin]
-    list_display = ('id', 'name', 'active')
+    list_display = ('id', 'name', 'ranking', 'active')
     list_filter = ('active', )
 
 
