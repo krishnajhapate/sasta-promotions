@@ -87,7 +87,7 @@ def dashboard(request):
         if settings.sneaker_active:
             if service.snakers_active and service.snakers_id:
                 sneaker_api = sneaker_api_url + f"key={settings.sneaker_api}&service={service.snakers_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
-                res = requests.post(sneaker_api, params=request.POST)
+                res = requests.post(sneaker_api, params=request.GET)
                 print(res, res.json())
                 try:
                     if res.json()['order']:
