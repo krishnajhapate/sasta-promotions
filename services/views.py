@@ -12,7 +12,7 @@ from services.serializers import CategorySerializer, ServicesSerializer
 def services(request):
     search = request.GET.get('search')
     cat = request.GET.get('cat')
-    categories = CategoryModel.objects.filter(active=True)
+    categories = CategoryModel.objects.filter(active=True).order_by('ranking')
 
     services = []
     for category in categories:
@@ -59,6 +59,7 @@ def view_tickets(request, id=None):
         "messages": messages,
         "ticket": ticket
     })
+
 
 # except:
 #     return redirect('tickets')

@@ -64,11 +64,12 @@ def dashboard(request):
 
         if settings.blow_active:
             if service.blow_active and service.blow_id:
-                blow_api_url = blow_api + f"key={settings.blow_api}&service={service.blow_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
-                print(blow_api_url)
-                res = requests.post(
-                    blow_api_url, headers={'content-type': 'application/json'})
-                print(res)
+                # blow_api_url = blow_api + f"key={settings.blow_api}&service={service.blow_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
+                # print(blow_api_url)
+                # res = requests.post(
+                #     blow_api_url, headers={'content-type': 'application/json'})
+                # print(res)
+                print('pass')
 
                 # if res.json()['order']:
                 #     order_create.status = "Processing"
