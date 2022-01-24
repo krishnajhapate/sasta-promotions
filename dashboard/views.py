@@ -24,8 +24,10 @@ def home_page(request):
             category.services = service
     return render(request, "home.html", {"category": services})
 
+
 async def sneaker_order(sneaker_api):
     res = requests.post(sneaker_api)
+
 
 @login_required
 def dashboard(request):
@@ -85,12 +87,16 @@ def dashboard(request):
         if settings.sneaker_active:
             if service.snakers_active and service.snakers_id:
                 sneaker_api = sneaker_api_url + f"key={settings.sneaker_api}&service={service.snakers_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
-                res = requests.post(sneaker_api)
-                if res.json()['order']:
-                    order_create.status = "Processing"
-                    order_create.third_party_id = res.json()['order']
-                    order_create.third_party_name = 'Sneaker'
-                    order_create.save()
+                res = requests.post(sneaker_api, params=request)
+                print(res, res.json())
+                try:
+                    if res.json()['order']:
+                        order_create.status = "Processing"
+                        order_create.third_party_id = res.json()['order']
+                        order_create.third_party_name = 'Sneaker'
+                        order_create.save()
+                except:
+                    pass
 
                 print(res.json())
 
