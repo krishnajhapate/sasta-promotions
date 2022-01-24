@@ -61,21 +61,33 @@ def dashboard(request):
 
         # placing order from api
         settings = Settings.objects.first()
+
         if settings.blow_active:
             if service.blow_active and service.blow_id:
-                print('blow')
+                blow_api_url = blow_api + f"key={settings.blow_api}&service={service.blow_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
+                print(blow_api_url)
+                res = requests.post(
+                    blow_api_url, headers={'content-type': 'application/json'})
+                print(res)
+
+                # if res.json()['order']:
+                #     order_create.status = "Processing"
+                #     order_create.third_party_id = res.json()['order']
+                #     order_create.third_party_name = 'Blow'
+                #     order_create.save()
+
+                # print(res.json())
+
+        # for sneaker
         if settings.sneaker_active:
             if service.snakers_active and service.snakers_id:
                 sneaker_api = sneaker_api_url + f"key={settings.sneaker_api}&service={service.snakers_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
-                print(sneaker_api)
                 res = requests.post(sneaker_api)
-                print(res, res.json())
                 if res.json()['order']:
                     order_create.status = "Processing"
                     order_create.third_party_id = res.json()['order']
                     order_create.third_party_name = 'Sneaker'
                     order_create.save()
-                    print('here')
 
                 print(res.json())
 
