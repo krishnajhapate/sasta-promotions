@@ -24,6 +24,7 @@ def orders(request, status=None):
                     res = requests.post(sneaker_api).json()
                     order_update = OrdersModel.objects.get(id=order.id)
                     order_update.status = res['status']
+                    order_update.start_count = res['start_count']
                     if res['status'] == 'Inprogress':
                         order_update.status = 'In progress'
                     order_update.save()
