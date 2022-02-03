@@ -8,7 +8,7 @@ from .models import Settings
 import requests
 # Create your views here.
 
-blow_api = 'https://blowsmmpanels.com/api/v2?'
+sasta_api = 'https://sastaprovider.com/api/v2?'
 sneaker_api_url = 'https://snakerspanel.com/api/v2?'
 
 
@@ -66,18 +66,18 @@ def dashboard(request):
         # placing order from api
         settings = Settings.objects.first()
 
-        if settings.blow_active:
-            if service.blow_active and service.blow_id:
-                blow_api_url = blow_api + f"key={settings.blow_api}&service={service.blow_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
+        if settings.sasta_active:
+            if service.sasta_active and service.sasta_id:
+                sasta_api_url = sasta_api + f"key={settings.sasta_id}&service={service.sasta_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
                 res = requests.post(
-                    blow_api_url,
+                    sasta_api_url,
                     # headers={'content-type': 'application/json'},
                     params=request.GET)
                 try:
                     if res.json()['order']:
                         order_create.status = "Processing"
                         order_create.third_party_id = res.json()['order']
-                        order_create.third_party_name = 'Blow'
+                        order_create.third_party_name = 'sasta'
                         order_create.save()
                 except:
                     pass
