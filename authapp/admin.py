@@ -9,7 +9,11 @@ from .models import AccountBalance, User
 class UserAdmin(DjangoUserAdmin):
     list_display = ('id', 'username', 'email', 'phone', 'is_staff',
                     'date_joined')
-    list_display_links = ('id', 'username', 'email', 'phone')
+    list_display_links = (
+        'id',
+        'username',
+        'email',
+    )
 
     ordering = ['-id']
 

@@ -8,7 +8,7 @@ from .models import Settings
 import requests
 # Create your views here.
 
-blow_api = 'https://blowsmmpanels.com/api/v2?'
+sasta_api = 'https://sastaprovider.com/api/v2?'
 sneaker_api_url = 'https://snakerspanel.com/api/v2?'
 
 
@@ -66,28 +66,28 @@ def dashboard(request):
         # placing order from api
         settings = Settings.objects.first()
 
-        if settings.blow_active:
-            if service.blow_active and service.blow_id:
-                # blow_api_url = blow_api + f"key={settings.blow_api}&service={service.blow_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
-                # print(blow_api_url)
-                # res = requests.post(
-                #     blow_api_url, headers={'content-type': 'application/json'})
-                # print(res)
-                print('pass')
-
-                # if res.json()['order']:
-                #     order_create.status = "Processing"
-                #     order_create.third_party_id = res.json()['order']
-                #     order_create.third_party_name = 'Blow'
-                #     order_create.save()
-
+        if settings.sasta_active:
+            if service.sasta_active and service.sasta_id:
+                sasta_api_url = sasta_api + f"key={settings.sasta_id}&service={service.sasta_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
+                res = requests.post(
+                    sasta_api_url,
+                    # headers={'content-type': 'application/json'},
+                    params=request.GET)
+                try:
+                    if res.json()['order']:
+                        order_create.status = "Processing"
+                        order_create.third_party_id = res.json()['order']
+                        order_create.third_party_name = 'sasta'
+                        order_create.save()
+                except:
+                    pass
                 # print(res.json())
 
         # for sneaker
         if settings.sneaker_active:
             if service.snakers_active and service.snakers_id:
                 sneaker_api = sneaker_api_url + f"key={settings.sneaker_api}&service={service.snakers_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
-                res = requests.post(sneaker_api, params=request.GET)
+                res = requests.get(sneaker_api, params=request.GET)
                 print(res, res.json())
                 try:
                     if res.json()['order']:

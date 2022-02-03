@@ -6,7 +6,7 @@ import requests
 from dashboard.models import Settings
 
 # Create your views here.
-blow_api = 'https://blowsmmpanels.com/api/v2?'
+sasta_api_url = 'https://sastaprovider.com/api/v2?'
 sneaker_api_url = 'https://snakerspanel.com/api/v2?'
 
 
@@ -24,12 +24,21 @@ def orders(request, status=None):
                     res = requests.post(sneaker_api).json()
                     order_update = OrdersModel.objects.get(id=order.id)
                     order_update.status = res['status']
+                    order_update.start_count = res['start_count']
                     if res['status'] == 'Inprogress':
                         order_update.status = 'In progress'
                     order_update.save()
 
-                if order.third_party_name == "Blow":
-                    print('here')
+                if order.third_party_name == "sasta":
+                    sasta_api = sasta_api_url + f"key={settings.sasta_id}&order={order.third_party_id}&action=status"
+                    res = requests.post(sasta_api, params=request.GET)
+                    print(res)
+                    res = res.json()
+                    print(res)
+                    order_update = OrdersModel.objects.get(id=order.id)
+                    order_update.status = res['status']
+                    order_update.start_count = res['start_count']
+                    order_update.save()
 
     orders = OrdersModel.objects.filter(user=request.user)
 

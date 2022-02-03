@@ -13,8 +13,8 @@ class CounterAdmin(admin.ModelAdmin):
 
 @admin.register(Settings)
 class SettingsAdmin(admin.ModelAdmin):
-    list_display = ('sneaker_active', 'blow_active', 'total_orders',
-                    'total_transactions','total_users')
+    list_display = ('sneaker_active', 'sasta_active', 'total_orders',
+                    'total_transactions', 'total_users')
 
     add_fields = ((None, ('Site')), )
 
@@ -23,7 +23,6 @@ class SettingsAdmin(admin.ModelAdmin):
 
     def total_transactions(self, request):
         return TransanctionsModel.objects.filter(status="Approved").count()
-
 
     def total_users(self, request):
         return User.objects.filter(is_superuser=False).count()
