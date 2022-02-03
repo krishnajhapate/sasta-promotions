@@ -14,7 +14,7 @@ class ServiceModelAdmin(admin.StackedInline):
 
 
 class ServiceModelAdminShow(admin.ModelAdmin):
-    list_display = ('id', 'name', 'category', 'rate', 'active', 'blow_active',
+    list_display = ('id', 'name', 'category', 'rate', 'active', 'sasta_active',
                     'snakers_active')
     list_filter = (
         'active',

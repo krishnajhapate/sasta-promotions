@@ -33,8 +33,8 @@ class ServicesModel(models.Model):
     active = models.BooleanField(default=False)
     is_refill = models.BooleanField(default=False)
 
-    blow_id = models.IntegerField(blank=True,null=True)
-    blow_active = models.BooleanField(default=False)
+    sasta_id = models.IntegerField(blank=True,null=True)
+    sasta_active = models.BooleanField(default=False)
 
     snakers_id = models.IntegerField(blank=True,null=True)
     snakers_active = models.BooleanField(default=False)
