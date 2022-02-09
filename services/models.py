@@ -19,7 +19,7 @@ class CategoryModel(models.Model):
 
     class Meta:
         verbose_name = "Categorie"
-        ordering = ('id', )
+        ordering = ('ranking', )
 
 
 class ServicesModel(models.Model):
