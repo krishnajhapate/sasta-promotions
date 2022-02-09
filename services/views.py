@@ -71,7 +71,7 @@ class ServicesView(APIView):
         """
         Return a list of all users.
         """
-        service = ServicesModel.objects.filter(active=True)
+        service = ServicesModel.objects.filter(active=True).order_by('id')
         serializer = ServicesSerializer(service, many=True)
         return Response(serializer.data)
 
@@ -82,6 +82,6 @@ class CategoriesView(APIView):
         """
         Return a list of all users.
         """
-        service = CategoryModel.objects.filter(active=True)
+        service = CategoryModel.objects.filter(active=True).order_by('id')
         serializer = CategorySerializer(service, many=True)
         return Response(serializer.data)
