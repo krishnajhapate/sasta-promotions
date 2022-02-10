@@ -59,6 +59,10 @@
     </head>
     <body>
         {% block content %} {% endblock content %}
+        <div class="chat-button" >
+
+            <a href="https://api.whatsapp.com/send?phone=+918770183554&text=Hello this is the starting message"> <img height="60px" width="60px" src="{% static 'images/whatsapp.png' %}" alt="whatsapp flaticon"> </a>
+        </div>
         <script type="text/javascript" src="/static/js/file1.js"></script>
         <script type="text/javascript" src="/static/js/file2.js"></script>
         <script type="text/javascript" src="/static/js/file3.js"></script>
@@ -143,6 +147,11 @@
             letter-spacing: 0px;
             font-weight: 400;
             font-style: normal;
+        }
+        .chat-button , .chat-button > img{
+            position: fixed;
+            right: 10%;
+            bottom: 5%;
         }
     </style>
 </html>
