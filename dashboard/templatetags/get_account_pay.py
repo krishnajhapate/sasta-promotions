@@ -2,6 +2,7 @@ from django import template
 
 from authapp.models import AccountBalance, User
 from orders.models import OrdersModel
+from dashboard.models import Settings
 
 register = template.Library()
 
@@ -18,3 +19,8 @@ def get_spent_balance(user):
     for i in balance:
         total += i.charge
     return total
+
+
+@register.simple_tag
+def get_whatsapp_contact():
+    return Settings.objects.first().whatsapp_no
