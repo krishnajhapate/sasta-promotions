@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from services.models import CategoryModel, ServicesModel
+from dashboard.utils import get_cat, place_order
+from services.models import CategoryModel, Offers, ServicesModel
 from orders.models import OrdersModel
 from authapp.models import AccountBalance
 from django.contrib import messages
@@ -13,15 +14,7 @@ sneaker_api_url = 'https://snakerspanel.com/api/v2?'
 
 
 def home_page(request):
-    if request.user.is_authenticated:
-        return redirect('dashboard')
-    categories = CategoryModel.objects.filter(active=True)
-
-    services = []
-    for category in categories:
-        service = ServicesModel.objects.filter(active=True, category=category)
-        if service.count() > 0:
-            category.services = service
+    services = get_cat(request)
     return render(request, "home.html", {"category": services})
 
 
@@ -31,17 +24,10 @@ async def sneaker_order(sneaker_api):
 
 @login_required
 def dashboard(request):
-    categories = CategoryModel.objects.filter(active=True)
-
-    services = []
-    for category in categories:
-        service = ServicesModel.objects.filter(active=True, category=category)
-        if service.count() > 0:
-            category.services = service
-            services.append(category)
 
     error_message = ""
     if request.method == "POST":
+
         service_id = request.POST.get('service', None)
         link = request.POST.get('link', None)
         quantity = request.POST.get('quantity', None)
@@ -63,44 +49,43 @@ def dashboard(request):
             user=request.user,
         )
 
+        order_create = place_order(request)
+        print(order_create, 'order_create')
         # placing order from api
-        settings = Settings.objects.first()
+        # settings = Settings.objects.first()
 
-        if settings.sasta_active:
-            if service.sasta_active and service.sasta_id:
-                sasta_api_url = sasta_api + f"key={settings.sasta_id}&service={service.sasta_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
-                res = requests.post(
-                    sasta_api_url,
-                    # headers={'content-type': 'application/json'},
-                    params=request.GET)
-                try:
-                    if res.json()['order']:
-                        order_create.status = "Processing"
-                        order_create.third_party_id = res.json()['order']
-                        order_create.third_party_name = 'sasta'
-                        order_create.save()
-                except:
-                    pass
-                # print(res.json())
+        # if settings.sasta_active:
+        #     if service.sasta_active and service.sasta_id:
+        #         sasta_api_url = sasta_api + f"key={settings.sasta_id}&service={service.sasta_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
+        #         res = requests.post(sasta_api_url, params=request.GET)
+        #         try:
+        #             if res.json()['order']:
+        #                 order_create.status = "Processing"
+        #                 order_create.third_party_id = res.json()['order']
+        #                 order_create.third_party_name = 'sasta'
+        #                 order_create.save()
+        #         except:
+        #             pass
+        #         # print(res.json())
 
-        # for sneaker
-        if settings.sneaker_active:
-            if service.snakers_active and service.snakers_id:
-                sneaker_api = sneaker_api_url + f"key={settings.sneaker_api}&service={service.snakers_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
-                res = requests.get(sneaker_api, params=request.GET)
-                print(res, res.json())
-                try:
-                    if res.json()['order']:
-                        order_create.status = "Processing"
-                        order_create.third_party_id = res.json()['order']
-                        order_create.third_party_name = 'Sneaker'
-                        order_create.save()
-                except:
-                    pass
+        # # for sneaker
+        # if settings.sneaker_active:
+        #     if service.snakers_active and service.snakers_id:
+        #         sneaker_api = sneaker_api_url + f"key={settings.sneaker_api}&service={service.snakers_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
+        #         res = requests.get(sneaker_api, params=request.GET)
+        #         print(res, res.json())
+        #         try:
+        #             if res.json()['order']:
+        #                 order_create.status = "Processing"
+        #                 order_create.third_party_id = res.json()['order']
+        #                 order_create.third_party_name = 'Sneaker'
+        #                 order_create.save()
+        #         except:
+        #             pass
 
-                print(res.json())
+        #         print(res.json())
 
-        print(settings)
+        # print(settings)
 
         if order_create:
             messages.success(
@@ -118,7 +103,7 @@ def dashboard(request):
                 # }
             )
             return redirect('dashboard')
-
+    services = get_cat(request)
     return render(request, "dashboard.html", {"categories": services})
 
 
