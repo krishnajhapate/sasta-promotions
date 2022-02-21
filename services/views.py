@@ -61,10 +61,6 @@ def view_tickets(request, id=None):
     })
 
 
-# except:
-#     return redirect('tickets')
-
-
 class ServicesView(APIView):
 
     def get(self, request, format=None):

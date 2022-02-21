@@ -13,6 +13,7 @@ class User(AbstractUser):
 
     name = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=100, blank=True)
+    api_key = models.CharField(max_length=500, blank=True, null=True)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['name']

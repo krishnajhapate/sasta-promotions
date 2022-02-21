@@ -1,9 +1,10 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from authapp.utils import generate_key
 from dashboard.utils import get_cat, place_order
 from services.models import CategoryModel, Offers, ServicesModel
 from orders.models import OrdersModel
-from authapp.models import AccountBalance
+from authapp.models import AccountBalance, User
 from django.contrib import messages
 from .models import Settings
 import requests
@@ -24,7 +25,6 @@ async def sneaker_order(sneaker_api):
 
 @login_required
 def dashboard(request):
-
     error_message = ""
     if request.method == "POST":
 
@@ -35,57 +35,15 @@ def dashboard(request):
         charge = (service.rate * float(quantity)) / 1000
         account_balance = AccountBalance.objects.get(user=request.user)
         if charge > account_balance.money:
+            services = get_cat(request)
             error_message = "No sufficient account balance to place this order"
             return render(request, "dashboard.html", {
                 "categories": services,
                 "error_message": error_message
             })
 
-        order_create = OrdersModel.objects.create(
-            service=service,
-            quantity=quantity,
-            link=link,
-            charge=charge,
-            user=request.user,
-        )
-
         order_create = place_order(request)
         print(order_create, 'order_create')
-        # placing order from api
-        # settings = Settings.objects.first()
-
-        # if settings.sasta_active:
-        #     if service.sasta_active and service.sasta_id:
-        #         sasta_api_url = sasta_api + f"key={settings.sasta_id}&service={service.sasta_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
-        #         res = requests.post(sasta_api_url, params=request.GET)
-        #         try:
-        #             if res.json()['order']:
-        #                 order_create.status = "Processing"
-        #                 order_create.third_party_id = res.json()['order']
-        #                 order_create.third_party_name = 'sasta'
-        #                 order_create.save()
-        #         except:
-        #             pass
-        #         # print(res.json())
-
-        # # for sneaker
-        # if settings.sneaker_active:
-        #     if service.snakers_active and service.snakers_id:
-        #         sneaker_api = sneaker_api_url + f"key={settings.sneaker_api}&service={service.snakers_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
-        #         res = requests.get(sneaker_api, params=request.GET)
-        #         print(res, res.json())
-        #         try:
-        #             if res.json()['order']:
-        #                 order_create.status = "Processing"
-        #                 order_create.third_party_id = res.json()['order']
-        #                 order_create.third_party_name = 'Sneaker'
-        #                 order_create.save()
-        #         except:
-        #             pass
-
-        #         print(res.json())
-
-        # print(settings)
 
         if order_create:
             messages.success(
@@ -95,12 +53,6 @@ def dashboard(request):
                                    <p> <strong>Charge</strong> ₹{order_create.charge} </p>
                                    <p> <strong>Quantity</strong> {order_create.quantity}  </p>
                                    <p> <strong>Account Balance</strong> ₹{AccountBalance.objects.get(user=request.user).money}  </p>"""
-
-                # {
-                #     "balance":
-                #     AccountBalance.objects.get(user=request.user).money,
-                #     "order": order_create
-                # }
             )
             return redirect('dashboard')
     services = get_cat(request)
@@ -113,3 +65,11 @@ def about_page(request):
 
 def terms_and_condition_page(request):
     return render(request, "terms.html")
+
+
+def api_key_generate(request):
+    user = User.objects.get(id=request.user.id)
+    user.api_key = generate_key(35)
+    user.save()
+    print(user)
+    return redirect('accounts')

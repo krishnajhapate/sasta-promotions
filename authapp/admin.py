@@ -17,6 +17,17 @@ class UserAdmin(DjangoUserAdmin):
 
     ordering = ['-id']
 
+    fieldsets = (('Personal Information', {
+        'fields': (
+            'username',
+            'name',
+            'phone',
+            'email',
+            'password',
+            'api_key',
+        )
+    }), )
+
 
 @admin.register(AccountBalance)
 class MoneyAdmin(admin.ModelAdmin):

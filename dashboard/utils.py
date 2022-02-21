@@ -6,10 +6,16 @@ from services.models import CategoryModel, Offers, ServicesModel
 
 
 def place_order(request):
+    offers = Offers.objects.filter(user=request.user)
     service_id = request.POST.get('service', None)
     link = request.POST.get('link', None)
     quantity = request.POST.get('quantity', None)
     service = ServicesModel.objects.get(id=service_id)
+    offers = offers.filter(service=service)
+    if offers.exists():
+        service = offers.first().service
+        service.rate = offers.first().price
+    print(service, service.rate)
     charge = (service.rate * float(quantity)) / 1000
     order_create = OrdersModel.objects.create(
         service=service,
