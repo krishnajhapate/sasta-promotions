@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "dashboard",
     "services",
     "orders",
+    "api",
     "rest_framework",
     'django.contrib.admin',
     'django.contrib.auth',

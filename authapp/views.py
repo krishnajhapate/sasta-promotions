@@ -104,7 +104,6 @@ def change_password(request):
         current_password = request.POST['current_password']
         password = request.POST['password']
         confirm_password = request.POST['confirm_password']
-        print(current_password, password, confirm_password)
         if password != confirm_password:
             messages.error(
                 request,

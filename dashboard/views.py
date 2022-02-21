@@ -2,11 +2,9 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from authapp.utils import generate_key
 from dashboard.utils import get_cat, place_order
-from services.models import CategoryModel, Offers, ServicesModel
-from orders.models import OrdersModel
+from services.models import ServicesModel
 from authapp.models import AccountBalance, User
 from django.contrib import messages
-from .models import Settings
 import requests
 # Create your views here.
 
@@ -73,3 +71,8 @@ def api_key_generate(request):
     user.save()
     print(user)
     return redirect('accounts')
+
+
+def api_page(request):
+
+    return render(request, 'api.html')
