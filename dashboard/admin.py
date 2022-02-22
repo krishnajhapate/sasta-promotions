@@ -20,8 +20,8 @@ class ApiAdmin(admin.ModelAdmin):
 
 @admin.register(Settings)
 class SettingsAdmin(admin.ModelAdmin):
-    list_display = ('sneaker_active', 'sasta_active', 'total_orders',
-                    'total_transactions', 'total_users')
+    # list_display = ('sneaker_active', 'sasta_active', 'total_orders',
+    #                 'total_transactions', 'total_users')
 
     add_fields = ((None, ('Site')), )
 
