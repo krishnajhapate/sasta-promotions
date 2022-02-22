@@ -1,4 +1,3 @@
-from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login as login_func
 from django.contrib import messages
@@ -91,6 +90,34 @@ def login(request):
             return render(request, 'home.html', {"error": True})
 
     return render(request, 'home.html')
+
+
+@login_required
+def accounts(request):
+
+    return render(request, 'accounts.html')
+
+
+@login_required
+def change_password(request):
+    if request.method == "POST":
+        current_password = request.POST['current_password']
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
+        if password != confirm_password:
+            messages.error(
+                request,
+                "New Password and confirm new password does not match")
+        if not request.user.check_password(current_password):
+            messages.error(request, "Current password is not correct")
+
+        if request.user.check_password(current_password):
+            user = User.objects.get(id=request.user.id)
+            user.set_password(password)
+            user.save()
+            messages.success(request, "Password updated")
+
+    return redirect("accounts")
 
 
 @login_required

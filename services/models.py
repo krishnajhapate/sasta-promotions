@@ -4,6 +4,8 @@ from pyexpat import model
 from tabnanny import verbose
 from django.db import models
 from django.conf import settings
+
+from dashboard.models import Api
 # Create your models here.
 
 User = settings.AUTH_USER_MODEL
@@ -32,13 +34,12 @@ class ServicesModel(models.Model):
     average_time_minutes = models.IntegerField(blank=True, null=True)
     description = models.TextField(max_length=4000, blank=True, null=True)
     active = models.BooleanField(default=False)
-    is_refill = models.BooleanField(default=False)
-
-    sasta_id = models.IntegerField(blank=True, null=True)
-    sasta_active = models.BooleanField(default=False)
-
-    snakers_id = models.IntegerField(blank=True, null=True)
-    snakers_active = models.BooleanField(default=False)
+    refill = models.BooleanField(default=False)
+    service_id = models.IntegerField(blank=True, null=True)
+    api = models.ForeignKey(Api,
+                            on_delete=models.CASCADE,
+                            blank=True,
+                            null=True)
 
     def __str__(self) -> str:
         return self.name
@@ -51,6 +52,12 @@ MESSAGE_STATUS = (
     ('Pending', 'Pending'),
     ('Answered', 'Answered'),
 )
+
+
+class Offers(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    service = models.ForeignKey(ServicesModel, on_delete=models.CASCADE)
+    price = models.FloatField(blank=True, null=True)
 
 
 class TicketsModel(models.Model):

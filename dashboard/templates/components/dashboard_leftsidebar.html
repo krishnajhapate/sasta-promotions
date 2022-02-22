@@ -216,15 +216,15 @@
                                     </li>
                                 </ul>
                                 <ul class="navbar-nav">
-                                    <!-- <li
+                                    <li
                                         class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                     >
                                         <a
                                             class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
-                                            href="/account"
+                                            href="{% url 'accounts' %}"
                                             >Account</a
                                         >
-                                    </li> -->
+                                    </li>
                                     <li
                                         class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
                                     >
@@ -330,10 +330,10 @@
                                 >
                             </a>
                         </li>
-                        <!-- <li class="component-sidebar__menu-item">
+                        <li class="component-sidebar__menu-item">
                             <a
                                 class="component-sidebar__menu-item-link"
-                                href="/api"
+                                href="{% url 'api' %}"
                             >
                                 <span class="sidebar-block__menu-item-icon">
                                     <span class="fad fa-signal-stream"></span>
@@ -342,7 +342,7 @@
                                     >API</span
                                 >
                             </a>
-                        </li> -->
+                        </li>
                         <!-- <li class="component-sidebar__menu-item">
                             <a
                                 class="component-sidebar__menu-item-link"

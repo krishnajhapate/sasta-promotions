@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from services.models import CategoryModel, MessageModel, ServicesModel, TicketsModel
 from services.serializers import CategorySerializer, ServicesSerializer
+from services.utils import get_ser
 
 # Create your views here.
 
@@ -28,7 +29,6 @@ def tickets(request):
     if request.method == "POST":
         message = request.POST.get('message', None)
         subject = request.POST.get('subject', None)
-        print(request.POST)
         ticket = TicketsModel.objects.create(user=request.user,
                                              subject=subject)
         message_create = MessageModel.objects.create(user=request.user,
@@ -61,18 +61,13 @@ def view_tickets(request, id=None):
     })
 
 
-# except:
-#     return redirect('tickets')
-
-
 class ServicesView(APIView):
 
     def get(self, request, format=None):
         """
         Return a list of all users.
         """
-        service = ServicesModel.objects.filter(active=True).order_by('id')
-        serializer = ServicesSerializer(service, many=True)
+        serializer = ServicesSerializer(get_ser(request), many=True)
         return Response(serializer.data)
 
 

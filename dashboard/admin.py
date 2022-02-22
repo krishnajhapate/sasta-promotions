@@ -1,9 +1,11 @@
 from django.contrib import admin
 
-from dashboard.models import CounterOrder, Settings
+from dashboard.models import Api, CounterOrder, Settings
 from orders.models import OrdersModel, TransanctionsModel
 from authapp.models import User
 # Register your models here.
+
+admin.site.site_header = "Promotion maro"
 
 
 @admin.register(CounterOrder)
@@ -11,10 +13,15 @@ class CounterAdmin(admin.ModelAdmin):
     list_display = ('id', 'counter')
 
 
+@admin.register(Api)
+class ApiAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'api_url', 'active')
+
+
 @admin.register(Settings)
 class SettingsAdmin(admin.ModelAdmin):
-    list_display = ('sneaker_active', 'sasta_active', 'total_orders',
-                    'total_transactions', 'total_users')
+    # list_display = ('sneaker_active', 'sasta_active', 'total_orders',
+    #                 'total_transactions', 'total_users')
 
     add_fields = ((None, ('Site')), )
 

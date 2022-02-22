@@ -1,0 +1,220 @@
+{% extends 'base.html' %} 
+{% block title %}{{ticket.user.name}} -Promotionmaro.com {% endblock title %}
+
+{% block content %}
+<div class="wrapper wrapper-sidebar-navbar">
+    {% include 'components/dashboard_leftsidebar.html' %}
+<div class="wrapper-content ">
+    <div class="wrapper-content__body">
+        <!-- Main variables *content* -->
+        <div id="block_4">
+        <div class="account ">
+          <div class="bg"></div>
+          <div class="divider-top"></div>
+          <div class="divider-bottom"></div>
+          <div class="container-fluid">
+              <div class="row account__alignment px-lg-4">
+                {% if messages %}
+                                
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                    <p>{{message}}</p>
+                                    
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                   {% endfor %}
+
+                                {% endif %}
+                  <div class="col-lg-8">
+                      <div class="component_card">
+                          <div class="card account-card">
+                                                                                      <div class="component_form_group">
+                                  <div class="">
+                                      <div class="form-group">
+                                          <label>Username</label>
+                                          <input type="text" class="form-control" id="username" value="{{request.user.username}}" disabled="disabled">
+                                      </div>
+                                  </div>
+                              </div>
+<!--   
+                              <form class="component_form_group" method="post" action="">
+                                  <div class="">
+                                      <div class="form-group">
+                                          <label>Language</label>
+                                          <div class="d-flex form-group__line">
+                                              <div class="w-100">
+                                                  <select class="form-control" id="language" name="SettingsFrom[lang]">
+                                                                                                              <option value="en" selected="">English</option>
+                                                                                                              <option value="hi">Hindi</option>
+                                                                                                              <option value="gu">Gujarati</option>
+                                                                                                              <option value="bh">Bihari</option>
+                                                                                                              <option value="mr">Marathi</option>
+                                                                                                      </select>
+                                              </div>
+                                              <div class="account-button-right">
+                                                  <div class="component_button_save">
+                                                      <input type="hidden" name="_csrf" value="NN_F7efvRvW-i8egJaH1EM0_4fbon8EIEftEi7ShOJluqPW8soEDw43upNMWl7x4_FSTkqD8lW5jvQ_M3Ol-_g==">
+                                                      <button type="submit" class="btn btn-block btn-primary-account">
+                                                          Save
+                                                      </button>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </form> -->
+  
+                              <form class="component_form_group" method="post" action="{% url 'change-password' %}">
+                                  {% csrf_token %}
+                                  <div class="">
+                                      <div class="form-group">
+                                          <label>Current password</label>
+                                          <input type="password" class="form-control" id="current" name="current_password">
+                                      </div>
+                                      <div class="form-group">
+                                          <label>New password</label>
+                                          <input type="password" class="form-control" id="new" name="password">
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Confirm new password</label>
+                                          <input type="password" class="form-control" id="confirm" name="confirm_password">
+                                      </div>
+                                  </div>
+                                  <div class="component_button_save">
+                                      <div class="btn-password ">
+                                          
+                                          <button class="btn btn-block btn-primary" type="submit">
+                                              Change password
+                                          </button>
+                                      </div>
+                                  </div>
+                              </form>
+                              {% if not request.user.api_key %}
+                              <form class="component_form_group mt-5" method="post" action="{% url 'generate-key' %}" >
+                                  {% csrf_token %}
+                                  <div class="component_button_save">
+                                <div class="btn-password ">
+                                    
+                                    <button class="btn btn-block btn-primary" type="submit">
+                                        Generate Api Key
+                                    </button>
+                                    </div>
+                                </div>
+                            </form>
+                            {% else %}
+  
+                              <!-- <form class="component_form_group" method="post" action="">
+                                  <div class="">
+                                      <div class="form-group">
+                                          <label>Timezone</label>
+                                          <div class="d-flex form-group__line">
+                                             
+                                              <div class="account-button-right">
+                                                  <div class="component_button_save">
+                                                      <div class="">
+                                                          <input type="hidden" name="_csrf" value="NN_F7efvRvW-i8egJaH1EM0_4fbon8EIEftEi7ShOJluqPW8soEDw43upNMWl7x4_FSTkqD8lW5jvQ_M3Ol-_g==">
+                                                          <button class="btn btn-block btn-primary-account" type="submit">
+                                                              Save
+                                                          </button>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </form> -->
+  
+                                  <div class="mt-5">
+                                      <div class="form-group">
+                                          <label>API key</label>
+                                         
+                                            <div class="input-group">
+                                                  <input type="text" class="form-control" id="api_key" value="{{request.user.api_key}}" readonly="" data-original-title="" title="">
+                                                  <!-- <div class="input-group-append component_button_api">
+                                                      <button class="btn btn-primary-account-api" type="submit">
+                                                          <span class="far fa-random"></span>
+                                                      </button>
+                                                  </div> -->
+                                              </div>
+                                                                              </div>
+                                  </div>
+{% endif %}
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  
+</div>
+</div>
+    <style>
+        @media (max-width: 991px) {
+            .wrapper-sidebar-navbar {
+                flex-direction: column;
+            }
+        }
+        .ticket-dialog__row-user .ticket-dialog__row-message {
+            text-align: left;
+            color: #334e6e;
+            background: #e4e1ee;
+            border-color: transparent;
+            box-shadow: none;
+        }
+        .ticket-dialog__row-message {
+            font-size: 16px;
+            padding-top: 12px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-bottom: 12px;
+            border-color: #000000;
+            background: #ffffff;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            border-left-width: 0px;
+            border-right-width: 0px;
+            border-top-width: 0px;
+            border-bottom-width: 0px;
+            border-style: none;
+        }
+        .ticket-dialog__row-user {
+            padding-right: 80px;
+        }
+        .ticket-dialog__row {
+            margin-bottom: 16px;
+        }
+        .ticket-dialog__row-bottom {
+            display: flex;
+            align-items: center;
+            margin-top: 4px;
+            font-size: 14px;
+        }
+        .ticket-dialog__row-user .ticket-dialog__row-bottom {
+            color: #61768e;
+        }
+        .ticket-dialog__row-user
+            .ticket-dialog__row-bottom
+            .ticket-dialog__row-bottom-name {
+            padding-right: 7px;
+        }
+        .ticket-dialog__row-bottom-name {
+            font-weight: bold;
+        }
+        .ticket-dialog__row-admin {
+            padding-left: 80px;
+        }
+        .ticket-dialog__row-admin .ticket-dialog__row-message {
+            color: #334e6e;
+            background: rgba(35, 26, 69, 0.2);
+            border-color: transparent;
+            box-shadow: none;
+        }
+    </style>
+{% endblock content %}

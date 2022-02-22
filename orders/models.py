@@ -26,10 +26,10 @@ class OrdersModel(models.Model):
     link = models.URLField(blank=True, null=True)
     quantity = models.IntegerField(blank=True, null=True)
     charge = models.FloatField(blank=True, null=True)
-    start_count = models.IntegerField(blank=True,null=True)
+    start_count = models.IntegerField(blank=True, null=True)
     last_updated = models.DateTimeField(auto_now=True)
     order_placed = models.DateTimeField(auto_now_add=True)
-
+    remains = models.IntegerField(blank=True, null=True)
     third_party_id = models.CharField(max_length=10, blank=True, null=True)
     third_party_name = models.CharField(max_length=20, blank=True, null=True)
 

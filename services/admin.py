@@ -2,7 +2,7 @@ from pyexpat import model
 from django.contrib import admin
 from django.db import models
 
-from services.models import CategoryModel, MessageModel, ServicesModel, TicketsModel
+from services.models import CategoryModel, MessageModel, Offers, ServicesModel, TicketsModel
 
 # Register your models here.
 
@@ -14,11 +14,26 @@ class ServiceModelAdmin(admin.StackedInline):
 
 
 class ServiceModelAdminShow(admin.ModelAdmin):
-    list_display = ('id', 'name', 'category', 'rate', 'active', 'sasta_active',
-                    'snakers_active')
+    list_display = (
+        'id',
+        'name',
+        'category',
+        'rate',
+        'api',
+    )
     list_filter = (
         'active',
         'category',
+    )
+
+
+@admin.register(Offers)
+class OfferAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'service',
+        'user',
+        'price',
     )
 
 
