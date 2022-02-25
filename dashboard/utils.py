@@ -25,16 +25,16 @@ def place_order(request):
         user=request.user,
     )
     if service.api and service.api.active and service.service_id:
-        api_url = service.api.api_url + f"key={service.api.api_key}&service={service.id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
+        api_url = service.api.api_url + f"?key={service.api.api_key}&service={service.service_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
+        print(api_url)
         res = requests.post(api_url, params=request.GET)
-
+        print(res, res.json())
         try:
-            if res.status_code == 200:
-                if res.json()['order']:
-                    order_create.status = "Processing"
-                    order_create.third_party_id = res.json()['order']
-                    order_create.third_party_name = 'sasta'
-                    order_create.save()
+            if res.json()['order']:
+                order_create.status = "Processing"
+                order_create.third_party_id = res.json()['order']
+                order_create.third_party_name = 'sasta'
+                order_create.save()
         except:
             pass
 
