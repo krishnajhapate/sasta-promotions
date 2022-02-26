@@ -26,6 +26,7 @@ class AppApi(APIView):
 
             if action == "add":
                 order = place_order(request, user)
+                print(order)
                 if order[0]:
                     serializer = OrderSerializer(instance=order[0])
                     return Response({"order":serializer.data['id']})
