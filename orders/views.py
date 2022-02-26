@@ -16,29 +16,22 @@ def orders(request, status=None):
 
     for order in orders:
         if order.status == "Processing" or order.status == "Partial" or order.status == "In progress" or order.status == "Pending":
-            if order.third_party_id and order.third_party_name:
-                settings = Settings.objects.first()
-                if order.third_party_name == "Sneaker":
-
-                    sneaker_api = sneaker_api_url + f"key={settings.sneaker_api}&order={order.third_party_id}&action=status"
-                    res = requests.post(sneaker_api).json()
+            service = order.service
+            try:
+                if order.third_party_id:
+                    api_url = service.api.api_url + f"/?key={service.api.api_key}&action=status&order={order.third_party_id}"
+                    res = requests.get(api_url, params=request.GET)
+                    res = res.json()
                     order_update = OrdersModel.objects.get(id=order.id)
                     order_update.status = res['status']
                     order_update.start_count = res['start_count']
                     if res['status'] == 'Inprogress':
                         order_update.status = 'In progress'
+                    if res['status'] == 'Pending':
+                        order_update.status = 'Processing'
                     order_update.save()
-
-                if order.third_party_name == "sasta":
-                    sasta_api = sasta_api_url + f"key={settings.sasta_id}&order={order.third_party_id}&action=status"
-                    res = requests.post(sasta_api, params=request.GET)
-                    print(res)
-                    res = res.json()
-                    print(res)
-                    order_update = OrdersModel.objects.get(id=order.id)
-                    order_update.status = res['status']
-                    order_update.start_count = res['start_count']
-                    order_update.save()
+            except:
+                pass
 
     orders = OrdersModel.objects.filter(user=request.user)
 
