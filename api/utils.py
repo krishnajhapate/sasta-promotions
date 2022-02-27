@@ -71,19 +71,19 @@ def place_order(request, user):
         charge=charge,
         user=user,
     )
-    if service.api and service.api.active and service.service_id:
-        api_url = service.api.api_url + f"?key={service.api.api_key}&service={service.service_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
-        res = requests.post(api_url, params=request.GET)
-        print(api_url)
-        print(res, res.json())
-        # try:
-        if res.json()['order']:
-            order_create.status = "Processing"
-            order_create.third_party_id = res.json()['order']
-            order_create.third_party_name = 'sasta'
-            order_create.save()
-        # except:
-        #     pass
+    # if service.api and service.api.active and service.service_id:
+    #     api_url = service.api.api_url + f"?key={service.api.api_key}&service={service.service_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
+    #     res = requests.post(api_url, params=request.GET)
+    #     print(api_url)
+    #     print(res, res.json())
+    #     # try:
+    #     if res.json()['order']:
+    #         order_create.status = "Processing"
+    #         order_create.third_party_id = res.json()['order']
+    #         order_create.third_party_name = 'sasta'
+    #         order_create.save()
+    #     # except:
+    #     #     pass
 
     return order_create, True
 
