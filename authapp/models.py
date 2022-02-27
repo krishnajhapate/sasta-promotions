@@ -4,7 +4,7 @@ from django.db.models.fields.related import OneToOneField
 from django.utils.translation import gettext_lazy as _
 from django.dispatch import receiver
 from django.db.models.signals import post_save
-
+import requests
 from orders.models import OrdersModel, TransanctionsModel, OrderTransanctionModel
 # Create your models here.
 
@@ -47,6 +47,19 @@ def update_account_balance_on_order(instance, sender, *args, **kwargs):
                 user=instance.user,
                 order=instance,
             )
+            service = instance.service
+            if service.api and service.api.active and service.service_id:
+                api_url = service.api.api_url + f"?key={service.api.api_key}&service={service.service_id}&action=add&link={instance.link}&quantity={instance.quantity}"
+                res = requests.post(api_url)
+                print(res)
+                try:
+                    if res.json()['order']:
+                        instance.status = "Processing"
+                        instance.third_party_id = res.json()['order']
+                        instance.third_party_name = 'sasta'
+                        instance.save()
+                except:
+                    pass
 
     if instance.status == "Cancelled":
         if OrderTransanctionModel.objects.filter(

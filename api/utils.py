@@ -73,7 +73,7 @@ def place_order(request, user):
     )
     if service.api and service.api.active and service.service_id:
         api_url = service.api.api_url + f"?key={service.api.api_key}&service={service.service_id}&action=add&link={order_create.link}&quantity={order_create.quantity}"
-        res = requests.post(api_url)
+        res = requests.post(api_url, params=request.GET)
         print(api_url)
         print(res, res.json())
         # try:
