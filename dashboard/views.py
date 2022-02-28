@@ -32,18 +32,11 @@ def dashboard(request):
         service = ServicesModel.objects.get(id=service_id)
         charge = (service.rate * float(quantity)) / 1000
         account_balance = AccountBalance.objects.get(user=request.user)
-        if charge > account_balance.money:
-            services = get_cat(request)
-            error_message = "No sufficient account balance to place this order"
-            return render(request, "dashboard.html", {
-                "categories": services,
-                "error_message": error_message
-            })
 
-        order_create = place_order(request)
+        order_create, state = place_order(request)
         print(order_create, 'order_create')
 
-        if order_create:
+        if order_create and state:
             messages.success(
                 request, f"""
                 <p> <strong>Order id</strong> #{order_create.id}</p>
@@ -53,6 +46,12 @@ def dashboard(request):
                                    <p> <strong>Account Balance</strong> ₹{AccountBalance.objects.get(user=request.user).money}  </p>"""
             )
             return redirect('dashboard')
+        if not state:
+            services = get_cat(request)
+            return render(request, "dashboard.html", {
+                "categories": services,
+                "error_message": order_create
+            })
     services = get_cat(request)
     return render(request, "dashboard.html", {"categories": services})
 
