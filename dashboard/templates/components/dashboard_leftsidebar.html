@@ -1,4 +1,4 @@
-{% load static %} {% load get_account_pay   %}
+{% load static %} {% load get_account_pay get_conf  %}
 <div id="block_34" class="component_private_navbar">
     <span class="component_private_navbar">
         <div class="component-navbar-private__wrapper">
@@ -252,7 +252,7 @@
                         <div class="component-navbar-logo">
                             <a href="{% url 'dashboard' %}">
                                 <img
-                                    src="{% static 'images/logobest.jpeg' %}"
+                                    src="{% logo %}"
                                     class="sidebar-block__top-logo"
                                     alt=""
                                     title=""
