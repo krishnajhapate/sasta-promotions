@@ -1,4 +1,9 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% load  get_conf %}
+{% block title %} Api {% site_name %}{% endblock title %}
+
+
+{% block content %}
 <div class="wrapper wrapper-sidebar-navbar">
     {% include 'components/dashboard_leftsidebar.html' %}
 
@@ -27,7 +32,7 @@
                                 </tr>
                                 <tr>
                                   <td>API URL</td>
-                                  <td>https://promotionmaro.com/api/v1</td>
+                                  <td>https://base.htmlmaro.com/api/v1</td>
                                 </tr>
                                                         <tr>
                                     <td>API Key</td>

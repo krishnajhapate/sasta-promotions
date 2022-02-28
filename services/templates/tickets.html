@@ -1,5 +1,7 @@
 {% extends 'base.html' %} 
-{% block title %}Tickets -Promotionmaro.com {% endblock title %}
+{% load  get_conf %}
+
+{% block title %}Tickets -{% site_name %} {% endblock title %}
 {% block content %}
 <div class="wrapper wrapper-sidebar-navbar">
     {% include 'components/dashboard_leftsidebar.html' %}

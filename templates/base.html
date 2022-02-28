@@ -1,4 +1,4 @@
-{% load static %}
+{% load static get_conf %}
 {% load get_account_pay  %} 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,12 +13,12 @@
         <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %} ">
         <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %} ">
         <link rel="manifest" href="{% static 'favicon/site.webmanifest' %} ">
-        <title>{% block title %} Promotionmaro.com | Cheapest Service{% endblock title %}</title>
-        <meta
+        <title>{% block title %} {% site_title %}{% endblock title %}</title>
+        <!-- <meta
             name="google-site-verification"
             content="dvGt_iD0ehFpbGGfGQaPuGFYSkY-LweOw-55I36yi-Y"
         />
-        <!-- Global site tag (gtag.js) - Google Analytics -->
+      Global site tag (gtag.js) - Google Analytics 
         <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-4HY2278V7L"
@@ -31,10 +31,10 @@
             gtag("js", new Date());
 
             gtag("config", "G-4HY2278V7L");
-        </script>
+        </script> -->
         <meta
             name="keywords"
-            content="promotion,promotionmaro,smm panel,best smm panel,cheapest smm panel,main smm panel,main smm provider,sasta,provider,smm,sast provider,api,social media"
+            content="{% keyword %}"
         />
         <meta
             name="keywords"
@@ -42,7 +42,7 @@
         />
         <meta
             name="description"
-            content="Do you want to make a remarkable presence on social media? Here’s your chance!! It’s high time to choose a social media marketing panel to enhance your reach on social media. Social media panels can expand your business beyond your expectations and gain a wider audience across the world. The technique to determine the market presence of a brand is a long way route. However, it is essential to keep monitoring your customers to build powerful relationships with them. Since you may be new to marketing technicalities, approaching SMM Service Provider India, can help you amplify your objective and goals."
+            content="{% description %}"
         />
 
 
@@ -62,7 +62,7 @@
         {% block content %} {% endblock content %}
         <div class="chat-button" >
 
-            <a href="https://api.whatsapp.com/send?phone={% get_whatsapp_contact %}&text=Hello this is the starting message"> <img height="60px" width="60px" src="{% static 'images/whatsapp.png' %}" alt="whatsapp flaticon"> </a>
+            <a href="https://api.whatsapp.com/send?phone={% get_whatsapp_contact %}&text={% whatsapp_message %}"> <img height="60px" width="60px" src="{% static 'images/whatsapp.png' %}" alt="whatsapp flaticon"> </a>
         </div>
         <script type="text/javascript" src="/static/js/file1.js"></script>
         <script type="text/javascript" src="/static/js/file2.js"></script>

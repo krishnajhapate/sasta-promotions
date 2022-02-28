@@ -1,4 +1,8 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% load  get_conf %}
+
+{% block title %}Home -{% site_name %} {% endblock title %}
+{% block content %}
 
 <div class="wrapper wrapper-navbar">
     {% include 'components/header.html' %}
@@ -17,7 +21,7 @@
                             <div class="col-lg-8">
                                 <div class="my-5 mt-2">
                                     <h1 class="text-white text-center mb-2">
-                                        How to use promotionmaro.com website
+                                        How to use base.htmlmaro.com website
                                     </h1>
                                     <iframe
                                         class="yt-video"

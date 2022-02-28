@@ -30,8 +30,6 @@ def dashboard(request):
         link = request.POST.get('link', None)
         quantity = request.POST.get('quantity', None)
         service = ServicesModel.objects.get(id=service_id)
-        charge = (service.rate * float(quantity)) / 1000
-        account_balance = AccountBalance.objects.get(user=request.user)
 
         order_create, state = place_order(request)
         print(order_create, 'order_create')

@@ -5,5 +5,5 @@ from authapp.utils import generate_key
 from dashboard.views import *
 
 urlpatterns = [
-    path('', AppApi.as_view(), name="home"),
+    path('', AppApi.as_view()),
 ]

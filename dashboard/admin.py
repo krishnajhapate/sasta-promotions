@@ -5,7 +5,7 @@ from orders.models import OrdersModel, TransanctionsModel
 from authapp.models import User
 # Register your models here.
 
-admin.site.site_header = "Promotion maro"
+admin.site.site_header = "base.html maro"
 
 
 @admin.register(CounterOrder)
@@ -20,10 +20,8 @@ class ApiAdmin(admin.ModelAdmin):
 
 @admin.register(Settings)
 class SettingsAdmin(admin.ModelAdmin):
-    # list_display = ('sneaker_active', 'sasta_active', 'total_orders',
-    #                 'total_transactions', 'total_users')
-
-    add_fields = ((None, ('Site')), )
+    list_display = ('site_name', 'total_orders', 'total_transactions',
+                    'total_users')
 
     def total_orders(self, request):
         return OrdersModel.objects.filter(status="Completed").count()
