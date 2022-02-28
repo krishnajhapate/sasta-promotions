@@ -50,13 +50,10 @@ def update_account_balance_on_order(instance, sender, *args, **kwargs):
             service = instance.service
             print('herer', service.api, service.api.active, service.service_id)
             if service.api and service.api.active and service.service_id:
-                print('herersdf', service.api, service.api.active,
-                      service.service_id)
 
-                api_url = service.api.api_url + f"?key={service.api.api_key}&service={service.service_id}&action=add&link={instance.link}&quantity={instance.quantity}"
-                res = requests.get(api_url)
-                print(res, 'res')
                 try:
+                    api_url = service.api.api_url + f"?key={service.api.api_key}&service={service.service_id}&action=add&link={instance.link}&quantity={instance.quantity}"
+                    res = requests.get(api_url)
                     if res.json()['order']:
                         instance.status = "Processing"
                         instance.third_party_id = res.json()['order']

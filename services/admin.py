@@ -1,6 +1,7 @@
 from pyexpat import model
 from django.contrib import admin
 from django.db import models
+from services.forms import ServiceAddForm
 
 from services.models import CategoryModel, MessageModel, Offers, ServicesModel, TicketsModel
 
@@ -38,7 +39,13 @@ class OfferAdmin(admin.ModelAdmin):
 
 
 class CategoryModelAdmin(admin.ModelAdmin):
-    # inlines = [ServiceModelAdmin]
+    add_form = ServiceAddForm
+
+    add_fieldsets = ((None, {
+        'classes': ('wide', ),
+        'fields': ('name', 'active', 'url'),
+    }), )
+
     list_display = ('id', 'name', 'ranking', 'active')
     list_filter = ('active', )
 

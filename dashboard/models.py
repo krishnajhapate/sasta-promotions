@@ -24,7 +24,7 @@ class Settings(models.Model):
     description = models.TextField(max_length=1000, blank=True, null=True)
     logo = models.ImageField(upload_to='image', blank=True, null=True)
     pyament_qr = models.ImageField(upload_to='image', blank=True, null=True)
-    favicon = models.ImageField(upload_to='image', blank=True, null=True)
+    # favicon = models.ImageField(upload_to='image', blank=True, null=True)
     whatsapp_no = models.CharField(max_length=100, blank=True, null=True)
     whatsapp_message = models.CharField(max_length=400, blank=True, null=True)
 
