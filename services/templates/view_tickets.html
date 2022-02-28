@@ -1,5 +1,7 @@
 {% extends 'base.html' %} 
-{% block title %}{{ticket.user.name}} -Promotionmaro.com {% endblock title %}
+{% load  get_conf %}
+
+{% block title %}{{ticket.user.name}} -{% site_name %} {% endblock title %}
 
 {% block content %}
 <div class="wrapper wrapper-sidebar-navbar">
