@@ -1,8 +1,10 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from services.forms import ServiceAddForm
 from services.models import CategoryModel, MessageModel, ServicesModel, TicketsModel
 from services.serializers import CategorySerializer, ServicesSerializer
 from services.utils import get_ser
@@ -80,3 +82,20 @@ class CategoriesView(APIView):
         service = CategoryModel.objects.filter(active=True).order_by('id')
         serializer = CategorySerializer(service, many=True)
         return Response(serializer.data)
+
+
+def add_new_service(request):
+    form = ServiceAddForm()
+    print(request, request)
+    if request.method == "POST":
+        form = ServiceAddForm(data=request.POST)
+        if form.is_valid():
+            category = form.cleaned_data['category'].id
+            name = form.cleaned_data['name']
+            url = form.cleaned_data['url']
+            pannel = form.cleaned_data['pannel']
+
+            data_added = 0
+            # send request to url
+            messages.error(request, "Invalid")
+    return render(request, 'add-service.html', {"form": form})

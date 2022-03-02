@@ -32,7 +32,7 @@
                                 </tr>
                                 <tr>
                                   <td>API URL</td>
-                                  <td>https://base.htmlmaro.com/api/v1</td>
+                                  <td id="host" >https://promotionmaro.com/api/v1</td>
                                 </tr>
                                                         <tr>
                                     <td>API Key</td>
@@ -618,8 +618,11 @@
     </div>
 </div>
 </div>
-
+<script>
+  document.getElementById('host').innerHTML = `https://${window.location.host}/api/v1`
+</script>
 <style>
+
 @media (max-width: 991px) {
     .wrapper-sidebar-navbar {
         flex-direction: column;
