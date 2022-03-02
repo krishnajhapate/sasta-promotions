@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "services",
     "orders",
     "api",
+    'crispy_forms',
     "rest_framework",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -160,3 +161,5 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     messages.ERROR: 'danger',
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

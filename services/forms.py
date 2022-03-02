@@ -1,17 +1,17 @@
 from django import forms
 from .models import CategoryModel, ServicesModel
 
+CHOICES = (
+    ("self", "self"),
+    ("other", "other"),
+)
+
 
 class ServiceAddForm(forms.ModelForm):
     url = forms.CharField(max_length=400)
+    pannel = forms.ChoiceField(choices=CHOICES)
+    name = forms.CharField(max_length=500, required=False)
 
     class Meta:
-        model = CategoryModel
-        fields = ['name', 'active', 'url']
-
-    def save(self, commit=True):
-        user = super(ServiceAddForm, self).save(commit=False)
-        user.set_password(self.cleaned_data['password2'])
-        if commit:
-            user.save()
-        return user
+        model = ServicesModel
+        fields = ['name', 'category', 'url']
