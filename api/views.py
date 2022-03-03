@@ -29,7 +29,7 @@ class AppApi(APIView):
                 print(order)
                 if order[0]:
                     serializer = OrderSerializer(instance=order[0])
-                    return Response(serializer.data)
+                    return Response({"order": serializer.data['id']})
 
                 return Response(order[1], status=status.HTTP_400_BAD_REQUEST)
 

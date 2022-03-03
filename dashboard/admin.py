@@ -5,7 +5,7 @@ from orders.models import OrdersModel, TransanctionsModel
 from authapp.models import User
 # Register your models here.
 
-admin.site.site_header = "base.html maro"
+admin.site.site_header = "Promotion maro"
 
 
 @admin.register(CounterOrder)
