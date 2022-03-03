@@ -19,8 +19,13 @@ def get_cat(request):
         if offer_services:
             for ser in offer_services:
                 if ser.service.category == category:
-                    ser.service.rate = ser.price
-                    temp_ser.append(ser.service)
+                    if ser.offer_type == "Percentage":
+                        ser.service.rate = ser.service.rate - (
+                            ser.service.rate * ser.price) / 100
+                        temp_ser.append(ser.service)
+                    else:
+                        ser.service.rate = ser.price
+                        temp_ser.append(ser.service)
 
         if service.count() > 0:
             for ser in service:
@@ -41,8 +46,12 @@ def place_order(request):
     offers = offers.filter(service=service)
     if offers.exists():
         service = offers.first().service
-        service.rate = offers.first().price
-    print(service, service.rate)
+        if offers.first().offer_type == "Percentage":
+            service.rate = service.rate - (service.rate *
+                                           offers.first().price) / 100
+        else:
+            service.rate = offers.first().price
+
     charge = (service.rate * float(quantity)) / 1000
     account_balance = AccountBalance.objects.get(user=request.user)
 

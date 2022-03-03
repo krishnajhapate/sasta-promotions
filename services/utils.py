@@ -12,8 +12,13 @@ def get_ser(request):
     services = []
     if offer_services:
         for ser in offer_services:
-            ser.service.rate = ser.price
-            services.append(ser.service)
+            print(ser.service, ser.service.rate, ser.offer_type)
+            if ser.offer_type == "Percentage":
+                ser.service.rate = ser.service.rate - (ser.service.rate *
+                                                       ser.price) / 100
+                services.append(ser.service)
+            else:
+                services.append(ser.service)
 
     for ser in service_main:
         if ser.id not in [x.id for x in services]:

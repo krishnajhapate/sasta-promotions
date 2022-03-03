@@ -53,11 +53,19 @@ MESSAGE_STATUS = (
     ('Answered', 'Answered'),
 )
 
+OFFERS_TYPE = (
+    ('Percentage', 'Percentage'),
+    ('Price', 'Price'),
+)
+
 
 class Offers(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     service = models.ForeignKey(ServicesModel, on_delete=models.CASCADE)
     price = models.FloatField(blank=True, null=True)
+    offer_type = models.CharField(default="Price",
+                                  max_length=20,
+                                  choices=OFFERS_TYPE)
 
 
 class TicketsModel(models.Model):

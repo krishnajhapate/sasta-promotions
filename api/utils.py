@@ -25,8 +25,12 @@ def get_ser(user):
     services = []
     if offer_services:
         for ser in offer_services:
-            ser.service.rate = ser.price
-            services.append(ser.service)
+            if ser.offer_type == "Percentage":
+                ser.service.rate = ser.service.rate - (ser.service.rate *
+                                                       ser.price) / 100
+                services.append(ser.service)
+            else:
+                services.append(ser.service)
 
     for ser in service_main:
         if ser.id not in [x.id for x in services]:
@@ -55,7 +59,11 @@ def place_order(request, user):
     offers = offers.filter(service=service)
     if offers.exists():
         service = offers.first().service
-        service.rate = offers.first().price
+        if offers.first().offer_type == "Percentage":
+            service.rate = service.rate - (service.rate *
+                                           offers.first().price) / 100
+        else:
+            service.rate = offers.first().price
     charge = (service.rate * float(quantity)) / 1000
 
     # balance check
