@@ -55,7 +55,6 @@ class ServicesSerializer(serializers.ModelSerializer):
             'api',
             'service_id',
             "active",
-            "description",
             "min_order",
             "max_order",
         )
