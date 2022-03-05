@@ -36,15 +36,16 @@ class OfferAdmin(admin.ModelAdmin):
         'user',
         'price',
     )
+    search_fields = ('user', )
 
 
 class CategoryModelAdmin(admin.ModelAdmin):
-    add_form = ServiceAddForm
+    # add_form = ServiceAddForm
 
-    add_fieldsets = ((None, {
-        'classes': ('wide', ),
-        'fields': ('name', 'active', 'url'),
-    }), )
+    # add_fieldsets = ((None, {
+    #     'classes': ('wide', ),
+    #     'fields': ('name', 'active', 'url'),
+    # }), )
 
     list_display = ('id', 'name', 'ranking', 'active')
     list_filter = ('active', )
