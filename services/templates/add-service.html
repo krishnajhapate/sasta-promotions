@@ -5,7 +5,19 @@
 
 
 {% block content %}
+{% if messages %}
+                                
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    <p>{{message}}</p>
+                    
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                   {% endfor %}
 
+                {% endif %}
 <form action="" class="container mt-5 bg-light rounded p-5 " method="post">
     {% csrf_token %}
     {{form|crispy}}

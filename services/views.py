@@ -8,6 +8,7 @@ from services.forms import ServiceAddForm
 from services.models import CategoryModel, MessageModel, ServicesModel, TicketsModel
 from services.serializers import CategorySerializer, ServicesSerializer
 from services.utils import get_ser
+import requests
 
 # Create your views here.
 
@@ -85,17 +86,50 @@ class CategoriesView(APIView):
 
 
 def add_new_service(request):
+    if not request.user.is_superuser:
+        return redirect('home')
+
     form = ServiceAddForm()
-    print(request, request)
     if request.method == "POST":
         form = ServiceAddForm(data=request.POST)
         if form.is_valid():
-            category = form.cleaned_data['category'].id
+            category = form.cleaned_data['category']
             name = form.cleaned_data['name']
             url = form.cleaned_data['url']
             pannel = form.cleaned_data['pannel']
+            key = form.cleaned_data['key']
+            api = form.cleaned_data['api']
+            add_id = form.cleaned_data['add_id']
 
+            print(category, name, url, pannel)
             data_added = 0
             # send request to url
-            messages.error(request, "Invalid")
+            if pannel:
+                url = f"{url}?key={key}&action=services"
+                res = requests.get(url, params=request.GET)
+                res = res.json()
+                # print(res)
+                for i in res:
+                    if name == i['category']:
+                        service, created = ServicesModel.objects.get_or_create(
+                            category=category,
+                            name=i['name'],
+                            rate=i['rate'],
+                            min_order=i['min'],
+                            max_order=i['max'],
+                            active=True,
+                        )
+                        data_added += 1
+                        if add_id:
+                            service.service_id = i['service']
+                            service.save()
+                        if api:
+                            service.api = api
+                            service.save()
+                        print(created)
+                        # print(res)
+                # extracting categorys
+
+                pass
+            messages.success(request, f"Added {data_added} service")
     return render(request, 'add-service.html', {"form": form})
