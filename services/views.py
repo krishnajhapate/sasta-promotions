@@ -118,6 +118,7 @@ def add_new_service(request):
                             min_order=i['min'],
                             max_order=i['max'],
                             refill=i['refill'],
+                            description=i['description'],
                             active=True,
                         )
                         data_added += 1
