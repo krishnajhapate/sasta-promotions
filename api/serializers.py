@@ -45,6 +45,8 @@ class OrderStatusSerializer(serializers.ModelSerializer):
 class ServicesSerializer(serializers.ModelSerializer):
     category = serializers.SerializerMethodField(read_only=True)
     service = serializers.SerializerMethodField(read_only=True)
+    min = serializers.SerializerMethodField(read_only=True)
+    max = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = ServicesModel
@@ -54,6 +56,8 @@ class ServicesSerializer(serializers.ModelSerializer):
             'service_id',
             "active",
             "description",
+            "min_order",
+            "max_order",
         )
 
     def get_category(self, obj):
@@ -61,3 +65,9 @@ class ServicesSerializer(serializers.ModelSerializer):
 
     def get_service(self, obj):
         return obj.id
+
+    def get_min(self, obj):
+        return obj.min_order
+
+    def get_max(self, obj):
+        return obj.max_order

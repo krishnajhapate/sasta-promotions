@@ -117,6 +117,7 @@ def add_new_service(request):
                             rate=i['rate'],
                             min_order=i['min'],
                             max_order=i['max'],
+                            refill=i['refill'],
                             active=True,
                         )
                         data_added += 1
