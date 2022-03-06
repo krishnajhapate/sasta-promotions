@@ -48,9 +48,8 @@ def update_account_balance_on_order(instance, sender, *args, **kwargs):
                 user=instance.user,
                 order=instance,
             )
+            instance.link = instance.link.spli("?")[0]
             service = ServicesModel.objects.get(id=instance.service.id)
-            print('herer', service.id)
-            print('herer', service.api, service.api.active, service.service_id)
             if service.api and service.api.active and service.service_id:
                 print('here')
                 try:
@@ -59,7 +58,7 @@ def update_account_balance_on_order(instance, sender, *args, **kwargs):
                     if res.json()['order']:
                         instance.status = "Processing"
                         instance.third_party_id = res.json()['order']
-                        instance.third_party_name = 'sasta'
+                        instance.third_party_name = service.api.name
                         instance.save()
                 except:
                     pass
