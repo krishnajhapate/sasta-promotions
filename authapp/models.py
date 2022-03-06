@@ -48,7 +48,7 @@ def update_account_balance_on_order(instance, sender, *args, **kwargs):
                 user=instance.user,
                 order=instance,
             )
-            instance.link = instance.link.spli("?")[0]
+            instance.link = instance.link.split("?")[0]
             service = ServicesModel.objects.get(id=instance.service.id)
             if service.api and service.api.active and service.service_id:
                 print('here')

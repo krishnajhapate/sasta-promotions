@@ -8,28 +8,15 @@ from django.contrib import messages
 import requests
 # Create your views here.
 
-sasta_api = 'https://sastaprovider.com/api/v2?'
-sneaker_api_url = 'https://snakerspanel.com/api/v2?'
-
 
 def home_page(request):
     services = get_cat(request)
     return render(request, "home.html", {"category": services})
 
 
-async def sneaker_order(sneaker_api):
-    res = requests.post(sneaker_api)
-
-
 @login_required
 def dashboard(request):
-    error_message = ""
     if request.method == "POST":
-
-        service_id = request.POST.get('service', None)
-        link = request.POST.get('link', None)
-        quantity = request.POST.get('quantity', None)
-        service = ServicesModel.objects.get(id=service_id)
 
         order_create, state = place_order(request)
         print(order_create, 'order_create')
