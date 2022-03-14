@@ -17,7 +17,7 @@ class AppApi(APIView):
             return Response("Invaild Api key ",
                             status=status.HTTP_400_BAD_REQUEST)
 
-        if not user:
+        if  user:
             action = request.GET.get("action", None)
 
             if action == "services":
