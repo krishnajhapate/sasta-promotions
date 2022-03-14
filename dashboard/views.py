@@ -8,28 +8,15 @@ from django.contrib import messages
 import requests
 # Create your views here.
 
-sasta_api = 'https://sastaprovider.com/api/v2?'
-sneaker_api_url = 'https://snakerspanel.com/api/v2?'
-
 
 def home_page(request):
     services = get_cat(request)
     return render(request, "home.html", {"category": services})
 
 
-async def sneaker_order(sneaker_api):
-    res = requests.post(sneaker_api)
-
-
 @login_required
 def dashboard(request):
-    error_message = ""
     if request.method == "POST":
-
-        service_id = request.POST.get('service', None)
-        link = request.POST.get('link', None)
-        quantity = request.POST.get('quantity', None)
-        service = ServicesModel.objects.get(id=service_id)
 
         order_create, state = place_order(request)
         print(order_create, 'order_create')
@@ -37,11 +24,12 @@ def dashboard(request):
         if order_create and state:
             messages.success(
                 request, f"""
-                <p> <strong>Order id</strong> #{order_create.id}</p>
+                <p> <strong>ID</strong> #{order_create.id}</p>
                                    <p> <strong>Service</strong> {order_create.service.name}  </p>
-                                   <p> <strong>Charge</strong> ₹{order_create.charge} </p>
+                                   <p> <strong>Link</strong> {order_create.link}  </p>
                                    <p> <strong>Quantity</strong> {order_create.quantity}  </p>
-                                   <p> <strong>Account Balance</strong> ₹{AccountBalance.objects.get(user=request.user).money}  </p>"""
+                                   <p> <strong>Charge</strong> ₹{order_create.charge} </p>
+                                   <p> <strong>Balance</strong> ₹{AccountBalance.objects.get(user=request.user).money}  </p>"""
             )
             return redirect('dashboard')
         if not state:
