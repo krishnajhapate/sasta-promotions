@@ -24,11 +24,12 @@ def dashboard(request):
         if order_create and state:
             messages.success(
                 request, f"""
-                <p> <strong>Order id</strong> #{order_create.id}</p>
+                <p> <strong>ID</strong> #{order_create.id}</p>
                                    <p> <strong>Service</strong> {order_create.service.name}  </p>
-                                   <p> <strong>Charge</strong> ₹{order_create.charge} </p>
+                                   <p> <strong>Link</strong> {order_create.link}  </p>
                                    <p> <strong>Quantity</strong> {order_create.quantity}  </p>
-                                   <p> <strong>Account Balance</strong> ₹{AccountBalance.objects.get(user=request.user).money}  </p>"""
+                                   <p> <strong>Charge</strong> ₹{order_create.charge} </p>
+                                   <p> <strong>Balance</strong> ₹{AccountBalance.objects.get(user=request.user).money}  </p>"""
             )
             return redirect('dashboard')
         if not state:
