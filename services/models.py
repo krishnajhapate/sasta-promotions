@@ -61,7 +61,10 @@ OFFERS_TYPE = (
 
 class Offers(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    service = models.ForeignKey(ServicesModel, on_delete=models.CASCADE)
+    service = models.ForeignKey(ServicesModel,
+                                on_delete=models.CASCADE,
+                                blank=True,
+                                null=True)
     price = models.FloatField(blank=True, null=True)
     offer_type = models.CharField(default="Price",
                                   max_length=20,

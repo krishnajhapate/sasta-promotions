@@ -10,3 +10,5 @@ __pycache__
 static
 media
 image
+.DS_Store
+models.c*

@@ -16,16 +16,28 @@ def get_cat(request):
     for category in categories:
         temp_ser = []
         service = ServicesModel.objects.filter(active=True, category=category)
-        if offer_services:
-            for ser in offer_services:
-                if ser.service.category == category:
-                    if ser.offer_type == "Percentage":
-                        ser.service.rate = ser.service.rate - (
-                            ser.service.rate * ser.price) / 100
-                        temp_ser.append(ser.service)
-                    else:
-                        ser.service.rate = ser.price
-                        temp_ser.append(ser.service)
+        if offer_services.filter(offer_type="Percentage",
+                                 service__isnull=True).exists():
+            offer = offer_services.filter(offer_type="Percentage",
+                                          service__isnull=True).first()
+            for ser in service:
+                if ser.id not in [x.id for x in temp_ser]:
+                    ser.rate = ser.rate - (ser.rate * offer.price) / 100
+                    temp_ser.append(ser)
+            category.services = temp_ser
+            services.append(category)
+            continue
+        else:
+            if offer_services:
+                for ser in offer_services:
+                    if ser.service and ser.service.category == category:
+                        if ser.offer_type == "Percentage":
+                            ser.service.rate = ser.service.rate - (
+                                ser.service.rate * ser.price) / 100
+                            temp_ser.append(ser.service)
+                        else:
+                            ser.service.rate = ser.price
+                            temp_ser.append(ser.service)
 
         if service.count() > 0:
             for ser in service:
@@ -38,12 +50,19 @@ def get_cat(request):
 
 
 def place_order(request):
-    offers = Offers.objects.filter(user=request.user)
+    offers_obj = Offers.objects.filter(user=request.user)
     service_id = request.POST.get('service', None)
     link = request.POST.get('link', None)
     quantity = request.POST.get('quantity', None)
     service = ServicesModel.objects.get(id=service_id)
-    offers = offers.filter(service=service)
+    offers = offers_obj.filter(service=service)
+
+    if offers_obj.filter(offer_type="Percentage",
+                         service__isnull=True).exists():
+        offer_price = offers_obj.filter(offer_type="Percentage",
+                                        service__isnull=True).first()
+        service.rate = service.rate - (service.rate * offer_price.price) / 100
+
     if offers.exists():
         service = offers.first().service
         if offers.first().offer_type == "Percentage":
