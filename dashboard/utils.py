@@ -16,8 +16,9 @@ def get_cat(request):
     for category in categories:
         temp_ser = []
         service = ServicesModel.objects.filter(active=True, category=category)
-        if offer_services.filter(offer_type="Percentage",
-                                 service__isnull=True).exists():
+
+        if offer_services and offer_services.filter(offer_type="Percentage",
+                                                    service__isnull=True):
             offer = offer_services.filter(offer_type="Percentage",
                                           service__isnull=True).first()
             for ser in service:
