@@ -1,9 +1,13 @@
 from django.conf import settings
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from .models import OrdersModel, TransanctionsModel
 from django.contrib.auth.decorators import login_required
 import requests
 from dashboard.models import Settings
+import json
+
+url = "https://securegw.paytm.in/merchant-status/getTxnStatus"
 
 # Create your views here.
 sasta_api_url = 'https://sastaprovider.com/api/v2?'
@@ -50,13 +54,60 @@ def orders(request, status=None):
 @login_required
 def add_funds(request):
     transactions = TransanctionsModel.objects.filter(user=request.user)
+
     if request.method == "POST":
         amount = request.POST.get('amount', None)
         order_id = request.POST.get('order_id', None)
-        transaction = TransanctionsModel.objects.create(
-            user=request.user,
-            amount=amount,
-            transaction_id=order_id,
-        )
-        return redirect('add_funds')
+
+        # responding to duplicate id
+        transaction_obj = TransanctionsModel.objects.filter(
+            transaction_id=order_id)
+
+        if transaction_obj.exists():
+            return render(
+                request, "add_funds.html", {
+                    "transactions": transactions,
+                    "success": False,
+                    "message": f"Invalid order id"
+                })
+
+        settings = Settings.objects.all().first()
+        data = {"MID": settings.paytm_merchant_id, "ORDERID": order_id}
+
+        #
+
+        try:
+            # calling api to paytm to check status
+            res = requests.post(
+                url=url,
+                data=json.dumps(data),
+            )
+            res = res.json()
+
+            if float(res['TXNAMOUNT']) == float(amount):
+
+                transaction = TransanctionsModel.objects.create(
+                    user=request.user,
+                    amount=float(amount),
+                    transaction_id=order_id,
+                    status="Approved",
+                )
+
+                return render(
+                    request, "add_funds.html", {
+                        "transactions":
+                        transactions,
+                        "success":
+                        True,
+                        "message":
+                        f"Your request is approved for {transaction.amount}"
+                    })
+        except:
+            return render(
+                request, "add_funds.html", {
+                    "transactions": transactions,
+                    "success": False,
+                    "message": f"Ooops! Please try again after some time"
+                })
+
     return render(request, "add_funds.html", {"transactions": transactions})

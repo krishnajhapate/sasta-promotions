@@ -27,6 +27,8 @@ class Settings(models.Model):
     # favicon = models.ImageField(upload_to='image', blank=True, null=True)
     whatsapp_no = models.CharField(max_length=100, blank=True, null=True)
     whatsapp_message = models.CharField(max_length=400, blank=True, null=True)
+    paytm_merchant_id = models.CharField(max_length=300, blank=True, null=True)
+    paytmqr_active = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "Setting"
