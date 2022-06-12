@@ -19,7 +19,8 @@ class UserAdmin(DjangoUserAdmin):
 
     fieldsets = (('Personal Information', {
         'fields': ('username', 'name', 'phone', 'email', 'password', 'api_key',
-                   'date_joined', 'last_login')
+                   'date_joined', 'last_login', 'otp', 'password_reset',
+                   'sent_otp_times')
     }), )
 
 

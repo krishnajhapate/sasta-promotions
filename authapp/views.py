@@ -113,7 +113,7 @@ def request_password_reset_email(request):
         return redirect('dashboard')
 
     if request.method == "POST":
-        username = request.POST.get('usernam', None)
+        username = request.POST.get('username', None)
 
         user = User.objects.filter(Q(username=username) | Q(email=username))
 
@@ -124,18 +124,56 @@ def request_password_reset_email(request):
             })
 
         user = user.first()
-        if user.send_otp_times > 4:
-            return render(request, 'email_input.html', {
-                "username_error": True,
-            })
 
-        user.otp = random.randint()
-        user.send_otp_times += 1
+        if user.sent_otp_times > 3:
+            return render(
+                request, 'email_input.html', {
+                    "username_error": True,
+                    "message": "Otp send limit exceed for today"
+                })
+        user.otp = generate_otp()
+        user.sent_otp_times = user.sent_otp_times + 1
+        user.password_reset = now()
         user.save()
 
-        reset_password_mail.delay(user.email, user.firstname, user.otp)
+        reset_password_mail.delay(user.email, user.first_name, user.otp)
+        return redirect('verify-otp')
 
     return render(request, 'email_input.html')
+
+
+def reset_password(request):
+
+    if request.method == "POST":
+        otp = request.POST.get('otp', None)
+        password1 = request.POST.get('password1', None)
+        password2 = request.POST.get('password_confirm', None)
+
+        if password1 != password2:
+            return render(request, 'verify-otp.html', {
+                "password_error": True,
+                "error": True,
+            })
+
+        user = User.objects.filter(Q(otp=otp))
+
+        if not user.exists():
+            return render(request, 'verify-otp.html', {
+                "error": True,
+                "message": "Invalid otp"
+            })
+        user = user.first()
+        user.set_password = password1
+        user.otp = None
+        user.sent_otp_times = 0
+        user.save()
+
+        reset_password_success_mail.delay(user.email, user.first_name)
+        user = authenticate(username=user.username, password=password1)
+        login_func(request, user)
+        return redirect('dashboard')
+
+    return render(request, 'verify-otp.html')
 
 
 @login_required

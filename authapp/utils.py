@@ -34,3 +34,24 @@ def send_reset_password_mail(email, firstname, otp):
         [email],
         fail_silently=False,
     )
+
+
+def send_reset_password_success_mail(
+    email,
+    firstname,
+):
+
+    send_mail(
+        f'Welcome {firstname}',
+        f'Hey {firstname} \nYour password is changed now.',
+        'support@promotionmaro.com',
+        [email],
+        fail_silently=False,
+    )
+
+
+def generate_otp():
+    otp = random.randint(100000, 999999)
+    if User.objects.filter(otp=otp).exists():
+        generate_otp()
+    return otp
