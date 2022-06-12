@@ -78,6 +78,7 @@ def place_order(request):
     if charge > account_balance.money:
         error_message = "No sufficient account balance to place this order"
         return error_message, False
+
     order_create = OrdersModel.objects.create(
         service=service,
         quantity=quantity,

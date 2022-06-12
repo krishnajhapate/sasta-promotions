@@ -52,19 +52,21 @@ def update_account_balance_on_order(instance, sender, *args, **kwargs):
 
             service = ServicesModel.objects.get(id=instance.service.id)
             if service.api and service.api.active and service.service_id:
-                print('here')
-                # try:
-                api_url = service.api.api_url + f"?key={service.api.api_key}&service={service.service_id}&action=add&link={instance.link}&quantity={instance.quantity}"
+                try:
+                    api_url = service.api.api_url + f"?key={service.api.api_key}&service={service.service_id}&action=add&link={instance.link}&quantity={instance.quantity}"
 
-                res = requests.get(api_url)
-                print(api_url, res)
-                if res.json()['order']:
-                    instance.status = "Processing"
-                    instance.third_party_id = res.json()['order']
-                    instance.third_party_name = service.api.name
-                    instance.save()
-            # except:
-            #     pass
+                    res = requests.get(api_url)
+                    res = res.json()
+                    print(api_url, res)
+                    if res['order']:
+                        instance.status = "Processing"
+                        instance.third_party_id = res['order']
+                        instance.third_party_name = service.api.name
+                        instance.save()
+                    else:
+                        pass
+                except:
+                    pass
 
     if instance.status == "Cancelled":
         if OrderTransanctionModel.objects.filter(
