@@ -19,7 +19,6 @@ def dashboard(request):
     if request.method == "POST":
 
         order_create, state = place_order(request)
-        print(order_create, 'order_create')
 
         if order_create and state:
             messages.success(
@@ -32,12 +31,14 @@ def dashboard(request):
                                    <p> <strong>Balance</strong> ₹{AccountBalance.objects.get(user=request.user).money}  </p>"""
             )
             return redirect('dashboard')
+
         if not state:
             services = get_cat(request)
             return render(request, "dashboard.html", {
                 "categories": services,
                 "error_message": order_create
             })
+
     services = get_cat(request)
     return render(request, "dashboard.html", {"categories": services})
 

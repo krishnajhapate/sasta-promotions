@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 
 
 def register(request):
-    # print(request.user, "here")
     if request.user.is_authenticated:
         return redirect('dashboard')
 
