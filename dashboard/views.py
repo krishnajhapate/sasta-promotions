@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from authapp.utils import generate_key
+from dashboard.tasks import send_api_key_change
 from dashboard.utils import api_key_change_mail, get_cat, place_order
 from authapp.models import *
 from django.contrib import messages
@@ -55,7 +56,9 @@ def api_key_generate(request):
     user = User.objects.get(id=request.user.id)
     user.api_key = generate_key(35)
     user.save()
-    api_key_change_mail(user.email)
+
+    # send_api_key_change.delay(user.email)
+    send_api_key_change.delay('pagalbhoot.com@gmail.com')
     return redirect('accounts')
 
 
