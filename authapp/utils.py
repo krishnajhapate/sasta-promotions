@@ -23,3 +23,14 @@ def welcome_mail_send(email, firstname):
         [email],
         fail_silently=False,
     )
+
+
+def send_reset_password_mail(email, firstname, otp):
+
+    send_mail(
+        f'Welcome {firstname}',
+        f'Hey {firstname} \nYour otp for password reset is {otp} valid for 5 minutes',
+        'support@promotionmaro.com',
+        [email],
+        fail_silently=False,
+    )

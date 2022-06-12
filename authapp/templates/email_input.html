@@ -1,0 +1,90 @@
+{% extends 'base.html' %} 
+{% load  get_conf %}
+
+{% block title %}Register -{% site_name %} {% endblock title %}
+<p></p>
+{% block content %}
+<div class="wrapper wrapper-navbar">
+    {% include 'components/header.html' %}
+    <div class="wrapper-content">
+        <div class="wrapper-content__header"></div>
+        <div class="wrapper-content__body">
+            <!-- Main variables *content* -->
+            <div id="block_30">
+                <div class="sign-in">
+                    <div class="bg"></div>
+                    <div class="divider-top"></div>
+                    <div class="divider-bottom"></div>
+                    <div class="container">
+                        <div class="row sign-up-center-alignment">
+                            <div class="col-lg-6">
+                                <div class="component_card">
+                                    <div class="card">
+                                        <form
+                                            action="{% url 'reset-password' %}"
+                                            method="post"
+                                            class="component_form_group component_checkbox"
+                                        >
+                                            <div class="">
+                                                <div class="form-group">
+                                                    <label
+                                                        for="username"
+                                                        class="control-label"
+                                                        >Username or Email</label
+                                                    >
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="username"
+                                                        required
+                                                        value="{{username}}"
+                                                        name="username"
+                                                    />
+                                                </div>
+                                                {% if username_error %}
+
+                                                <div
+                                                    class="text-sm text-danger"
+                                                >
+                                                    Account not exists
+                                                </div>
+                                                {% endif %}
+                                            </div>
+
+                                            {% csrf_token %}
+                                            <div
+                                                class="component_button_submit"
+                                            >
+                                                <div class="form-group">
+                                                    <div class="">
+                                                        <button
+                                                            type="submit"
+                                                            class="btn btn-block btn-primary"
+                                                        >
+                                                            Send Otp
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="text-center signin-content"
+                                            >
+                                                Already have an account?<a
+                                                    href="/"
+                                                    class="sign-up-center-signin-link"
+                                                    >Sign in</a
+                                                >
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'components/footer.html' %}
+    </div>
+</div>
+{% endblock content %}

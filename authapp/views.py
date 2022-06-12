@@ -2,11 +2,14 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login as login_func
 from django.contrib import messages
 from django.contrib.auth import logout
-from authapp.models import AccountBalance, User
+from authapp.models import User
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
+from django.db.models import Q
+from django.utils.timezone import now
+import random
 
-from authapp.tasks import send_welcome_mail
+from authapp.tasks import *
 # Create your views here.
 
 
@@ -103,6 +106,36 @@ def login(request):
 def accounts(request):
 
     return render(request, 'accounts.html')
+
+
+def request_password_reset_email(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+
+    if request.method == "POST":
+        username = request.POST.get('usernam', None)
+
+        user = User.objects.filter(Q(username=username) | Q(email=username))
+
+        if not user.exists():
+            return render(request, 'email_input.html', {
+                "username_error": True,
+                "message": "Account not exists"
+            })
+
+        user = user.first()
+        if user.send_otp_times > 4:
+            return render(request, 'email_input.html', {
+                "username_error": True,
+            })
+
+        user.otp = random.randint()
+        user.send_otp_times += 1
+        user.save()
+
+        reset_password_mail.delay(user.email, user.firstname, user.otp)
+
+    return render(request, 'email_input.html')
 
 
 @login_required

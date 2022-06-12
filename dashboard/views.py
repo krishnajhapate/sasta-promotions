@@ -57,7 +57,6 @@ def api_key_generate(request):
     user.api_key = generate_key(35)
     user.save()
 
-    # send_api_key_change.delay(user.email)
     send_api_key_change.delay('pagalbhoot.com@gmail.com')
     return redirect('accounts')
 
