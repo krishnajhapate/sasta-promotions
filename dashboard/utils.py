@@ -1,6 +1,6 @@
 from authapp.models import AccountBalance
 from orders.models import OrdersModel
-from django.shortcuts import render
+from django.core.mail import send_mail
 
 from services.models import CategoryModel, Offers, ServicesModel
 
@@ -99,3 +99,14 @@ def place_order(request):
     #         pass
 
     return order_create, True
+
+
+def api_key_change_mail(reciever):
+
+    send_mail(
+        'API Key changed',
+        'Your api key has changed',
+        'support@promotionmaro.com',
+        [reciever],
+        fail_silently=False,
+    )

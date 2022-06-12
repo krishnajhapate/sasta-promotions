@@ -1,11 +1,11 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from authapp.utils import generate_key
-from dashboard.utils import get_cat, place_order
-from services.models import ServicesModel
-from authapp.models import AccountBalance, User
+from dashboard.utils import api_key_change_mail, get_cat, place_order
+from authapp.models import *
 from django.contrib import messages
 import requests
+
 # Create your views here.
 
 
@@ -55,7 +55,7 @@ def api_key_generate(request):
     user = User.objects.get(id=request.user.id)
     user.api_key = generate_key(35)
     user.save()
-    print(user)
+    api_key_change_mail(user.email)
     return redirect('accounts')
 
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% load get_conf get_account_pay %}
 
-{% block title %}{{ticket.user.name}} -{% site_name %} {% endblock title %}
+{% block title %}{{request.user.name}} -{% site_name %} {% endblock title %}
 
 {% block content %}
 <div class="wrapper wrapper-sidebar-navbar">
@@ -532,8 +532,9 @@
                               </form> -->
   
                                   <div class="mt-5">
-                                      <div class="form-group">
+                                      <form method="post" action="{% url 'generate-key' %}" class="form-group">
                                           <label>API key</label>
+                                  {% csrf_token %}
                                          
                                             <div class="input-group">
                                                   <input type="text" class="form-control" id="api_key" value="{{request.user.api_key}}" readonly="" data-original-title="" title="">
@@ -542,8 +543,13 @@
                                                           <span class="far fa-random"></span>
                                                       </button>
                                                   </div> -->
+                                                  <div class="input-group-append component_button_api">
+													<button class="btn btn-primary-account-api" type="submit">
+														<span class="far fa-random"></span>
+													</button>
+												</div>
                                               </div>
-                                                                              </div>
+                                                                              </form>
                                   </div>
 {% endif %}
 
@@ -621,5 +627,27 @@
             border-color: transparent;
             box-shadow: none;
         }
+        #block_4 .component_button_api .btn-primary-account-api {
+    font-weight: 700;
+    font-style: normal;
+    font-size: "";
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: rgba(228, 236, 6, 1);
+    background: #1f0b6c;
+    border-color: #000000;
+    box-shadow: 0 8px 24px 0 rgba(31, 11, 108, 0.25);
+    border-style: none;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+}
     </style>
 {% endblock content %}
