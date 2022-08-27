@@ -1,7 +1,5 @@
-{% extends 'base.html' %} 
-{% load  get_conf %}
-
-{% block title %}Register -{% site_name %} {% endblock title %}
+{% extends 'base.html' %} {% load get_conf %} {% block title %}Register -{%
+site_name %} {% endblock title %}
 <p></p>
 {% block content %}
 <div class="wrapper wrapper-navbar">
@@ -30,7 +28,8 @@
                                                     <label
                                                         for="username"
                                                         class="control-label"
-                                                        >Username or Email</label
+                                                        >Username or
+                                                        Email</label
                                                     >
                                                     <input
                                                         type="text"
@@ -46,7 +45,7 @@
                                                 <div
                                                     class="text-sm text-danger mb-3"
                                                 >
-                                                   {{message}}
+                                                    {{message}}
                                                 </div>
                                                 {% endif %}
                                             </div>

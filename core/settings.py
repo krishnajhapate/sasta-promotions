@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "services",
     "orders",
     "api",
+    "management",
     'crispy_forms',
     "rest_framework",
     'django.contrib.admin',
