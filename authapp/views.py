@@ -168,7 +168,7 @@ def reset_password(request):
         user.sent_otp_times = 0
         user.save()
 
-        reset_password_success_mail.delay(user.email, user.first_name)
+        reset_password_success_mail.delay(user.email, user.username)
         user = authenticate(username=user.username, password=password1)
         login_func(request, user)
         return redirect('dashboard')

@@ -16,3 +16,12 @@ app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 @app.task(bind=True)
 def debug_task(self):
     print('Request: {0!r}'.format(self.request))
+
+
+app.conf.beat_schedule = {
+    # Execute the Speed Test every 10 minutes
+    'network-speedtest-10sec': {
+        'task': 'place_order',
+        'schedule': 5.0,
+    },
+}
