@@ -29,6 +29,7 @@ class Settings(models.Model):
     whatsapp_message = models.CharField(max_length=400, blank=True, null=True)
     paytm_merchant_id = models.CharField(max_length=300, blank=True, null=True)
     paytmqr_active = models.BooleanField(default=False)
+    provider_balance = models.FloatField(default=0)
 
     class Meta:
         verbose_name = "Setting"

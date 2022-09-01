@@ -12,7 +12,7 @@ STATUS_CHOICE = (
     ("Cancelled", "Cancelled"),
     ("Partial", "Partial"),
     ("In progress", "In progress"),
-    ("Test", "Test"),
+    ("Refund", "Refund"),
 )
 
 
