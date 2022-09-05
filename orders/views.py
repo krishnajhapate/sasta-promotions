@@ -33,6 +33,8 @@ def orders(request, status=None):
                         order_update.status = 'In progress'
                     if res['status'] == 'Pending':
                         order_update.status = 'Processing'
+                    if res['status'] == "Canceled":
+                        order_update.status = "Cancelled"
                     order_update.save()
             except:
                 pass

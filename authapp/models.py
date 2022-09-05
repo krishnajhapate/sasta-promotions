@@ -22,7 +22,7 @@ class User(AbstractUser):
     # objects = CustomUserManager()
 
     def __str__(self):
-        return str(self.first_name)
+        return str(self.first_name)+" -> " +str(self.username)
 
 
 class AccountBalance(models.Model):
