@@ -24,18 +24,20 @@
                                 <div
                                     class="component_form_group component_card component_radio_button"
                                 >
+
+                        
                                 {% if messages %}
                                 
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {% for message in messages %}
-                                    <h3>Your order has been placed</h3>
+                                {% for message in messages %}
+                                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                                    
                                     {{message|safe}}
-                                   {% endfor %}
-
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
                                   </div>
+                                    {% endfor %}
+
                                 {% endif %}
                                     <div class="card">
                                         <form

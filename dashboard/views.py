@@ -4,6 +4,7 @@ from authapp.utils import generate_key
 from dashboard.utils import get_cat, place_order
 from services.models import ServicesModel
 from authapp.models import AccountBalance, User
+from orders.models import OrdersModel
 from django.contrib import messages
 import requests
 # Create your views here.
@@ -17,12 +18,31 @@ def home_page(request):
 @login_required
 def dashboard(request):
     if request.method == "POST":
+        service_id = request.POST.get('service', None)
+        link = request.POST.get('link', None)
+        order = OrdersModel.objects.filter(
+            service=ServicesModel.objects.get(id=service_id),
+            link=link,
+            user = request.user,
+            status__in=["Processing","In progress","Pending","Partial"]
+        )
+
+        if order.exists():
+            messages.error(
+                request, f"""
+                <h3>Your order has not placed</h3>
+                <p>  Your  have an active order with this link and service</p>
+                                   """
+            )
+
+            return redirect('dashboard')
 
         order_create, state = place_order(request)
 
         if order_create and state:
             messages.success(
                 request, f"""
+                <h3>Your order has been placed</h3>
                 <p> <strong>ID</strong> #{order_create.id}</p>
                                    <p> <strong>Service</strong> {order_create.service.name}  </p>
                                    <p> <strong>Link</strong> {order_create.link}  </p>
