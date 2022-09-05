@@ -12,13 +12,13 @@
         <div class="wrapper-content__body">
             {% include 'components/dashboard_herosection.html' %}
             <div />
-
+  
             <div id="block_13">
                 <div class="new_order-block">
                     <div class="bg"></div>
                     <div class="divider-top"></div>
                     <div class="divider-bottom"></div>
-                    <div class="container-fluid">
+                    <div class="container-fluid ">
                         <div class="row">
                             <div class="col-lg-7 mb-3 mb-lg-0">
                                 <div
@@ -251,6 +251,7 @@
     var quantity = document.getElementById("field-orderform-fields-quantity");
     const charge = document.querySelector("#charge");
     var select = document.getElementById("orderform-service");
+    const link = document.getElementById('field-orderform-fields-link')
 
 
     console.log(quantity)
@@ -287,6 +288,7 @@
     getCategories();
 
     const catChange = (e) => {
+        link.value =""
         const services = services_data.filter(
             (key) => key.category === Number(e.value)
         );
@@ -311,6 +313,7 @@
     };
 
     const serviceChange = (e) => {
+        link.value =""
         
         const services = services_data.filter(
             (key) => key.id === Number(e.value)
