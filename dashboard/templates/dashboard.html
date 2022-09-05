@@ -88,11 +88,11 @@
                                                             {% if forloop.first %} 
                                                                 {% for service in category.services %}
 
-                                                                <option
-                                                                    value="{{service.id}}"
-                                                                >
-                                                                    {{service.name}} - ₹{{service.rate}} per 1000
-                                                                </option>
+                                                                        <option
+                                                                            value="{{service.id}}"
+                                                                        >
+                                                                                <span class="badge" > [{{service.id}}]</span> - ➤   {{service.name}} - ₹{{service.rate}} per 1000
+                                                                        </option>
                                                                 {% endfor %}
                                                             {% endif %} 
                                                         {% endfor %}
@@ -114,8 +114,10 @@
                                                     {% for category in categories %} 
                                                     {% if forloop.first %} 
                                                         {% for service in category.services %}
-
+                                                        {% if forloop.first %} 
                                                             {{service.description}}
+                                                    {% endif %} 
+
                                                         {% endfor %}
                                                     {% endif %} 
                                                 {% endfor %}
@@ -252,9 +254,9 @@
     const charge = document.querySelector("#charge");
     var select = document.getElementById("orderform-service");
     const link = document.getElementById('field-orderform-fields-link')
+    const category = document.getElementById('orderform-service')
 
-
-    console.log(quantity)
+    console.log(category)
 
     // services get
     const getServices = async () => {
@@ -292,6 +294,7 @@
         const services = services_data.filter(
             (key) => key.category === Number(e.value)
         );
+        console.log(services)
 
         // setting category description
         panel_description.innerHTML = services[0].description
@@ -350,4 +353,12 @@
     })
 
 </script>
+
+<style>
+    .badge{
+        background-color: gray;
+        padding:3px 8px;
+        border-radius: 10%;
+    }
+</style>
 {% endblock content %}

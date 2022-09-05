@@ -4,7 +4,7 @@ from dashboard.models import Api, CounterOrder, Settings
 from orders.models import OrdersModel, TransanctionsModel
 from authapp.models import User
 from datetime import date, timedelta
-from django.db.models import Sum
+from django.db.models import Sum,Q
 # Register your models here.
 
 admin.site.site_header = "Promotion maro"
@@ -23,7 +23,7 @@ class ApiAdmin(admin.ModelAdmin):
 @admin.register(Settings)
 class SettingsAdmin(admin.ModelAdmin):
     list_display = ('site_name', 'total_orders', 'total_transactions',
-                    'total_users','todays_fund_recieved','todays_update')
+                    'total_users','todays_fund_recieved','todays_update','todays_new_user')
 
     def total_orders(self, request):
         return OrdersModel.objects.filter(status="Completed").count()
@@ -54,7 +54,13 @@ class SettingsAdmin(admin.ModelAdmin):
         startdate = date.today()
         enddate = startdate + timedelta(days=1)
 
-        # orders =  OrdersModel.objects.filter(status="Completed",created__range=[startdate, enddate]).count()
-        # transactions =  TransanctionsModel.objects.filter(created__range=[startdate, enddate]).aggregate(total=Sum('amount'))['total']
+        orders =  OrdersModel.objects.filter(Q(status="Completed"),Q(order_placed__range=[startdate, enddate]))
+        transactions = orders.aggregate(total=Sum('charge'))['total']
 
-        return f" orders -  Rs"
+        return f"{orders.count()} orders of {transactions} Rs"
+
+    def todays_new_user(self,request):
+        startdate = date.today()
+        enddate = startdate + timedelta(days=1)
+
+        return User.objects.filter(is_superuser=False,date_joined__range=[startdate,enddate]).count()
