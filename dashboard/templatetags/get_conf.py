@@ -74,3 +74,23 @@ def favicon_img():
         return f"/media/{Settings.objects.first().pyament_qr}"
     except:
         return False
+
+@register.simple_tag
+def get_yt_video():
+    return Settings.objects.first().youtube_video_link 
+
+@register.simple_tag
+def get_yt_video_title():
+    return Settings.objects.first().video_title 
+
+@register.simple_tag
+def get_yt_video_height():
+    return Settings.objects.first().video_height 
+
+
+@register.simple_tag
+def get_yt_video_width():
+    return Settings.objects.first().video_width 
+
+
+

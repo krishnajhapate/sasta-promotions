@@ -21,12 +21,13 @@
                             <div class="col-lg-8">
                                 <div class="my-5 mt-2">
                                     <h1 class="text-white text-center mb-2">
-                                        How to use {% site_name %} website
+                                        {% get_yt_video_title %}
                                     </h1>
                                     <iframe
                                         class="yt-video"
-                                        width="100%"
-                                        src="https://www.youtube.com/embed/iirmROWGNrY"
+                                        width="{% get_yt_video_width %}"
+                                        height="{% get_yt_video_height %}"
+                                        src="{% get_yt_video %}"
                                         title="YouTube video player"
                                         frameborder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -29,6 +29,10 @@ class Settings(models.Model):
     whatsapp_message = models.CharField(max_length=400, blank=True, null=True)
     paytm_merchant_id = models.CharField(max_length=300, blank=True, null=True)
     paytmqr_active = models.BooleanField(default=False)
+    video_title = models.CharField(max_length=200,default="")
+    youtube_video_link = models.URLField(max_length=1000,default="")
+    video_height = models.CharField(default="",max_length=100,help_text="Youtube Video Height")
+    video_width = models.CharField(default="",max_length=100,help_text="Youtube Video Width")
 
     class Meta:
         verbose_name = "Setting"
