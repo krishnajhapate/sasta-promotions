@@ -138,13 +138,14 @@
                                                             <th>Date</th>
                                                             <th>Link</th>
                                                             <th>Charge</th>
-                                                            <!-- <th class="nowrap">
+                                                            <th class="nowrap">
                                                                 Start count
-                                                            </th> -->
+                                                            </th>
                                                             <th>Quantity</th>
                                                             <th>Service</th>
                                                             <th>Status</th>
-                                                            <!-- <th>Remains</th> -->
+                                                            <th>Remains</th>
+                                                            <!-- <th></th> -->
                                                         </tr>
                                                     </thead>
                                                     {% for order in orders %}
@@ -180,12 +181,12 @@
                                                             >
                                                                 {{order.charge}}
                                                             </td>
-                                                            <!-- <td
+                                                            <td
                                                                 data-label="Start count"
                                                                 class="nowrap"
                                                             >
-                                                                0
-                                                            </td> -->
+                                                                {{order.start_count}}
+                                                            </td>
                                                             <td
                                                                 data-label="Quantity"
                                                             >
@@ -202,10 +203,18 @@
                                                             >
                                                                 {{order.status}}
                                                             </td>
-                                                            <!-- <td
+                                                            <td
                                                                 data-label="Remains"
                                                             >
-                                                                1000
+                                                            {% if order.remains == None %}
+                                                                -
+                                                            {% else %}
+                                                            {{order.remains}}
+                                                            {% endif %}
+
+                                                            </td>
+                                                            <!-- <td>
+                                                                <a class="btn btn-success text-white">Reffil</a>
                                                             </td> -->
                                                         </tr>
                                                     </tbody>

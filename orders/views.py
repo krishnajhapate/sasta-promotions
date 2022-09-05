@@ -26,9 +26,11 @@ def orders(request, status=None):
                     api_url = service.api.api_url + f"/?key={service.api.api_key}&action=status&order={order.third_party_id}"
                     res = requests.get(api_url, params=request.GET)
                     res = res.json()
+                    print(res)
                     order_update = OrdersModel.objects.get(id=order.id)
                     order_update.status = res['status']
                     order_update.start_count = res['start_count']
+                    order_update.remains = res['remains']
                     if res['status'] == 'Inprogress':
                         order_update.status = 'In progress'
                     if res['status'] == 'Pending':

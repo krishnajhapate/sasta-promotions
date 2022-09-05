@@ -32,6 +32,7 @@ class OrdersModel(models.Model):
     remains = models.IntegerField(blank=True, null=True)
     third_party_id = models.CharField(max_length=10, blank=True, null=True)
     third_party_name = models.CharField(max_length=20, blank=True, null=True)
+    # refilled = models.BooleanField(default=True)
 
     def __str__(self) -> str:
         return self.service.name + "-" + self.status
@@ -87,3 +88,6 @@ class OrderTransanctionModel(models.Model):
 
     class Meta:
         verbose_name = "Order History"
+
+
+# class RefilOrders()
