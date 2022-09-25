@@ -1,0 +1,154 @@
+{% extends 'base.html' %} {% load get_conf %} {% block title %}Dashboard {%
+site_name %}{% endblock title %} {% block content %}
+<div class="wrapper wrapper-sidebar-navbar">
+    {% include 'components/dashboard_leftsidebar.html' %}
+
+    <div class="wrapper-content">
+        <div class="wrapper-content__header"></div>
+        <div class="wrapper-content__body">
+            {% include 'components/dashboard_herosection.html' %}
+            <div />
+
+            <div id="block_13">
+                <div class="container">
+                    {% for tutorial in tutorials %}
+                    <h1 class="title text-white">{{ tutorial.title }}</h1>
+                    <p class="text-white py-4">{{ tutorial.description }}</p>
+                    <iframe
+                        width="645"
+                        height="363"
+                        src="{{tutorial.video}}"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                    ></iframe>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @media (max-width: 991px) {
+        .wrapper-sidebar-navbar {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<script>
+    let services_data = [];
+    let categories_data = [];
+    const panel_description = document.querySelector(".panel-description");
+    const min_max = document.querySelector(".min-max");
+    const average_time = document.querySelector(
+        "#field-orderform-fields-average_time"
+    );
+    var quantity = document.getElementById("field-orderform-fields-quantity");
+    const charge = document.querySelector("#charge");
+    var select = document.getElementById("orderform-service");
+    const link = document.getElementById("field-orderform-fields-link");
+    const category = document.getElementById("orderform-service");
+
+    console.log(category);
+
+    // services get
+    const getServices = async () => {
+        try {
+            await fetch("/services_res")
+                .then((res) => res.json())
+                .then((res) => {
+                    services_data = res;
+                });
+            console.log(services_data, "sdata");
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    // categorues get
+
+    const getCategories = async () => {
+        try {
+            await fetch("/categories_res")
+                .then((res) => res.json())
+                .then((res) => {
+                    categories_data = res;
+                });
+            console.log(categories_data, "cadata");
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    getServices();
+    getCategories();
+
+    const catChange = (e) => {
+        link.value = "";
+        const services = services_data.filter(
+            (key) => key.category === Number(e.value)
+        );
+        console.log(services);
+
+        // setting category description
+        panel_description.innerHTML = services[0].description;
+
+        // setting options
+        select.innerHTML = "";
+        services.map((key) => {
+            var option = document.createElement("option");
+            option.text = `[${key.id}] - ➤ ${key.name} - ₹${key.rate} per 1000`;
+            option.value = key.id;
+            select.appendChild(option);
+        });
+        average_time.value = `${services[0].average_time_hours} hours ${services[0].average_time_minutes} minutes`;
+        min_max.innerHTML = `Min: ${services[0].min_order} - Max: ${services[0].max_order} `;
+        quantity.min = services[0].min_order;
+        quantity.max = services[0].max_order;
+    };
+
+    const serviceChange = (e) => {
+        link.value = "";
+
+        const services = services_data.filter(
+            (key) => key.id === Number(e.value)
+        );
+
+        // min max set
+        min_max.innerHTML = `Min: ${services[0].min_order} - Max: ${services[0].max_order} `;
+
+        // Average time
+        average_time.value = `${services[0].average_time_hours} hours ${services[0].average_time_minutes} minutes`;
+
+        // setting category description
+        panel_description.innerHTML = services[0].description;
+    };
+
+    const detectPriceChange = (e) => {
+        const services = services_data.filter(
+            (key) => key.id === Number(select.value)
+        )[0];
+        charge.value = (services.rate * e.value) / 1000;
+    };
+
+    window.addEventListener("load", () => {
+        const services = services_data.filter(
+            (key) => key.id === Number(select.value)
+        )[0];
+        average_time.value = `${services.average_time_hours} hours ${services.average_time_minutes} minutes`;
+        min_max.innerHTML = `Min: ${services.min_order} - Max: ${services.max_order} `;
+        quantity.min = services.min_order;
+        quantity.max = services.max_order;
+    });
+</script>
+
+<style>
+    .badge {
+        background-color: gray;
+        padding: 3px 8px;
+        border-radius: 10%;
+    }
+</style>
+{% endblock content %}

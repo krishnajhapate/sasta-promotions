@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from authapp.utils import generate_key
+from dashboard.models import Tutorials
 from dashboard.utils import get_cat, place_order
 from services.models import ServicesModel
 from authapp.models import AccountBalance, User
@@ -23,17 +24,15 @@ def dashboard(request):
         order = OrdersModel.objects.filter(
             service=ServicesModel.objects.get(id=service_id),
             link=link,
-            user = request.user,
-            status__in=["Processing","In progress","Pending","Partial"]
-        )
+            user=request.user,
+            status__in=["Processing", "In progress", "Pending", "Partial"])
 
         if order.exists():
             messages.error(
                 request, f"""
                 <h3>Your order has not placed</h3>
                 <p>  Your  have an active order with this link and service</p>
-                                   """
-            )
+                                   """)
 
             return redirect('dashboard')
 
@@ -82,3 +81,9 @@ def api_key_generate(request):
 def api_page(request):
 
     return render(request, 'api.html')
+
+
+def tutorials(request):
+    _tutorials = Tutorials.objects.filter(active=True).order_by('-order')
+
+    return render(request, 'tutorials.html', {'tutorials': _tutorials})

@@ -1,4 +1,4 @@
-{% load static %} {% load get_account_pay get_conf  %}
+{% load static %} {% load get_account_pay get_conf %}
 <div id="block_34" class="component_private_navbar">
     <span class="component_private_navbar">
         <div class="component-navbar-private__wrapper">
@@ -8,10 +8,18 @@
                 <div>
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="sidebar-block__top-brand">
-                            <div class="component-navbar-logo items-center justify-content-center">
-                                <a class="flex items-center justify-content-center" href="{% url 'dashboard' %}">
-                                   
-                                    <h3 class="text-white text-decoration-none underline-none text-uppercase" >  {% site_name %}</h3>
+                            <div
+                                class="component-navbar-logo items-center justify-content-center"
+                            >
+                                <a
+                                    class="flex items-center justify-content-center"
+                                    href="{% url 'dashboard' %}"
+                                >
+                                    <h3
+                                        class="text-white text-decoration-none underline-none text-uppercase"
+                                    >
+                                        {% site_name %}
+                                    </h3>
                                 </a>
                             </div>
                         </div>
@@ -83,6 +91,26 @@
                                                 ></span>
                                             </span>
                                             Orders
+                                        </a>
+                                    </li>
+                                    <li
+                                        class="nav-item component-navbar-nav-item component-navbar-private-nav-item"
+                                    >
+                                        <a
+                                            class="component-navbar-nav-link component-navbar-nav-link__navbar-private"
+                                            href="{% url 'tutorials' %}"
+                                        >
+                                            <span
+                                                class="component-navbar-nav-link-icon"
+                                            >
+                                                <i
+                                                    class="fa-brands fa-discourse"
+                                                ></i>
+                                                <span
+                                                    class="fas fa-bars-staggered"
+                                                ></span>
+                                            </span>
+                                            Tutorials
                                         </a>
                                     </li>
                                     <!-- <li
@@ -343,19 +371,19 @@
                                 >
                             </a>
                         </li>
-                        <!-- <li class="component-sidebar__menu-item">
+                        <li class="component-sidebar__menu-item">
                             <a
                                 class="component-sidebar__menu-item-link"
-                                href="/affiliates"
+                                href="{% url 'tutorials' %}"
                             >
                                 <span class="sidebar-block__menu-item-icon">
                                     <span class="fas fa-network-wired"></span>
                                 </span>
                                 <span class="component-sidebar__menu-item-name"
-                                    >Affiliates</span
+                                    >Tutorials</span
                                 >
                             </a>
-                        </li> -->
+                        </li>
                         <!-- <li class="component-sidebar__menu-item">
                             <a
                                 class="component-sidebar__menu-item-link"

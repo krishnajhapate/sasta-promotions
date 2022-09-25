@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load  get_conf %}
 
 {% block title %}Dashboard {% site_name %}{% endblock title %}
@@ -12,33 +12,31 @@
         <div class="wrapper-content__body">
             {% include 'components/dashboard_herosection.html' %}
             <div />
-  
+
             <div id="block_13">
                 <div class="new_order-block">
                     <div class="bg"></div>
                     <div class="divider-top"></div>
                     <div class="divider-bottom"></div>
-                    <div class="container-fluid ">
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-7 mb-3 mb-lg-0">
                                 <div
                                     class="component_form_group component_card component_radio_button"
                                 >
-
-                        
                                 {% if messages %}
-                                
-                                {% for message in messages %}
-                                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-                                    
-                                    {{message|safe}}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                    {% endfor %}
+                                                                
+                                                                {% for message in messages %}
+                                                                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                                                                    
+                                                                    {{message|safe}}
+                                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                      <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                  </div>
+                                                                    {% endfor %}
 
-                                {% endif %}
+                                                                {% endif %}
                                     <div class="card">
                                         <form
                                             action="{% url 'dashboard' %}"
@@ -48,10 +46,12 @@
                                             <div class="component_button_forms">
                                                 {% if error_message %}
 
-                                            <div class="text-sm my-1 text-danger">
-                                                {{error_message}}
-                                            </div>
-                                            {% endif %}
+                                                <div
+                                                    class="text-sm my-1 text-danger"
+                                                >
+                                                    {{error_message}}
+                                                </div>
+                                                {% endif %}
                                                 <div class="form-group">
                                                     <label
                                                         for="orderform-category"
@@ -64,7 +64,7 @@
                                                         name="OrderForm[category]"
                                                         onchange="catChange(this)"
                                                     >
-                                                        {% for category in categories %}
+                                                    {% for category in categories %}
 
                                                         <option
                                                             value="{{category.id}}"
@@ -86,17 +86,16 @@
                                                         name="service"
                                                         onchange="serviceChange(this)"
                                                     >
-                                                        {% for category in categories %} 
-                                                            {% if forloop.first %} 
-                                                                {% for service in category.services %}
+                                                    {% for category in categories %}
+                                                                                                              {% if forloop.first %}
+                                                                                                                  {% for service in category.services %}
 
-                                                                        <option
-                                                                            value="{{service.id}}"
-                                                                        >
-                                                                                <span class="badge" > [{{service.id}}]</span> - ➤   {{service.name}} - ₹{{service.rate}} per 1000
-                                                                        </option>
-                                                                {% endfor %}
-                                                            {% endif %} 
+                                                        <option
+                                                            value="{{service.id}}"
+                                                        >
+                                                        <span class="badge" > [{{service.id}}]</span> - ➤   {{service.name}} - ₹{{service.rate}} per 1000
+                                                        </option>
+                                                        {% endfor %} {% endif %}
                                                         {% endfor %}
                                                     </select>
                                                 </div>
@@ -110,19 +109,19 @@
                                                         >Description</label
                                                     >
                                                     <div
-                                                    class=" form-control panel-description"
-                                                    style="height: auto;"
-                                                    >
-                                                    {% for category in categories %} 
-                                                    {% if forloop.first %} 
-                                                        {% for service in category.services %}
-                                                        {% if forloop.first %} 
-                                                            {{service.description}}
-                                                    {% endif %} 
+                                                                                                        class=" form-control panel-description"
+                                                                                                        style="height: auto;"
+                                                                                                        >
+                                                                                                        {% for category in categories %}
+                                                                                                        {% if forloop.first %}
+                                                                                                            {% for service in category.services %}
+                                                                                                            {% if forloop.first %}
+                                                                                                                {{service.description}}
+                                                                                                        {% endif %}
 
-                                                        {% endfor %}
-                                                    {% endif %} 
-                                                {% endfor %}
+                                                                                                            {% endfor %}
+                                                                                                        {% endif %}
+                                                                                                    {% endfor %}
                                                     </div>
                                                 </div>
                                                 <div id="fields">
@@ -161,13 +160,11 @@
                                                             oninput="detectPriceChange(this)"
                                                             type="number"
                                                             placeholder="Enter quantity "
-
                                                             required
                                                             id="field-orderform-fields-quantity"
                                                         /><small
                                                             class="help-block min-max"
-                                                            ></small
-                                                        >
+                                                        ></small>
                                                     </div>
                                                     <div
                                                         class="form-group fields"
@@ -213,8 +210,8 @@
                                                     />
                                                 </div>
                                             </div>
-                                           {% csrf_token %}
-                                           
+                                            {% csrf_token %}
+
                                             <div
                                                 class="new-order-button-submit component_button_submit"
                                             >
@@ -229,7 +226,11 @@
                                     </div>
                                 </div>
                             </div>
-                            {% include 'components/dashboard_rightformcontainer.html' %}
+                            <div class="row">
+                                {% include
+                                'components/dashboard_rightformcontainer.html'
+                                %}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -251,14 +252,16 @@
     let categories_data = [];
     const panel_description = document.querySelector(".panel-description");
     const min_max = document.querySelector(".min-max");
-    const average_time = document.querySelector("#field-orderform-fields-average_time");
+    const average_time = document.querySelector(
+        "#field-orderform-fields-average_time"
+    );
     var quantity = document.getElementById("field-orderform-fields-quantity");
     const charge = document.querySelector("#charge");
     var select = document.getElementById("orderform-service");
-    const link = document.getElementById('field-orderform-fields-link')
-    const category = document.getElementById('orderform-service')
+    const link = document.getElementById("field-orderform-fields-link");
+    const category = document.getElementById("orderform-service");
 
-    console.log(category)
+    console.log(category);
 
     // services get
     const getServices = async () => {
@@ -292,74 +295,68 @@
     getCategories();
 
     const catChange = (e) => {
-        link.value =""
+        link.value = "";
         const services = services_data.filter(
             (key) => key.category === Number(e.value)
         );
-        console.log(services)
+        console.log(services);
 
         // setting category description
-        panel_description.innerHTML = services[0].description
+        panel_description.innerHTML = services[0].description;
 
         // setting options
-        select.innerHTML = ""
-        services.map(key=>{
+        select.innerHTML = "";
+        services.map((key) => {
             var option = document.createElement("option");
-            option.text = `${key.name} - ₹${key.rate} per 1000`;
+            option.text = `[${key.id}] - ➤ ${key.name} - ₹${key.rate} per 1000`;
             option.value = key.id;
             select.appendChild(option);
-
-        })
-        average_time.value = `${services[0].average_time_hours} hours ${services[0].average_time_minutes} minutes`
-        min_max.innerHTML= `Min: ${services[0].min_order} - Max: ${services[0].max_order} `
-        quantity.min = services[0].min_order
-        quantity.max = services[0].max_order
-        
+        });
+        average_time.value = `${services[0].average_time_hours} hours ${services[0].average_time_minutes} minutes`;
+        min_max.innerHTML = `Min: ${services[0].min_order} - Max: ${services[0].max_order} `;
+        quantity.min = services[0].min_order;
+        quantity.max = services[0].max_order;
     };
 
     const serviceChange = (e) => {
-        link.value =""
-        
+        link.value = "";
+
         const services = services_data.filter(
             (key) => key.id === Number(e.value)
         );
 
         // min max set
-        min_max.innerHTML= `Min: ${services[0].min_order} - Max: ${services[0].max_order} `
+        min_max.innerHTML = `Min: ${services[0].min_order} - Max: ${services[0].max_order} `;
 
         // Average time
-        average_time.value = `${services[0].average_time_hours} hours ${services[0].average_time_minutes} minutes`
+        average_time.value = `${services[0].average_time_hours} hours ${services[0].average_time_minutes} minutes`;
 
         // setting category description
-        panel_description.innerHTML = services[0].description
-
+        panel_description.innerHTML = services[0].description;
     };
 
-
-    const detectPriceChange  = (e)=>{
+    const detectPriceChange = (e) => {
         const services = services_data.filter(
             (key) => key.id === Number(select.value)
-        )[0]
-        charge.value = (services.rate*e.value/1000)
-    }
+        )[0];
+        charge.value = (services.rate * e.value) / 1000;
+    };
 
-    window.addEventListener('load',()=>{
+    window.addEventListener("load", () => {
         const services = services_data.filter(
             (key) => key.id === Number(select.value)
-        )[0]
-        average_time.value = `${services.average_time_hours} hours ${services.average_time_minutes} minutes`
-        min_max.innerHTML= `Min: ${services.min_order} - Max: ${services.max_order} `
-        quantity.min = services.min_order
-        quantity.max = services.max_order
-
-    })
-
+        )[0];
+        average_time.value = `${services.average_time_hours} hours ${services.average_time_minutes} minutes`;
+        min_max.innerHTML = `Min: ${services.min_order} - Max: ${services.max_order} `;
+        quantity.min = services.min_order;
+        quantity.max = services.max_order;
+    });
 </script>
 
 <style>
-    .badge{
+    .badge {
         background-color: gray;
-        padding:3px 8px;
+        padding: 3px 8px;
         border-radius: 10%;
     }
 </style>

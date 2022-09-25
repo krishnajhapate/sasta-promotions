@@ -40,6 +40,7 @@ class ServicesModel(models.Model):
                             on_delete=models.CASCADE,
                             blank=True,
                             null=True)
+    ranking = models.IntegerField(blank=True, null=True, unique=True)
 
     def __str__(self) -> str:
         return self.name

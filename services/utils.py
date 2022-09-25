@@ -7,7 +7,8 @@ def get_ser(request):
         offer_services = Offers.objects.filter(
             user=request.user).order_by('id')
 
-    service_main = ServicesModel.objects.filter(active=True).order_by('id')
+    service_main = ServicesModel.objects.filter(
+        active=True).order_by('ranking')
 
     services = []
     if offer_services:

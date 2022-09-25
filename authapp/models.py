@@ -22,7 +22,7 @@ class User(AbstractUser):
     # objects = CustomUserManager()
 
     def __str__(self):
-        return str(self.first_name)+" -> " +str(self.username)
+        return str(self.first_name) + " -> " + str(self.username)
 
 
 class AccountBalance(models.Model):
@@ -67,8 +67,11 @@ def update_account_balance_on_order(instance, sender, *args, **kwargs):
                         pass
                 except:
                     pass
+    if instance.status == "Pending" and instance.third_party_id:
+        instance.status = "Processing"
+        instance.save()
 
-    if instance.status == "Cancelled":
+    if instance.status == "Cancelled" or instance.status == "Partial":
         if OrderTransanctionModel.objects.filter(
                 order=instance.id, transanction_type="Credit").count() > 0:
             pass
