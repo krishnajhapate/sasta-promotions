@@ -12,3 +12,4 @@ media
 image
 .DS_Store
 models.c*
+db.sqlite3
