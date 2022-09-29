@@ -1,5 +1,4 @@
-{% load static get_conf %}
-{% load get_account_pay  %} 
+{% load static get_conf %} {% load get_account_pay %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,10 +8,24 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %} ">
-        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %} ">
-        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %} ">
-        <link rel="manifest" href="{% static 'favicon/site.webmanifest' %} ">
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="{% static 'favicon/apple-touch-icon.png' %} "
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="{% static 'favicon/favicon-32x32.png' %} "
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="{% static 'favicon/favicon-16x16.png' %} "
+        />
+        <link rel="manifest" href="{% static 'favicon/site.webmanifest' %} " />
         <title>{% block title %} {% site_title %}{% endblock title %}</title>
         <!-- <meta
             name="google-site-verification"
@@ -32,20 +45,32 @@
 
             gtag("config", "G-4HY2278V7L");
         </script> -->
-        <meta
-            name="keywords"
-            content="{% keyword %}"
-        />
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-217191557-1"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "UA-217191557-1");
+        </script>
+
+        <meta name="keywords" content="{% keyword %}" />
         <meta
             name="keywords"
             content=" smm panel, indian smm pannel, instagram followers, instagram likes, ig likes, main supplier of smm pannel, cheap smm pannel of india"
         />
-        <meta
-            name="description"
-            content="{% description %}"
-        />
+        <meta name="description" content="{% description %}" />
 
-        <meta name="google-site-verification" content="dvGt_iD0ehFpbGGfGQaPuGFYSkY-LweOw-55I36yi-Y" />
+        <meta
+            name="google-site-verification"
+            content="dvGt_iD0ehFpbGGfGQaPuGFYSkY-LweOw-55I36yi-Y"
+        />
 
         <link
             rel="stylesheet"
@@ -60,9 +85,17 @@
     </head>
     <body>
         {% block content %} {% endblock content %}
-        <div class="chat-button" >
-
-            <a href="https://api.whatsapp.com/send?phone={% get_whatsapp_contact %}&text={% whatsapp_message %}"> <img height="60px" width="60px" src="{% static 'images/whatsapp.png' %}" alt="whatsapp flaticon"> </a>
+        <div class="chat-button">
+            <a
+                href="https://api.whatsapp.com/send?phone={% get_whatsapp_contact %}&text={% whatsapp_message %}"
+            >
+                <img
+                    height="60px"
+                    width="60px"
+                    src="{% static 'images/whatsapp.png' %}"
+                    alt="whatsapp flaticon"
+                />
+            </a>
         </div>
         <script type="text/javascript" src="/static/js/file1.js"></script>
         <script type="text/javascript" src="/static/js/file2.js"></script>
@@ -149,33 +182,34 @@
             font-weight: 400;
             font-style: normal;
         }
-        .chat-button , .chat-button > img{
+        .chat-button,
+        .chat-button > img {
             position: fixed;
             right: 10%;
             bottom: 5%;
         }
         .btn-primary {
-    font-weight: 700;
-    font-style: normal;
-    font-size: 16px;
-    letter-spacing: 0px;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    color: #ffffff;
-    background: #1f0b6c;
-    border-color: #000000;
-    box-shadow: 0 8px 24px 0 rgb(31 11 108 / 25%);
-    border-style: none;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    border-left-width: 0px;
-    border-right-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-}
+            font-weight: 700;
+            font-style: normal;
+            font-size: 16px;
+            letter-spacing: 0px;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            color: #ffffff;
+            background: #1f0b6c;
+            border-color: #000000;
+            box-shadow: 0 8px 24px 0 rgb(31 11 108 / 25%);
+            border-style: none;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            border-left-width: 0px;
+            border-right-width: 0px;
+            border-top-width: 0px;
+            border-bottom-width: 0px;
+        }
     </style>
 </html>
