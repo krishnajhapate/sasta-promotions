@@ -3,13 +3,19 @@ from .models import OrdersModel, TransanctionsModel, OrderTransanctionModel
 # Register your models here.
 
 
+@admin.action(description='Mark selected as completed')
+def mark_completed(modeladmin, request, queryset):
+    queryset.update(status='Completed')
+
+
 @admin.register(OrdersModel)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'service', 'status', 'quantity', 'charge',
                     'order_placed', 'last_updated')
     list_display_links = ('id', 'service', 'charge')
     list_filter = ('status', )
-    readonly_fields = [ 'third_party_name']
+    readonly_fields = ['third_party_name']
+    actions = [mark_completed]
 
 
 @admin.register(TransanctionsModel)
