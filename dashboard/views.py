@@ -62,7 +62,7 @@ def dashboard(request):
     # update order status
     orders_obj = OrdersModel.objects.filter(
         Q(status="Processing") | Q(status="In progress")
-        | Q(status="Partial"))
+        | Q(status="Partial")).exclude(third_party_id__isnull=True)
 
     order_ids = []
     if orders_obj.count() > 0:
@@ -78,15 +78,17 @@ def dashboard(request):
             for order_id in order_ids.split(','):
                 order_details = response[order_id]
                 order = OrdersModel.objects.get(third_party_id=order_id)
-                if order_details['error']:
-                    order.status = '-'
+                try:
+                    if order_details['error']:
+                        order.status = '-'
+                        order.save()
+                        continue
+                except:
+                    order.status = order_details['status']
+                    order.remains = order_details['remains']
+                    order.spend = order_details['charge']
+                    order.start_count = order_details['start_count']
                     order.save()
-                    continue
-                order.status = order_details['status']
-                order.remains = order_details['remains']
-                order.spend = order_details['charge']
-                order.start_count = order_details['start_count']
-                order.save()
     services = get_cat(request)
     return render(request, "dashboard.html", {"categories": services})
 
