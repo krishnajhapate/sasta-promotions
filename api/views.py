@@ -17,7 +17,7 @@ class AppApi(APIView):
             return Response("Invaild Api key ",
                             status=status.HTTP_400_BAD_REQUEST)
 
-        if  user:
+        if user:
             action = request.GET.get("action", None)
 
             if action == "services":
@@ -29,7 +29,7 @@ class AppApi(APIView):
                 print(order)
                 if order[0]:
                     serializer = OrderSerializer(instance=order[0])
-                    return Response({"order":serializer.data['id']})
+                    return Response({"order": serializer.data['id']})
 
                 return Response(order[1], status=status.HTTP_400_BAD_REQUEST)
 

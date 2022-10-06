@@ -7,6 +7,7 @@ from services.models import ServicesModel
 from authapp.models import AccountBalance, User
 from orders.models import OrdersModel
 from django.contrib import messages
+from django.db.models import Q
 import requests
 # Create your views here.
 
@@ -58,6 +59,34 @@ def dashboard(request):
                 "error_message": order_create
             })
 
+    # update order status
+    orders_obj = OrdersModel.objects.filter(
+        Q(status="Processing") | Q(status="In progress")
+        | Q(status="Partial"))
+
+    order_ids = []
+    if orders_obj.count() > 0:
+        for order in orders_obj:
+            order_ids.append(order.third_party_id)
+        order_ids = ','.join(str(x) for x in order_ids)
+
+        order_status_fetch_url = f"{orders_obj[0].service.api.api_url}?orders={order_ids}&key={orders_obj[0].service.api.api_key}&action=status"
+        response = requests.get(order_status_fetch_url)
+        if response.status_code == 200:
+            response = response.json()
+            print(response)
+            for order_id in order_ids.split(','):
+                order_details = response[order_id]
+                order = OrdersModel.objects.get(third_party_id=order_id)
+                if order_details['error']:
+                    order.status = '-'
+                    order.save()
+                    continue
+                order.status = order_details['status']
+                order.remains = order_details['remains']
+                order.spend = order_details['charge']
+                order.start_count = order_details['start_count']
+                order.save()
     services = get_cat(request)
     return render(request, "dashboard.html", {"categories": services})
 
