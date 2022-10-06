@@ -77,7 +77,7 @@ def dashboard(request):
             print(response)
             for order_id in order_ids.split(','):
                 order_details = response[order_id]
-                order = OrdersModel.objects.get(third_party_id=order_id)
+                order = OrdersModel.objects.first(third_party_id=order_id)
                 try:
                     if order_details['error']:
                         order.status = '-'
