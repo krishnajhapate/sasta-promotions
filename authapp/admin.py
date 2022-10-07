@@ -34,6 +34,6 @@ class UserAdmin(DjangoUserAdmin):
 @admin.register(AccountBalance)
 class MoneyAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'money', 'updated')
-    readonly_fields = ('money', )
+    # readonly_fields = ('money', )
 
     ordering = ['-updated']
