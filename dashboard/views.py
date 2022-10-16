@@ -13,8 +13,10 @@ import requests
 
 
 def home_page(request):
-    services = get_cat(request)
-    return render(request, "home.html", {"category": services})
+    return render(
+        request,
+        "home.html",
+    )
 
 
 @login_required
