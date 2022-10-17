@@ -22,8 +22,11 @@ class ServiceModelAdminShow(admin.ModelAdmin):
         'rate',
         'api',
         'ranking',
+        'service_id',
     )
     ordering = ['ranking']
+
+    search_fields = ('id', 'name', 'category__name', 'api__name', 'service_id')
     list_filter = (
         'active',
         'category',
