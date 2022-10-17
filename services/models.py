@@ -43,7 +43,7 @@ class ServicesModel(models.Model):
     ranking = models.IntegerField(blank=True, null=True, unique=True)
 
     def __str__(self) -> str:
-        return self.name
+        return f"{self.name} -> [{self.id}]"
 
     class Meta:
         verbose_name = "Service"
