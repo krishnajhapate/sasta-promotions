@@ -17,3 +17,11 @@ class ServiceAddForm(forms.ModelForm):
     class Meta:
         model = ServicesModel
         fields = ['name', 'category', 'url', 'key', 'add_id', 'api']
+
+
+class ServiceAdminAddForm(forms.ModelForm):
+    description = forms.CharField(widget=forms.Textarea(attrs={'id': "richtext_field"}))
+
+    class Meta:
+        model = ServicesModel
+        fields = '__all__'

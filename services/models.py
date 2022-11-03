@@ -1,7 +1,3 @@
-import imp
-from operator import mod
-from pyexpat import model
-from tabnanny import verbose
 from django.db import models
 from django.conf import settings
 

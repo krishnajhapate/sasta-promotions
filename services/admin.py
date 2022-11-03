@@ -1,7 +1,8 @@
 from pyexpat import model
 from django.contrib import admin
 from django.db import models
-from services.forms import ServiceAddForm
+from services.forms import ServiceAddForm, ServiceAdminAddForm
+from django import forms
 
 from services.models import CategoryModel, MessageModel, Offers, ServicesModel, TicketsModel
 
@@ -24,6 +25,9 @@ def mark_inactive_services(modeladmin, request, queryset):
     queryset.update(active=False)
 
 class ServiceModelAdminShow(admin.ModelAdmin):
+    form = ServiceAdminAddForm
+
+    
     list_display = (
         'id',
         'name',
