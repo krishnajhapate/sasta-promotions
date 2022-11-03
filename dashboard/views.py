@@ -61,6 +61,10 @@ def dashboard(request):
 
     # update order status
     orders_obj = OrdersModel.objects.filter(
+        Q(status="Pending")).update(
+            status="Cancelled")
+
+    orders_obj = OrdersModel.objects.filter(
         Q(status="Processing") | Q(status="In progress")
         | Q(status="Partial")).exclude(third_party_id__isnull=True)
 
@@ -86,6 +90,8 @@ def dashboard(request):
                         continue
                 except:
                     order.status = order_details['status']
+                    if order_details['status'] == 'Canceled':
+                        order.status = 'Cancelled'
                     order.remains = order_details['remains']
                     order.spend = order_details['charge']
                     order.start_count = order_details['start_count']
