@@ -1,5 +1,5 @@
 from django.contrib import admin
-from dashboard.forms import SettingsAdminAddForm
+from dashboard.forms import *
 
 from dashboard.models import Api, CounterOrder, Settings, Tutorials
 from orders.models import OrdersModel, TransanctionsModel
@@ -92,4 +92,5 @@ class SettingsAdmin(admin.ModelAdmin):
 
 @admin.register(Tutorials)
 class TutorialsAdmin(admin.ModelAdmin):
+    form = TutorialsAdminAddForm
     list_display = ('id', 'title', 'order', 'active')

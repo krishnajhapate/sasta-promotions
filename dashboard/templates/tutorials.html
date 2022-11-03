@@ -13,7 +13,10 @@ site_name %}{% endblock title %} {% block content %}
                 <div class="container">
                     {% for tutorial in tutorials %}
                     <h1 class="title text-white">{{ tutorial.title }}</h1>
-                    <p class="text-white py-4">{{ tutorial.description }}</p>
+
+                    <div class=" py-4 mb-4 card bg-white">
+                        {{ tutorial.description | safe }}
+                    </div>
                     <iframe
                         width="645"
                         height="363"

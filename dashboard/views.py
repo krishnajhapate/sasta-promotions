@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from authapp.utils import generate_key
-from dashboard.models import Tutorials
+from dashboard.models import Settings, Tutorials
 from dashboard.utils import get_cat, place_order
 from services.models import ServicesModel
 from authapp.models import AccountBalance, User
@@ -19,6 +19,8 @@ def home_page(request):
 
 @login_required
 def dashboard(request):
+
+    settings_obj =  Settings.objects.first()
     if request.method == "POST":
         service_id = request.POST.get('service', None)
         link = request.POST.get('link', None)
@@ -56,7 +58,8 @@ def dashboard(request):
             services = get_cat(request)
             return render(request, "dashboard.html", {
                 "categories": services,
-                "error_message": order_create
+                "error_message": order_create,
+                "settings": settings_obj
             })
 
     # update order status
@@ -97,7 +100,8 @@ def dashboard(request):
                     order.start_count = order_details['start_count']
                     order.save()
     services = get_cat(request)
-    return render(request, "dashboard.html", {"categories": services})
+
+    return render(request, "dashboard.html", {"categories": services, "settings": settings_obj})
 
 
 def about_page(request):
