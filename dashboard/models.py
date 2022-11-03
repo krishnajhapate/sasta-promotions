@@ -41,6 +41,7 @@ class Settings(models.Model):
     # promotional 
     promotional_description = models.CharField(max_length=1000, default="")
     promotional_image = models.ImageField(upload_to='image', blank=True, null=True)
+    promotional_link = models.URLField(max_length=1000, default="",blank=True, null=True)
 
     class Meta:
         verbose_name = "Setting"
