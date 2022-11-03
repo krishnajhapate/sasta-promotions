@@ -98,9 +98,7 @@ class RefilOrders(models.Model):
     status= models.CharField(max_length=20,choices=(
     ("Pending", "Pending"),
     ("Completed", "Completed"),
-    ("Processing", "Processing"),
-    ("Cancelled", "Cancelled"),
-    ("Partial", "Partial"),
+    ("Rejected", "Rejected"),
     ("In progress", "In progress"),
     ("Rejected", "Rejected"),
 ))
