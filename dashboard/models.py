@@ -38,6 +38,10 @@ class Settings(models.Model):
                                    max_length=100,
                                    help_text="Youtube Video Width")
 
+    # promotional 
+    promotional_description = models.CharField(max_length=1000, default="")
+    promotional_image = models.ImageField(upload_to='image', blank=True, null=True)
+
     class Meta:
         verbose_name = "Setting"
 
