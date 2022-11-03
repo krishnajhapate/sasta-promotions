@@ -68,7 +68,6 @@ class RefilOrdersAdmin(admin.ModelAdmin):
     list_filter = ('status', )
     order = ('updated', )
     search_fields = ('id','order__user__username', 'order__user__email', 'order__user__first_name', 'order__user__last_name','order')
-    # autocomplete_fields = ['order']
 
     def user(self, obj):
         return obj.order.user

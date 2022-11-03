@@ -12,7 +12,6 @@ STATUS_CHOICE = (
     ("Cancelled", "Cancelled"),
     ("Partial", "Partial"),
     ("In progress", "In progress"),
-    ("Test", "Test"),
 )
 
 
@@ -92,4 +91,19 @@ class OrderTransanctionModel(models.Model):
         verbose_name = "Order History"
 
 
-# class RefilOrders()
+class RefilOrders(models.Model):
+    order = models.ForeignKey(OrdersModel, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    status= models.CharField(max_length=20,choices=(
+    ("Pending", "Pending"),
+    ("Completed", "Completed"),
+    ("Processing", "Processing"),
+    ("Cancelled", "Cancelled"),
+    ("Partial", "Partial"),
+    ("In progress", "In progress"),
+    ("Rejected", "Rejected"),
+))
+
+    class Meta:
+        verbose_name = "Refill Order"
