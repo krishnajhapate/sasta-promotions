@@ -1,4 +1,5 @@
 from django.contrib import admin
+from dashboard.forms import SettingsAdminAddForm
 
 from dashboard.models import Api, CounterOrder, Settings, Tutorials
 from orders.models import OrdersModel, TransanctionsModel
@@ -24,6 +25,7 @@ class ApiAdmin(admin.ModelAdmin):
 
 @admin.register(Settings)
 class SettingsAdmin(admin.ModelAdmin):
+    form = SettingsAdminAddForm
 
     list_display = ('site_name', 'total_orders', 'total_transactions',
                     'total_users', 'todays_fund_recieved', 'todays_update',
