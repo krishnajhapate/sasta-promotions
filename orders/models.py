@@ -33,7 +33,10 @@ class OrdersModel(models.Model):
     third_party_id = models.CharField(max_length=10, blank=True, null=True)
     third_party_name = models.CharField(max_length=20, blank=True, null=True)
 
-    # refilled = models.BooleanField(default=True)
+    refill_days = models.IntegerField(null=True, blank=True)
+    refill = models.BooleanField(default=True)
+    refilling = models.BooleanField(default=False)
+
 
     def __str__(self) -> str:
         return self.service.name + "-" + self.status
@@ -92,6 +95,7 @@ class OrderTransanctionModel(models.Model):
 
 
 class RefilOrders(models.Model):
+    third_party_id = models.IntegerField(null=True, blank=True)
     order = models.ForeignKey(OrdersModel, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
