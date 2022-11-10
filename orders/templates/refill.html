@@ -1,6 +1,5 @@
-{% extends 'base.html' %}
-{% load  get_conf %}
-{% block title %}Orders - {% site_name %}{% endblock title %} {% block content %}
+{% extends 'base.html' %} {% load get_conf %} {% block title %}Orders - {%
+site_name %}{% endblock title %} {% block content %}
 <div class="wrapper wrapper-sidebar-navbar">
     {% include 'components/dashboard_leftsidebar.html' %}
 
@@ -136,16 +135,10 @@
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>Date</th>
+                                                            <th>Order Id</th>
                                                             <th>Link</th>
-                                                            <th>Charge</th>
-                                                            <th class="nowrap">
-                                                                Start count
-                                                            </th>
-                                                            <th>Quantity</th>
                                                             <th>Service</th>
                                                             <th>Status</th>
-                                                            <th>Remains</th>
-                                                           <th></th> 
                                                         </tr>
                                                     </thead>
                                                     {% for order in orders %}
@@ -166,6 +159,9 @@
                                                                     >{{order.order_placed|date:"H:i:s"}}</span
                                                                 >
                                                             </td>
+                                                            <td data-label="order-id">
+                                                                {{order.id}}
+                                                            </td>
                                                             <td
                                                                 data-label="Link"
                                                                 class="table-link component_service_link"
@@ -175,22 +171,6 @@
                                                                     target="_blank"
                                                                     >{{order.link}}</a
                                                                 >
-                                                            </td>
-                                                            <td
-                                                                data-label="Charge"
-                                                            >
-                                                                {{order.charge}}
-                                                            </td>
-                                                            <td
-                                                                data-label="Start count"
-                                                                class="nowrap"
-                                                            >
-                                                                {{order.start_count}}
-                                                            </td>
-                                                            <td
-                                                                data-label="Quantity"
-                                                            >
-                                                                {{order.quantity}}
                                                             </td>
                                                             <td
                                                                 data-label="Service"
@@ -203,22 +183,7 @@
                                                             >
                                                                 {{order.status}}
                                                             </td>
-                                                            <td
-                                                                data-label="Remains"
-                                                            >
-                                                            {% if order.remains == None %}
-                                                                -
-                                                            {% else %}
-                                                            {{order.remains}}
-                                                            {% endif %}
-
-                                                            </td>
-                                                           <td>
-                                                            {% comment %} {% order_refill_render order %} {% endcomment %}
-                                                            {% comment %} {% if order.order_refill_render %}
-                                                                <button onClick="location.href = '{% url 'refill-id' order.id %}'" style="padding:2 !important;" class="btn btn-primary text-white btn-sm">Reffil</button>
-                                                                {% endif %} {% endcomment %}
-                                                            </td>
+                                                          
                                                         </tr>
                                                     </tbody>
                                                     {% endfor %}
@@ -253,7 +218,7 @@
             display: block;
             width: 100%;
             margin-bottom: 4px;
-            margin-right: 0px!important;
+            margin-right: 0px !important;
         }
     }
     .tab .nav-item .active {

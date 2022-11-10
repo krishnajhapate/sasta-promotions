@@ -30,13 +30,16 @@ class ServicesModel(models.Model):
     average_time_minutes = models.IntegerField(blank=True, null=True)
     description = models.TextField(max_length=4000, blank=True, null=True)
     active = models.BooleanField(default=False)
-    refill = models.BooleanField(default=False)
     service_id = models.IntegerField(blank=True, null=True)
     api = models.ForeignKey(Api,
                             on_delete=models.CASCADE,
                             blank=True,
                             null=True)
     ranking = models.IntegerField(blank=True, null=True, unique=True)
+
+    # refill 
+    refill_days = models.IntegerField(null=True, blank=True)
+    refill = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return f"{self.name} -> [{self.id}]"

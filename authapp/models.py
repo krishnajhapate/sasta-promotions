@@ -62,6 +62,8 @@ def update_account_balance_on_order(instance, sender, *args, **kwargs):
                         instance.status = "Processing"
                         instance.third_party_id = res['order']
                         instance.third_party_name = service.api.name
+                        instance.refill_days = instance.service.refill_days
+                        instance.refill = instance.service.refill
                         instance.save()
                     else:
                         pass
