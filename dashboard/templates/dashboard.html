@@ -261,6 +261,13 @@
 
     console.log(category);
 
+    const detectPriceChange = (e) => {
+        const services = services_data.filter(
+            (key) => key.id === Number(select.value)
+        )[0];
+        charge.value = (services.rate * e.value) / 1000;
+    };
+
     // services get
     const getServices = async () => {
         try {
@@ -334,12 +341,7 @@
         panel_description.innerHTML = services[0].description;
     };
 
-    const detectPriceChange = (e) => {
-        const services = services_data.filter(
-            (key) => key.id === Number(select.value)
-        )[0];
-        charge.value = (services.rate * e.value) / 1000;
-    };
+
 
     window.addEventListener("load", () => {
         const services = services_data.filter(
