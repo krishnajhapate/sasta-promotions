@@ -214,10 +214,9 @@
 
                                                             </td>
                                                            <td>
-                                                            {% comment %} {% order_refill_render order %} {% endcomment %}
-                                                            {% comment %} {% if order.order_refill_render %}
+                                                             {% order_refill_render order %} {% if order.order_refill_render %}
                                                                 <button onClick="location.href = '{% url 'refill-id' order.id %}'" style="padding:2 !important;" class="btn btn-primary text-white btn-sm">Reffil</button>
-                                                                {% endif %} {% endcomment %}
+                                                                {% endif %}
                                                             </td>
                                                         </tr>
                                                     </tbody>

@@ -116,7 +116,7 @@
                                                                                                         {% if forloop.first %}
                                                                                                             {% for service in category.services %}
                                                                                                             {% if forloop.first %}
-                                                                                                                {{service.description}}
+                                                                                                                {{service.description|safe}}
                                                                                                         {% endif %}
 
                                                                                                             {% endfor %}
@@ -315,6 +315,7 @@
         quantity.min = services[0].min_order;
         quantity.max = services[0].max_order;
     };
+    catChange();
 
     const serviceChange = (e) => {
         link.value = "";
