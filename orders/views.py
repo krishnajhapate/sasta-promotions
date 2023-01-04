@@ -16,37 +16,6 @@ sneaker_api_url = 'https://snakerspanel.com/api/v2?'
 
 @login_required
 def orders(request, status=None):
-    orders = OrdersModel.objects.filter(
-        Q(status="Processing") | Q(status="Pending") | Q(status="In progress")
-        | Q(status="Partial"))
-
-    order_ids = []
-    if orders.count() > 0:
-        for order in orders:
-            order_ids.append(order.third_party_id)
-        order_ids = ','.join(str(x) for x in order_ids)
-
-    for order in orders:
-        service = order.service
-        try:
-            if order.third_party_id:
-                api_url = service.api.api_url + f"/?key={service.api.api_key}&action=status&order={order.third_party_id}"
-                res = requests.get(api_url, params=request.GET)
-                res = res.json()
-                print(res)
-                order_update = OrdersModel.objects.get(id=order.id)
-                order_update.status = res['status']
-                order_update.start_count = res['start_count']
-                order_update.remains = res['remains']
-                if res['status'] == 'Inprogress':
-                    order_update.status = 'In progress'
-                if res['status'] == 'Pending':
-                    order_update.status = 'Processing'
-                if res['status'] == "Canceled":
-                    order_update.status = "Cancelled"
-                order_update.save()
-        except:
-            pass
 
     orders = OrdersModel.objects.filter(user=request.user)
 
@@ -108,7 +77,6 @@ def refill(request, status=None):
 def refill_add(request, id):
     print(id)
     return redirect(reverse('refill'))
-
 
 
 @login_required
