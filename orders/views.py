@@ -112,7 +112,8 @@ def add_funds(request):
             )
             res = res.json()
 
-            if float(res['TXNAMOUNT']) == float(amount):
+            if float(res['TXNAMOUNT']) == float(
+                    amount) and res['STATUS'] == "TXN_SUCCESS":
 
                 transaction = TransanctionsModel.objects.create(
                     user=request.user,
