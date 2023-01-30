@@ -90,7 +90,7 @@ def dashboard(request):
                     third_party_id=order_id).first()
                 try:
                     if order_details['error']:
-                        order.status = '-'
+                        order.status = 'Pending'
                         order.save()
                         continue
                 except:
