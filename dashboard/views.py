@@ -20,7 +20,7 @@ def home_page(request):
 @login_required
 def dashboard(request):
 
-    settings_obj =  Settings.objects.first()
+    settings_obj = Settings.objects.first()
     if request.method == "POST":
         service_id = request.POST.get('service', None)
         link = request.POST.get('link', None)
@@ -56,19 +56,19 @@ def dashboard(request):
 
         if not state:
             services = get_cat(request)
-            return render(request, "dashboard.html", {
-                "categories": services,
-                "error_message": order_create,
-                "settings": settings_obj
-            })
+            return render(
+                request, "dashboard.html", {
+                    "categories": services,
+                    "error_message": order_create,
+                    "settings": settings_obj
+                })
 
     # update order status
     orders_obj = OrdersModel.objects.filter(
-        Q(status="Pending")).update(
-            status="Cancelled")
+        Q(status="Pending")).update(status="Cancelled")
 
     orders_obj = OrdersModel.objects.filter(
-        Q(status="Processing") | Q(status="In progress")
+        Q(status="-") | Q(status="Processing") | Q(status="In progress")
         | Q(status="Partial")).exclude(third_party_id__isnull=True)
 
     order_ids = []
@@ -76,8 +76,10 @@ def dashboard(request):
         for order in orders_obj:
             order_ids.append(order.third_party_id)
         order_ids = ','.join(str(x) for x in order_ids)
+        print(order_ids)
 
         order_status_fetch_url = f"{orders_obj[0].service.api.api_url}?orders={order_ids}&key={orders_obj[0].service.api.api_key}&action=status"
+        print(order_status_fetch_url)
         response = requests.get(order_status_fetch_url)
         if response.status_code == 200:
             response = response.json()
@@ -101,7 +103,10 @@ def dashboard(request):
                     order.save()
     services = get_cat(request)
 
-    return render(request, "dashboard.html", {"categories": services, "settings": settings_obj})
+    return render(request, "dashboard.html", {
+        "categories": services,
+        "settings": settings_obj
+    })
 
 
 def about_page(request):
