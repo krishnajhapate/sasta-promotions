@@ -12,4 +12,3 @@ Celery==4.3
 redis==4.3.3
 django-environ==0.10.0
 django-crispy-forms==2.0
-jango-cors-headers==3.10.0
