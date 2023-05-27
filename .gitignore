@@ -13,3 +13,11 @@ image
 .DS_Store
 models.c*
 db.sqlite3
+
+# Ignore IDE-specific files and directories
+.vscode/
+.idea/
+*.pydevproject
+*.pydevworkspace
+*.project
+*.pyc
