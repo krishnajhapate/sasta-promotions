@@ -21,3 +21,5 @@ db.sqlite3
 *.pydevworkspace
 *.project
 *.pyc
+core/.env
+.env
