@@ -19,7 +19,6 @@ class Api(models.Model):
 
 class Settings(models.Model):
     site_title = models.CharField(max_length=100, blank=True, null=True)
-    site_name = models.CharField(max_length=500, blank=True, null=True)
     keyword = models.CharField(max_length=500, blank=True, null=True)
     description = models.TextField(max_length=1000, blank=True, null=True)
     logo = models.ImageField(upload_to='image', blank=True, null=True)
@@ -42,6 +41,17 @@ class Settings(models.Model):
     promotional_description = models.CharField(max_length=1000, default="")
     promotional_image = models.ImageField(upload_to='image', blank=True, null=True)
     promotional_link = models.URLField(max_length=1000, default="",blank=True, null=True)
+
+
+    title = models.CharField(max_length=500,blank=True,null=True)
+    hero_title = models.CharField(max_length=5000,blank=True,null=True)
+    site_name = models.CharField(max_length=500, blank=True, null=True)
+
+    seo_title = models.CharField(max_length=500, blank=True,null=True)
+    seo_description = models.CharField(max_length=500, blank=True,null=True)
+    seo_image =  models.ImageField(upload_to='image', blank=True, null=True)
+    seo_keywords = models.CharField(max_length=500, blank=True,null=True)
+
 
     class Meta:
         verbose_name = "Setting"

@@ -24,6 +24,9 @@ urlpatterns = [
     path('', include('authapp.urls')),
     path('', include('orders.urls')),
     path('api/v1/', include('api.urls')),
+    path('api/', include('serviceapi.urls')),
+    path('api/', include('websiteapi.urls')),
+    path('api/', include('authapi.urls')),
     path('admin/', admin.site.urls),
 ]
 
