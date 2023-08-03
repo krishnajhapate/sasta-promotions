@@ -4,7 +4,7 @@ from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
-from .serializers import UserSerializer
+from .serializers import *
 
 User = get_user_model()
 
@@ -45,3 +45,37 @@ class UserLoginView(generics.GenericAPIView):
             },
             status=status.HTTP_200_OK,
         )
+
+
+class UserInfo(generics.GenericAPIView):
+    serializer_class = UserInfoSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_serializer_context(self):
+        # Get the default context from the parent class
+        context = super().get_serializer_context()
+
+        # Add the request object to the context
+        context['request'] = self.request
+
+        return context
+
+    def get_serializer_class(self):
+        # Use different serializers based on request method
+        if self.request.method == 'GET':
+            return UserInfoSerializer
+        elif self.request.method == 'POST':
+            return UserInfoSerializer
+        else:
+            return UserInfoSerializer  #
+
+    def get_serializer(self, *args, **kwargs):
+        serializer_class = self.get_serializer_class()
+        kwargs['context'] = self.get_serializer_context()
+        return serializer_class(*args, **kwargs)
+
+    def get(self, request):
+        serializer = self.serializer_class(
+            'ok', context={'request': request})
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
