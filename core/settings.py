@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'serviceapi',
     'websiteapi',
     'authapi',
+    'orderapi',
 
 
     'rest_framework_simplejwt',
