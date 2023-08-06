@@ -6,6 +6,7 @@ from authapp.models import AccountBalance
 
 
 class OrderSerializer(serializers.ModelSerializer):
+    # used serializers to create order of user
     balance = serializers.SerializerMethodField(read_only=True)
     service_name = serializers.SerializerMethodField(read_only=True)
 
@@ -91,5 +92,12 @@ class OrderSerializer(serializers.ModelSerializer):
         return AccountBalance.objects.get(user=user).money
 
     def get_service_name(self, obj):
-        print(obj.service.name)
         return obj.service.name
+
+
+class OrdersGetSerializer(serializers.ModelSerializer):
+    # used serializer to give response of all orders
+
+    class Meta:
+        model = OrdersModel
+        fields = '__all__'
