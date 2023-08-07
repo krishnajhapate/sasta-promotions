@@ -6,7 +6,9 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
 from .serializers import *
+from authapp.utils import generate_key
 from django.contrib.auth import update_session_auth_hash
+from datetime import datetime
 
 
 User = get_user_model()
@@ -112,3 +114,15 @@ class ChangePasswordView(generics.GenericAPIView):
             update_session_auth_hash(request, user)
             return Response({"success": "Password has been changed successfully."})
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class GenerateAPIKeyView(generics.GenericAPIView):
+    serializer_class = ChangePasswordSerializer
+
+    def post(self, request):
+        user = request.user
+        user.api_key = generate_key(35)
+        user.api_create_at = datetime.now()
+        user.save()
+        serializer = UserSerializer(user)
+        return Response(serializer.data)

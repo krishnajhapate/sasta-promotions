@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'name', 'phone',
-                  'api_key', 'email', 'password')
+                  'api_key', 'email', 'password', 'api_create_at')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
