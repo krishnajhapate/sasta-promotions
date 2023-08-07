@@ -2,9 +2,12 @@
 
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
 from .serializers import *
+from django.contrib.auth import update_session_auth_hash
+
 
 User = get_user_model()
 
@@ -91,3 +94,21 @@ class UserInfo(generics.GenericAPIView):
             serializer.save()
 
         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+
+
+class ChangePasswordView(generics.GenericAPIView):
+    serializer_class = ChangePasswordSerializer
+
+    def post(self, request):
+        serializer = ChangePasswordSerializer(data=request.data)
+        if serializer.is_valid():
+            user = request.user
+            old_password = serializer.validated_data['old_password']
+            new_password = serializer.validated_data['new_password']
+            if not user.check_password(old_password):
+                return Response({"error": "Old password is incorrect."}, status=status.HTTP_400_BAD_REQUEST)
+            user.set_password(new_password)
+            user.save()
+            update_session_auth_hash(request, user)
+            return Response({"success": "Password has been changed successfully."})
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
