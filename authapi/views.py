@@ -60,6 +60,9 @@ class UserInfo(generics.GenericAPIView):
 
         return context
 
+    def get_object(self):
+        return self.request.user
+
     def get_serializer_class(self):
         # Use different serializers based on request method
         if self.request.method == 'GET':
@@ -79,3 +82,12 @@ class UserInfo(generics.GenericAPIView):
             'ok', context={'request': request})
 
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def patch(self, request):
+        serializer = UserInfoUpdateSerializer(request.user,
+                                              data=request.data, partial=True, context={'request': request})
+
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)

@@ -48,3 +48,10 @@ class UserInfoSerializer(serializers.Serializer):
 
     def get_username(self, obj):
         return self.context['request'].user.username
+
+
+class UserInfoUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('email', 'phone', 'name',)
