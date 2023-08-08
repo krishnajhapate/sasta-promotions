@@ -1,8 +1,11 @@
 # serializers.py
 from rest_framework import serializers
-from orders.models import OrdersModel
+from orders.models import OrdersModel, TransanctionsModel
 from services.models import Offers
 from authapp.models import AccountBalance
+from dashboard.models import Settings
+import requests
+import json
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -101,3 +104,56 @@ class OrdersGetSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrdersModel
         fields = '__all__'
+
+
+class FundAddSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = TransanctionsModel
+        fields = ['amount', 'transaction_id']
+
+    def create(self, validated_data):
+        transaction_id = validated_data['transaction_id']
+        amount = validated_data['amount']
+        user = self.context['request'].user
+        settings = Settings.objects.all().first()  # getting merchant settings
+        transaction = TransanctionsModel.objects.all()
+
+        data = {"MID": settings.paytm_merchant_id, "ORDERID": transaction_id}
+
+        url = "https://securegw.paytm.in/merchant-status/getTxnStatus"
+
+        # calling api to paytm to check status
+        res = requests.post(
+            url=url,
+            data=json.dumps(data),
+        )
+        res = res.json()
+
+        if res['STATUS'] == "TXN_FAILURE":
+            raise serializers.ValidationError(
+                "Order id invalid")
+
+        elif float(res['TXNAMOUNT']) == float(
+                amount) and res['STATUS'] == "TXN_SUCCESS":  # success transactions
+
+            transaction = TransanctionsModel.objects.create(
+                user=user,
+                amount=float(amount),
+                transaction_id=transaction_id,
+                status="Approved",
+            )
+
+            return transaction
+        else:
+            raise serializers.ValidationError(
+                "Something went wrong please try again later!")
+
+        return transaction
+
+    def validate_transaction_id(self, value):
+        transaction = TransanctionsModel.objects.filter(transaction_id=value)
+        if transaction.exists():
+            raise serializers.ValidationError("Duplicate transaction id")
+
+        return value

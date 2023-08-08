@@ -1,8 +1,8 @@
 # views.py
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
-from orders.models import OrdersModel
-from .serializers import OrderSerializer, OrdersGetSerializer
+from orders.models import OrdersModel, TransanctionsModel
+from .serializers import OrderSerializer, OrdersGetSerializer, FundAddSerializer
 
 
 class OrderCreateView(generics.GenericAPIView):
@@ -35,3 +35,16 @@ class OrderCreateView(generics.GenericAPIView):
             serializer.save()
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class FundAddView(generics.GenericAPIView):
+    serializer_class = FundAddSerializer
+
+    def post(self, request):
+        serializer = FundAddSerializer(
+            data=request.data, context={'request': request})
+
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response({"success": "Funds added successfully."})
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
