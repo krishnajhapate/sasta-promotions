@@ -1,7 +1,7 @@
 # myapp/serializers.py
 
 from rest_framework import serializers
-from services.models import CategoryModel, ServicesModel, Offers
+from services.models import CategoryModel, ServicesModel, Offers, TicketsModel, MessageModel
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -97,3 +97,18 @@ class UserCategorySerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
 
         return representation
+
+
+class MessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MessageModel
+        fields = ['ticket', 'user', 'message', 'timestamp',]
+
+
+class TicketSerializer(serializers.ModelSerializer):
+    messages = MessageSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = TicketsModel
+        fields = ['id', 'user', 'subject',
+                  'status', 'created', 'last_updated', 'messages']

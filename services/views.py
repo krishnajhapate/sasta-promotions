@@ -8,7 +8,7 @@ from services.forms import ServiceAddForm
 from services.models import CategoryModel, MessageModel, ServicesModel, TicketsModel
 from orders.models import OrdersModel
 from django.db.models import Q
-from orders.models import  OrderTransanctionModel
+from orders.models import OrderTransanctionModel
 from authapp.models import AccountBalance
 from services.serializers import CategorySerializer, ServicesSerializer
 from services.utils import get_ser
@@ -75,11 +75,11 @@ class ServicesView(APIView):
         Return a list of all users.
         """
         orders_obj = OrdersModel.objects.filter(Q(status="Cancelled"))
-        
+
         for i in orders_obj:
             if i.last_updated.strftime('%Y-%m-%d %H:%M:%S') == i.order_placed.strftime('%Y-%m-%d %H:%M:%S'):
                 i.save()
-                
+
         serializer = ServicesSerializer(get_ser(request), many=True)
         return Response(serializer.data)
 

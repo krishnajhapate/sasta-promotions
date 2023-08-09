@@ -37,7 +37,7 @@ class ServicesModel(models.Model):
                             null=True)
     ranking = models.IntegerField(blank=True, null=True, unique=True)
 
-    # refill 
+    # refill
     refill_days = models.IntegerField(null=True, blank=True)
     refill = models.BooleanField(default=False)
 
