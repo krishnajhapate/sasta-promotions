@@ -21,7 +21,7 @@ class OrderCreateView(generics.GenericAPIView):
 
     def get(self, request):
 
-        orders = OrdersModel.objects.filter(user=request.user)
+        orders = OrdersModel.objects.filter(user=request.user).order_by('-id')
 
         serializer = OrdersGetSerializer(orders, many=True)
 
