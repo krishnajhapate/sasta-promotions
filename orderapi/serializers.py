@@ -33,7 +33,8 @@ class OrderSerializer(serializers.ModelSerializer):
             service=service,
             link=link,
             user=user,
-            status__in=["Processing", "In progress", "Pending",])
+            status__in=["Processing", "In progress", "Pending",],
+        )
         # Add the user to the validated data before creating the order
         if order.exists():
             raise serializers.ValidationError(
@@ -110,14 +111,22 @@ class FundAddSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TransanctionsModel
-        fields = ['amount', 'transaction_id']
+        fields = ['amount', 'transaction_id', 'created', 'id']
 
     def create(self, validated_data):
         transaction_id = validated_data['transaction_id']
         amount = validated_data['amount']
+
+        transaction = TransanctionsModel.objects.filter(
+            transaction_id=transaction_id)
+        print(transaction, 'rt', amount)
+
+        if transaction.exists():
+            raise serializers.ValidationError("Duplicate transaction id")
+
         user = self.context['request'].user
         settings = Settings.objects.all().first()  # getting merchant settings
-        transaction = TransanctionsModel.objects.all()
+        transaction = None
 
         data = {"MID": settings.paytm_merchant_id, "ORDERID": transaction_id}
 
@@ -129,6 +138,7 @@ class FundAddSerializer(serializers.ModelSerializer):
             data=json.dumps(data),
         )
         res = res.json()
+        print(res)
 
         if res['STATUS'] == "TXN_FAILURE":
             raise serializers.ValidationError(
@@ -145,15 +155,18 @@ class FundAddSerializer(serializers.ModelSerializer):
             )
 
             return transaction
+        elif res['STATUS'] == "TXN_SUCCESS":
+            raise serializers.ValidationError(
+                "Payment amount not matched")
         else:
             raise serializers.ValidationError(
                 "Something went wrong please try again later!")
 
         return transaction
 
-    def validate_transaction_id(self, value):
-        transaction = TransanctionsModel.objects.filter(transaction_id=value)
-        if transaction.exists():
-            raise serializers.ValidationError("Duplicate transaction id")
+    # def validate_transaction_id(self, value):
+    #     transaction = TransanctionsModel.objects.filter(transaction_id=value)
+    #     if transaction.exists():
+    #         raise serializers.ValidationError("Duplicate transaction id")
 
-        return value
+    #     return value

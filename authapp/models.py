@@ -8,6 +8,8 @@ import requests
 from orders.models import OrdersModel, TransanctionsModel, OrderTransanctionModel
 from services.models import ServicesModel
 # Create your models here.
+from datetime import datetime, timedelta
+from django.utils import timezone
 
 
 class User(AbstractUser):
@@ -50,20 +52,28 @@ def update_account_balance_on_order(instance, sender, *args, **kwargs):
                 order=instance,
             )
             instance.link = instance.link.split("?")[0]
+            current_timestamp = timezone.now()
+            new_timestamp = current_timestamp + \
+                timedelta(days=instance.service.refill_days)
+
+            instance.refill_days = new_timestamp
 
             service = ServicesModel.objects.get(id=instance.service.id)
             if service.api and service.api.active and service.service_id:
                 try:
-                    api_url = service.api.api_url + f"?key={service.api.api_key}&service={service.service_id}&action=add&link={instance.link}&quantity={instance.quantity}"
+                    api_url = service.api.api_url + \
+                        f"?key={service.api.api_key}&service={service.service_id}&action=add&link={instance.link}&quantity={instance.quantity}"
 
                     res = requests.get(api_url)
                     res = res.json()
+
                     print(api_url, res)
+                    current_timestamp = timezone.now()
+
                     if res['order']:
                         instance.status = "Processing"
                         instance.third_party_id = res['order']
                         instance.third_party_name = service.api.name
-                        instance.refill_days = instance.service.refill_days
                         instance.refill = instance.service.refill
                         instance.save()
                     else:

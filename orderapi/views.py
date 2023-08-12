@@ -40,6 +40,13 @@ class OrderCreateView(generics.GenericAPIView):
 class FundAddView(generics.GenericAPIView):
     serializer_class = FundAddSerializer
 
+    def get(self, request):
+        funds = TransanctionsModel.objects.filter(user=request.user)
+
+        serializer = self.serializer_class(funds, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     def post(self, request):
         serializer = FundAddSerializer(
             data=request.data, context={'request': request})

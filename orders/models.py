@@ -33,10 +33,9 @@ class OrdersModel(models.Model):
     third_party_id = models.CharField(max_length=10, blank=True, null=True)
     third_party_name = models.CharField(max_length=20, blank=True, null=True)
 
-    refill_days = models.IntegerField(null=True, blank=True)
-    refill = models.BooleanField(default=True)
+    refill_days = models.DateTimeField(null=True, blank=True, default=None)
+    refill = models.BooleanField(default=False)
     refilling = models.BooleanField(default=False)
-
 
     def __str__(self) -> str:
         return self.service.name + "-" + self.status
@@ -99,13 +98,13 @@ class RefilOrders(models.Model):
     order = models.ForeignKey(OrdersModel, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    status= models.CharField(max_length=20,choices=(
-    ("Pending", "Pending"),
-    ("Completed", "Completed"),
-    ("Rejected", "Rejected"),
-    ("In progress", "In progress"),
-    ("Rejected", "Rejected"),
-))
+    status = models.CharField(max_length=20, choices=(
+        ("Pending", "Pending"),
+        ("Completed", "Completed"),
+        ("Rejected", "Rejected"),
+        ("In progress", "In progress"),
+        ("Rejected", "Rejected"),
+    ))
 
     class Meta:
         verbose_name = "Refill Order"
